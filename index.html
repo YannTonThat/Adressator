@@ -237,8 +237,8 @@
       <span class="logo-text">Adressator</span>
     </div>
     <nav>
-      <a href="#">Tableau de bord</a>
-      <a href="#">Recherche</a>
+      <a href="dashboard.html">Tableau de bord</a>
+      <a href="search.html">Recherche</a>
       <a href="#">Mon compte</a>
       <a href="#">Aide</a>
       <button class="cta-btn" id="login-btn">Connexion</button>
@@ -340,15 +340,35 @@
       document.getElementById('popup-overlay').style.display = 'none';
     }
 
-    // Initialize Google Sign-In
+    // Fonction appelée après la connexion réussie avec Google
     function handleCredentialResponse(response) {
-      console.log("Encoded JWT ID token: " + response.credential);
+      const id_token = response.credential;
+      console.log("Encoded JWT ID token: " + id_token);
       closePopup();
+
+      // Envoyer le token au backend pour gérer l'authentification
+      fetch('/api/auth/google', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id_token })
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.message === 'Connexion réussie') {
+              console.log('Bienvenue, ' + data.user.nom);
+              // Rediriger vers le tableau de bord
+              window.location.href = "/dashboard.html";
+          } else {
+              console.error('Erreur de connexion:', data.error);
+          }
+      })
+      .catch(error => console.error('Erreur:', error));
     }
 
+    // Initialiser la connexion Google
     window.onload = function() {
       google.accounts.id.initialize({
-        client_id: "434261287317-9djqaj05oio6rldc55sq67b17pjnv4jj.apps.googleusercontent.com",
+        client_id: "434261287317-9djqaj05oio6rldc55sq67b17pjnv4jj.apps.googleusercontent.com", // Remplace par ton client ID Google OAuth
         callback: handleCredentialResponse
       });
 
