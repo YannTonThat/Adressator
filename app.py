@@ -53,6 +53,12 @@ def google_login():
 
 # Création de la base de données avec le contexte d'application
 if __name__ == '__main__':
+    # Utiliser le contexte d'application pour créer la base de données une fois
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    
+    # Récupérer le port assigné par Heroku
+    port = int(os.environ.get("PORT", 5000))
+    
+    # Lancer l'application en écoutant sur le port dynamique
+    app.run(debug=True, host="0.0.0.0", port=port)
