@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil - Adressator</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+
+    /* Header */
+    header {
+      background-color: #e0f7e9;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+	
+    /* Logo Style */
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      height: 60px;
+      margin-right: 10px;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      color: #4CAF50;
+      font-weight: bold;
+    }
+	
+	/* Navigation Menu */
+    nav {
+      display: flex;
+      align-items: center;
+    }
+	
+     nav a {
+      margin: 0 15px;
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+	
+	nav a:hover {
+      text-decoration: underline;
+    }
+	
+	/* Special Button Style */
+    .cta-btn {
+      padding: 8px 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      margin-left: 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-image: url('Maison vib.png');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      padding: 80px 20px;
+      color: #fff;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #4CAF50;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .hero .cta-btn {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 40px 20px;
+      text-align: center;
+      background-color: #fff;
+    }
+
+    .features h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #4CAF50;
+    }
+
+    .feature-item {
+      display: inline-block;
+      width: 250px;
+      margin: 20px;
+      text-align: center;
+      color: #666;
+    }
+
+    .feature-item img {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 10px;
+    }
+
+    .feature-description {
+      background-color: #e0f7e9;
+      padding: 15px;
+      border-radius: 8px;
+      color: #333;
+      font-size: 0.9rem;
+      text-align: left;
+      line-height: 1.4;
+      margin-top: 10px;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      background-color: #f5f5f5;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #4CAF50;
+    }
+
+    .testimonial {
+      font-size: 1.1rem;
+      color: #666;
+      margin: 10px 0;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 0.9rem;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <img src="Logo Adressator petit vert.png" alt="Logo Adressator">
+      <span class="logo-text">Adressator</span>
+    </div>
+    <nav>
+      <a href="#">Tableau de bord</a>
+      <a href="#">Recherche</a>
+      <a href="#">Mon compte</a>
+	  <a href="#">Aide</a>
+      <button class="cta-btn">Connexion</button>
+    </nav>
+  </header>
+<!-- Popup for Google Authentication -->
+  <div class="popup-overlay" id="popup-overlay">
+    <div class="popup-content">
+      <h2>Se connecter avec Google</h2>
+      <button class="google-btn" id="google-signin-btn">Connexion avec Google</button>
+      <button class="close-btn" onclick="closePopup()">Fermer</button>
+    </div>
+  </div>
+
+  <!-- Google Platform Library -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    // Show the popup when "Connexion" is clicked
+    document.getElementById('login-btn').addEventListener('click', function() {
+      document.getElementById('popup-overlay').style.display = 'flex';
+    });
+
+    // Close the popup
+    function closePopup() {
+      document.getElementById('popup-overlay').style.display = 'none';
+    }
+
+    // Initialize Google Sign-In
+    function handleCredentialResponse(response) {
+      console.log("Encoded JWT ID token: " + response.credential);
+      // Ici, tu peux envoyer le token au serveur pour vérifier l'identité de l'utilisateur
+      closePopup();
+    }
+
+    window.onload = function() {
+      google.accounts.id.initialize({
+        client_id: "YOUR_GOOGLE_CLIENT_ID",
+        callback: handleCredentialResponse
+      });
+
+      google.accounts.id.renderButton(
+        document.getElementById("google-signin-btn"), // Rendre le bouton Google Sign-In
+        { theme: "outline", size: "large" }
+      );
+    }
+  </script>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Trouvez l&apos;adresse d&apos;un bien immobilier en un clic.</h1>
+    <p>Envoyez un lien d&apos;annonce, on s&rsquo;occupe du reste.</p>
+    <button class="cta-btn">Commencer une recherche</button>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2>Comment fonctionne Adressator ?</h2>
+    
+    <!-- Soumission de lien -->
+    <div class="feature-item">
+      <img src="Lien vib.png" alt="Soumission de lien">
+      <p>Soumission de lien</p>
+      <div class="feature-description">
+        Envoyez le lien d&apos;une annonce immobili&egrave;re.<br>
+        Collez le lien URL d&apos;une annonce immobili&egrave;re dans la barre de recherche.<br>
+        Le bien doit &ecirc;tre une maison (pas un appartement, ni un local, ni un terrain...).
+      </div>
+    </div>
+
+    <!-- Recherche d'adresse -->
+    <div class="feature-item">
+      <img src="Recherche.png" alt="Recherche d'adresse">
+      <p>Recherche d'adresse</p>
+      <div class="feature-description">
+        Nous recherchons l&apos;adresse du bien.<br>
+        A l'aide des photos et descriptifs, nous recherchons l&apos;emplacement pr&eacute;cis du bien via images satellites.
+      </div>
+    </div>
+
+    <!-- Paiement -->
+    <div class="feature-item">
+      <img src="Paiement.png" alt="Paiement">
+      <p>Paiement</p>
+      <div class="feature-description">
+        Pour obtenir l&apos;adresse du bien, proc&eacute;dez au paiement via notre plateforme s&eacute;curis&eacute;e.<br>
+        Tarif unique : 50euros par adresse.
+      </div>
+    </div>
+
+    <!-- Réception de l’adresse -->
+    <div class="feature-item">
+      <img src="Adresse.png" alt="Réception de l’adresse">
+      <p>R&eacute;ception de l’adresse</p>
+      <div class="feature-description">
+        Vous recevrez un email pour vous informer lorsque nous avons trouv&eacute; le bien.<br>
+        R&eacute;sultat garanti fiable &agrave; 100%. Nous ne communiquons jamais une adresse si nous ne sommes pas certains &agrave; 100% qu'elle corresponde &agrave; l'annonce.
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <h2>Ce que disent nos utilisateurs de nous</h2>
+    <p class="testimonial">????? 4.8/5</p>
+    <p class="testimonial">"Un service rapide et fiable..."</p>
+    <p class="testimonial">"J&apos;ai trouv&eacute; mon adresse en quelques minutes!"</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <a href="#">Politique de confidentialit&eacute;</a> |
+    <a href="#">Conditions d&rsquo;utilisation</a> |
+    <a href="#">Support</a> |
+    <a href="#">R&eacute;seaux sociaux</a>
+  </footer>
+
+</body>
+</html>
