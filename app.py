@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, session
+from flask import Flask, request, jsonify, session, render_template, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from google.oauth2 import id_token
 from google.auth.transport import requests as google_requests
@@ -7,6 +7,11 @@ app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydatabase.db'
 db = SQLAlchemy(app)
+
+# Ajouter cette route au début du code de l'application
+@app.route('/')
+def home():
+    return send_from_directory('', 'index.html')  # '' indique le dossier courant
 
 # Modèle Utilisateur
 class Utilisateur(db.Model):
@@ -20,8 +25,9 @@ class Utilisateur(db.Model):
 def google_login():
     token = request.json.get('id_token')
     try:
-        # Vérifier le token Google
-        idinfo = id_token.verify_oauth2_token(token, google_requests.Request(), 'YOUR_GOOGLE_CLIENT_ID')
+        # Vérifier le token Google /!\ A MODIFIER POUR LA VERSION PRODUCTION 434261287317-9djqaj05oio6rldc55sq67b17pjnv4jj.apps.googleusercontent.com
+        # Version locale : 434261287317-f5mhnvrf5gp41aevuhcivv9euc671498.apps.googleusercontent.com'
+        idinfo = id_token.verify_oauth2_token(token, google_requests.Request(), '434261287317-9djqaj05oio6rldc55sq67b17pjnv4jj.apps.googleusercontent.com')
         
         # Extraire les informations de l'utilisateur
         google_id = idinfo['sub']
