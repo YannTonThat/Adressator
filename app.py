@@ -50,7 +50,7 @@ def google_login():
     except ValueError:
         # Le token est invalide
         return jsonify({'error': 'Token invalide'}), 401
-
+import os
 # Création de la base de données avec le contexte d'application
 if __name__ == '__main__':
     # Utiliser le contexte d'application pour créer la base de données une fois
