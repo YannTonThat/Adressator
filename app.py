@@ -13,6 +13,14 @@ db = SQLAlchemy(app)
 def home():
     return send_from_directory('', 'index.html')  # '' indique le dossier courant
 
+# Route pour la page de tableau de bord
+@app.route('/dashboard.html')
+def dashboard():
+    return send_from_directory('.', 'dashboard.html')  # Le point (.) représente le dossier courant
+
+# Autres routes de ton application (à compléter)
+
+
 # Modèle Utilisateur
 class Utilisateur(db.Model):
     id = db.Column(db.Integer, primary_key=True)
