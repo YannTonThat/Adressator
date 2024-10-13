@@ -23,8 +23,6 @@
       align-items: center;
     }
 
-	
-    /* Logo Style */
     .logo-container {
       display: flex;
       align-items: center;
@@ -40,26 +38,24 @@
       color: #4CAF50;
       font-weight: bold;
     }
-	
-	/* Navigation Menu */
+
     nav {
       display: flex;
       align-items: center;
     }
-	
-     nav a {
+
+    nav a {
       margin: 0 15px;
       color: #4CAF50;
       text-decoration: none;
       font-weight: bold;
       font-size: 1rem;
     }
-	
-	nav a:hover {
+
+    nav a:hover {
       text-decoration: underline;
     }
-	
-	/* Special Button Style */
+
     .cta-btn {
       padding: 8px 16px;
       background-color: #4CAF50;
@@ -91,16 +87,17 @@
     .hero p {
       font-size: 1.2rem;
       margin-bottom: 20px;
+      color: #333;
     }
 
     .hero .cta-btn {
-      padding: 10px 20px;
       background-color: #4CAF50;
       color: #fff;
-      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 1rem;
+      border: none;
     }
 
     /* Features Section */
@@ -160,23 +157,74 @@
       margin: 10px 0;
     }
 
+	
+	
+	
+	
     /* Footer */
     footer {
       background-color: #333;
       color: #fff;
       padding: 20px;
       text-align: center;
+      font-size: 0.9rem;
     }
 
     footer a {
       color: #ddd;
       text-decoration: none;
       margin: 0 10px;
-      font-size: 0.9rem;
     }
 
     footer a:hover {
       text-decoration: underline;
+    }
+
+    /* Popup Styles */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .popup-content h2 {
+      color: #333;
+    }
+
+    .google-btn {
+      margin-top: 20px;
+      background-color: #4285F4;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .close-btn {
+      background-color: #ddd;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 15px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -192,11 +240,13 @@
       <a href="#">Tableau de bord</a>
       <a href="#">Recherche</a>
       <a href="#">Mon compte</a>
-	  <a href="#">Aide</a>
-      <button class="cta-btn">Connexion</button>
+      <a href="#">Aide</a>
+      <button class="cta-btn" id="login-btn">Connexion</button>
     </nav>
   </header>
-<!-- Popup for Google Authentication -->
+
+
+  <!-- Popup for Google Authentication -->
   <div class="popup-overlay" id="popup-overlay">
     <div class="popup-content">
       <h2>Se connecter avec Google</h2>
@@ -204,39 +254,6 @@
       <button class="close-btn" onclick="closePopup()">Fermer</button>
     </div>
   </div>
-
-  <!-- Google Platform Library -->
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <script>
-    // Show the popup when "Connexion" is clicked
-    document.getElementById('login-btn').addEventListener('click', function() {
-      document.getElementById('popup-overlay').style.display = 'flex';
-    });
-
-    // Close the popup
-    function closePopup() {
-      document.getElementById('popup-overlay').style.display = 'none';
-    }
-
-    // Initialize Google Sign-In
-    function handleCredentialResponse(response) {
-      console.log("Encoded JWT ID token: " + response.credential);
-      // Ici, tu peux envoyer le token au serveur pour vérifier l'identité de l'utilisateur
-      closePopup();
-    }
-
-    window.onload = function() {
-      google.accounts.id.initialize({
-        client_id: "YOUR_GOOGLE_CLIENT_ID",
-        callback: handleCredentialResponse
-      });
-
-      google.accounts.id.renderButton(
-        document.getElementById("google-signin-btn"), // Rendre le bouton Google Sign-In
-        { theme: "outline", size: "large" }
-      );
-    }
-  </script>
   
   <!-- Hero Section -->
   <section class="hero">
@@ -251,7 +268,7 @@
     
     <!-- Soumission de lien -->
     <div class="feature-item">
-      <img src="Lien vib.png" alt="Soumission de lien">
+      <img src="C:\\Users\\Alexe\\Documents\\Adressator\\Web\\Lien vib.png" alt="Soumission de lien">
       <p>Soumission de lien</p>
       <div class="feature-description">
         Envoyez le lien d&apos;une annonce immobili&egrave;re.<br>
@@ -262,7 +279,7 @@
 
     <!-- Recherche d'adresse -->
     <div class="feature-item">
-      <img src="Recherche.png" alt="Recherche d'adresse">
+      <img src="C:\\Users\\Alexe\\Documents\\Adressator\\Web\\Recherche.png" alt="Recherche d'adresse">
       <p>Recherche d'adresse</p>
       <div class="feature-description">
         Nous recherchons l&apos;adresse du bien.<br>
@@ -272,7 +289,7 @@
 
     <!-- Paiement -->
     <div class="feature-item">
-      <img src="Paiement.png" alt="Paiement">
+      <img src="C:\\Users\\Alexe\\Documents\\Adressator\\Web\\Paiement.png" alt="Paiement">
       <p>Paiement</p>
       <div class="feature-description">
         Pour obtenir l&apos;adresse du bien, proc&eacute;dez au paiement via notre plateforme s&eacute;curis&eacute;e.<br>
@@ -280,10 +297,10 @@
       </div>
     </div>
 
-    <!-- Réception de l’adresse -->
+    <!-- RÃ©ception de lâ€™adresse -->
     <div class="feature-item">
-      <img src="Adresse.png" alt="Réception de l’adresse">
-      <p>R&eacute;ception de l’adresse</p>
+      <img src="C:\\Users\\Alexe\\Documents\\Adressator\\Web\\Adresse.png" alt="RÃ©ception de lâ€™adresse">
+      <p>R&eacute;ception de lâ€™adresse</p>
       <div class="feature-description">
         Vous recevrez un email pour vous informer lorsque nous avons trouv&eacute; le bien.<br>
         R&eacute;sultat garanti fiable &agrave; 100%. Nous ne communiquons jamais une adresse si nous ne sommes pas certains &agrave; 100% qu'elle corresponde &agrave; l'annonce.
@@ -301,11 +318,46 @@
 
   <!-- Footer -->
   <footer>
-    <a href="#">Politique de confidentialit&eacute;</a> |
-    <a href="#">Conditions d&rsquo;utilisation</a> |
-    <a href="#">Support</a> |
-    <a href="#">R&eacute;seaux sociaux</a>
+    <p>&copy; 2023 Adressator. Tous droits rÃ©servÃ©s.</p>
+    <p>
+      <a href="#">Politique de confidentialitÃ©</a> |
+      <a href="#">Conditions d'utilisation</a> |
+      <a href="#">Support</a> |
+      <a href="#">RÃ©seaux sociaux</a>
+    </p>
   </footer>
+
+  <!-- Google Platform Library -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    // Show the popup when "Connexion" is clicked
+    document.getElementById('login-btn').addEventListener('click', function() {
+      document.getElementById('popup-overlay').style.display = 'flex';
+    });
+
+    // Close the popup
+    function closePopup() {
+      document.getElementById('popup-overlay').style.display = 'none';
+    }
+
+    // Initialize Google Sign-In
+    function handleCredentialResponse(response) {
+      console.log("Encoded JWT ID token: " + response.credential);
+      closePopup();
+    }
+
+    window.onload = function() {
+      google.accounts.id.initialize({
+        client_id: "YOUR_GOOGLE_CLIENT_ID", // Remplace par ton client ID Google OAuth
+        callback: handleCredentialResponse
+      });
+
+      google.accounts.id.renderButton(
+        document.getElementById("google-signin-btn"),
+        { theme: "outline", size: "large" }
+      );
+    }
+  </script>
 
 </body>
 </html>
