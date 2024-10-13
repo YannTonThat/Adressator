@@ -26,8 +26,10 @@ def google_login():
     token = request.json.get('id_token')
     try:
         # Vérifier le token Google /!\ A MODIFIER POUR LA VERSION PRODUCTION 434261287317-9djqaj05oio6rldc55sq67b17pjnv4jj.apps.googleusercontent.com
-        # Version locale : 434261287317-f5mhnvrf5gp41aevuhcivv9euc671498.apps.googleusercontent.com'
-        idinfo = id_token.verify_oauth2_token(token, google_requests.Request(), '434261287317-9djqaj05oio6rldc55sq67b17pjnv4jj.apps.googleusercontent.com')
+        # Version locale : '434261287317-f5mhnvrf5gp41aevuhcivv9euc671498.apps.googleusercontent.com'
+        # Version Heroku : '434261287317-cb4sjdrpveidesagf210jnf7qtt0lbg5.apps.googleusercontent.com'
+        # Version GitHub : '434261287317-9djqaj05oio6rldc55sq67b17pjnv4jj.apps.googleusercontent.com'
+        idinfo = id_token.verify_oauth2_token(token, google_requests.Request(), '434261287317-cb4sjdrpveidesagf210jnf7qtt0lbg5.apps.googleusercontent.com')
         
         # Extraire les informations de l'utilisateur
         google_id = idinfo['sub']
