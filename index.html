@@ -70,7 +70,7 @@
 
     /* Hero Section */
     .hero {
-      background-image: url('Maison vib.png');
+      background-image: url('/static/Maison vib.png');
       background-size: cover;
       background-position: center;
       text-align: center;
@@ -233,7 +233,7 @@
   <!-- Header -->
   <header>
     <div class="logo-container">
-      <img src="Logo Adressator petit vert.png" alt="Logo Adressator">
+      <img src="/static/Logo Adressator petit vert.png" alt="Logo Adressator">
       <span class="logo-text">Adressator</span>
     </div>
     <nav>
@@ -268,7 +268,7 @@
     
     <!-- Soumission de lien -->
     <div class="feature-item">
-      <img src="Lien vib.png" alt="Soumission de lien">
+      <img src="/static/Lien vib.png" alt="Soumission de lien">
       <p>Soumission de lien</p>
       <div class="feature-description">
         Envoyez le lien d&apos;une annonce immobili&egrave;re.<br>
@@ -279,7 +279,7 @@
 
     <!-- Recherche d'adresse -->
     <div class="feature-item">
-      <img src="Recherche.png" alt="Recherche d'adresse">
+      <img src="/static/Recherche.png" alt="Recherche d'adresse">
       <p>Recherche d'adresse</p>
       <div class="feature-description">
         Nous recherchons l&apos;adresse du bien.<br>
@@ -289,7 +289,7 @@
 
     <!-- Paiement -->
     <div class="feature-item">
-      <img src="Paiement.png" alt="Paiement">
+      <img src="/static/Paiement.png" alt="Paiement">
       <p>Paiement</p>
       <div class="feature-description">
         Pour obtenir l&apos;adresse du bien, proc&eacute;dez au paiement via notre plateforme s&eacute;curis&eacute;e.<br>
@@ -299,7 +299,7 @@
 
     <!-- Réception de l’adresse -->
     <div class="feature-item">
-      <img src="Adresse.png" alt="Réception de l’adresse">
+      <img src="/static/Adresse.png" alt="Réception de l’adresse">
       <p>R&eacute;ception de l’adresse</p>
       <div class="feature-description">
         Vous recevrez un email pour vous informer lorsque nous avons trouv&eacute; le bien.<br>
@@ -342,33 +342,32 @@
 
     // Fonction appelée après la connexion réussie avec Google
     function handleCredentialResponse(response) {
-      const id_token = response.credential;
-      console.log("Encoded JWT ID token: " + id_token);
-      closePopup();
+        const id_token = response.credential;
 
-      // Envoyer le token au backend pour gérer l'authentification
-      fetch('/api/auth/google', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id_token })
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data.message === 'Connexion réussie') {
-              console.log('Bienvenue, ' + data.user.nom);
-              // Rediriger vers le tableau de bord
-              window.location.href = "/dashboard.html";
-          } else {
-              console.error('Erreur de connexion:', data.error);
-          }
-      })
-      .catch(error => console.error('Erreur:', error));
+        // Envoyer le token au backend
+        fetch('/api/auth/google', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id_token })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Connexion réussie') {
+                console.log('Bienvenue, ' + data.user.nom);
+                // Rediriger vers le tableau de bord
+                window.location.href = "/dashboard.html";
+            } else {
+                console.error('Erreur de connexion:', data.error);
+            }
+        })
+        .catch(error => console.error('Erreur:', error));
     }
 
     // Initialiser la connexion Google
     window.onload = function() {
       google.accounts.id.initialize({
         client_id: "434261287317-9djqaj05oio6rldc55sq67b17pjnv4jj.apps.googleusercontent.com", // Remplace par ton client ID Google OAuth
+		//client_id: "434261287317-f5mhnvrf5gp41aevuhcivv9euc671498.apps.googleusercontent.com",
         callback: handleCredentialResponse
       });
 
