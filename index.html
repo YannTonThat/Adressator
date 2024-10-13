@@ -366,8 +366,9 @@
     // Initialiser la connexion Google
     window.onload = function() {
       google.accounts.id.initialize({
-        client_id: "434261287317-9djqaj05oio6rldc55sq67b17pjnv4jj.apps.googleusercontent.com", // Remplace par ton client ID Google OAuth
-		//client_id: "434261287317-f5mhnvrf5gp41aevuhcivv9euc671498.apps.googleusercontent.com",
+        //client_id: "434261287317-9djqaj05oio6rldc55sq67b17pjnv4jj.apps.googleusercontent.com", // LOCAL Remplace par ton client ID Google OAuth
+	//client_id: "434261287317-f5mhnvrf5gp41aevuhcivv9euc671498.apps.googleusercontent.com", //GITHUB
+	client_id: "434261287317-cb4sjdrpveidesagf210jnf7qtt0lbg5.apps.googleusercontent.com", //HEROKU
         callback: handleCredentialResponse
       });
 
