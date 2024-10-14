@@ -304,6 +304,12 @@
               console.log('Bienvenue, ' + data.user.nom);
               // Rediriger vers le tableau de bord
               window.location.href = "/dashboard.html";
+		// Afficher l'initiale de l'utilisateur
+                document.getElementById('login-btn').style.display = 'none';
+                const userInitial = document.getElementById('user-initial');
+                userInitial.textContent = data.user.initial;
+                userInitial.style.display = 'inline-block';
+                userInitial.classList.add('cta-btn');
           } else {
               console.error('Erreur de connexion:', data.error);
           }
