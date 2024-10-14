@@ -57,7 +57,8 @@ def google_login():
         # Enregistrer l'utilisateur dans la session
         session['user_initial'] = utilisateur.nom[0].upper()
         session['user_id'] = utilisateur.id
-        return jsonify({'message': 'Connexion réussie', 'user': {'nom': utilisateur.nom, 'email': utilisateur.email}})
+        return jsonify({'message': 'Connexion réussie', 'user': {'nom': utilisateur.nom, 'email': utilisateur.email, 'initial': session['user_initial']}})
+
 
     except ValueError:
         # Le token est invalide
