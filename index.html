@@ -355,14 +355,17 @@
         .then(data => {
             if (data.message === 'Connexion réussie') {
 	    closePopup();
-	    document.getElementById('login-btn').style.display = 'none';
-	    const userInitial = document.getElementById('user-initial');
-	    userInitial.textContent = data.user.initial;  // Utiliser l'initiale reçue du serveur
-	    userInitial.style.display = 'inline-block';
-	    userInitial.classList.add('cta-btn');
+	    // Cacher le bouton de connexion de manière explicite
+	    const loginButton = document.getElementById('login-btn');
+	    loginButton.style.display = 'none';
+	    loginButton.style.visibility = 'hidden';
 	
-	    // Rediriger après avoir mis à jour l'affichage
-	    window.location.href = "/dashboard.html";
+	    // Afficher l'initiale de l'utilisateur
+	    const userInitial = document.getElementById('user-initial');
+	    userInitial.textContent = data.user.initial;  // Affiche l'initiale reçue
+	    userInitial.style.display = 'inline-block';
+	    userInitial.style.visibility = 'visible';
+	    userInitial.classList.add('cta-btn');
             } else {
                 console.error('Erreur de connexion:', data.error);
             }
