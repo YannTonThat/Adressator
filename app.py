@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, session, render_template, send_from_d
 from flask_sqlalchemy import SQLAlchemy
 from google.oauth2 import id_token
 from google.auth.transport import requests as google_requests
+import os
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
@@ -54,13 +55,14 @@ def google_login():
             db.session.commit()
         
         # Enregistrer l'utilisateur dans la session
+        session['user_initial'] = utilisateur.nom[0].upper()
         session['user_id'] = utilisateur.id
         return jsonify({'message': 'Connexion réussie', 'user': {'nom': utilisateur.nom, 'email': utilisateur.email}})
 
     except ValueError:
         # Le token est invalide
         return jsonify({'error': 'Token invalide'}), 401
-import os
+
 # Création de la base de données avec le contexte d'application
 if __name__ == '__main__':
     # Utiliser le contexte d'application pour créer la base de données une fois
