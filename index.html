@@ -242,6 +242,7 @@
       <a href="#">Mon compte</a>
       <a href="#">Aide</a>
       <button class="cta-btn" id="login-btn">Connexion</button>
+	  <span id="user-initial" class="user-initial" style="display: none;"></span>
     </nav>
   </header>
 
@@ -353,7 +354,14 @@
         .then(response => response.json())
         .then(data => {
             if (data.message === 'Connexion réussie') {
+				closePopup();
                 console.log('Bienvenue, ' + data.user.nom);
+				 // Afficher l'initiale de l'utilisateur
+                document.getElementById('login-btn').style.display = 'none';
+                const userInitial = document.getElementById('user-initial');
+                userInitial.textContent = data.user.initial;
+                userInitial.style.display = 'inline-block';
+                userInitial.classList.add('cta-btn');
                 // Rediriger vers le tableau de bord
                 window.location.href = "/dashboard.html";
             } else {
@@ -367,8 +375,8 @@
     window.onload = function() {
       google.accounts.id.initialize({
         //client_id: "434261287317-9djqaj05oio6rldc55sq67b17pjnv4jj.apps.googleusercontent.com", // LOCAL Remplace par ton client ID Google OAuth
-	//client_id: "434261287317-f5mhnvrf5gp41aevuhcivv9euc671498.apps.googleusercontent.com", //GITHUB
-	client_id: "434261287317-cb4sjdrpveidesagf210jnf7qtt0lbg5.apps.googleusercontent.com", //HEROKU
+		//client_id: "434261287317-f5mhnvrf5gp41aevuhcivv9euc671498.apps.googleusercontent.com", //GITHUB
+		client_id: "434261287317-cb4sjdrpveidesagf210jnf7qtt0lbg5.apps.googleusercontent.com", //HEROKU
         callback: handleCredentialResponse
       });
 
