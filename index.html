@@ -354,16 +354,15 @@
         .then(response => response.json())
         .then(data => {
             if (data.message === 'Connexion réussie') {
-				closePopup();
-                console.log('Bienvenue, ' + data.user.nom);
-				 // Afficher l'initiale de l'utilisateur
-                document.getElementById('login-btn').style.display = 'none';
-                const userInitial = document.getElementById('user-initial');
-                userInitial.textContent = data.user.initial;
-                userInitial.style.display = 'inline-block';
-                userInitial.classList.add('cta-btn');
-                // Rediriger vers le tableau de bord
-                window.location.href = "/dashboard.html";
+	    closePopup();
+	    document.getElementById('login-btn').style.display = 'none';
+	    const userInitial = document.getElementById('user-initial');
+	    userInitial.textContent = data.user.initial;  // Utiliser l'initiale reçue du serveur
+	    userInitial.style.display = 'inline-block';
+	    userInitial.classList.add('cta-btn');
+	
+	    // Rediriger après avoir mis à jour l'affichage
+	    window.location.href = "/dashboard.html";
             } else {
                 console.error('Erreur de connexion:', data.error);
             }
