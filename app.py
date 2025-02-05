@@ -1159,18 +1159,18 @@ def get_user():
 
 #------------------- Fin Page admnistrateur -----------------#  
 
-# Création de la base de données avec le contexte d'application
 if __name__ == '__main__':
-    # Utiliser le contexte d'application pour créer la base de données une fois
-    #app = create_app()
     with app.app_context():
-        #db.drop_all()  # Optionnel si tu veux tout supprimer d'abord
-        db.create_all()
-    sys.stdout = sys.stderr  # Redirige stdout vers stderr pour affichage immédiat
-    app.run(debug=True, port=8000)
+        db.create_all()  # S'assure que la BDD existe (sans la recréer à chaque fois)
     
-    # Récupérer le port assigné par Heroku
-    #port = int(os.environ.get("PORT", 5000))
-    
-    # Lancer l'application en écoutant sur le port dynamique
-    #app.run(debug=True, host="0.0.0.0", port=port)
+    sys.stdout = sys.stderr  # Redirige stdout vers stderr pour affichage immédiat dans les logs
+
+    #Pour lancer l'app sur le port 8000 en local, décommenter la ligne ci-dessous, et commenter les lignes suivantes
+    #app.run(debug=True, port=8000)
+
+    # Récupère le port assigné par Heroku (ou 5000 en local)
+    port = int(os.environ.get("PORT", 5000))
+
+    # Lancer l'application sur 0.0.0.0 (nécessaire pour Heroku)
+    app.run(debug=False, host="0.0.0.0", port=port)
+
