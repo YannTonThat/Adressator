@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  <title>Adressator Supprimer mon compte</title>
+  <style>
+  
+	#user-initial {
+	display: none;  /* Masqué par défaut */
+	visibility: hidden;
+	font-size: 1rem; /* Ajuste la taille si nécessaire */
+	padding: 5px;
+	border-radius: 50%; /* Pour un aspect rond */
+	background-color: #4CAF50; /* Couleur de fond de l'initiale */
+	color: white;
+	}
+	
+	  /* Popup Styles */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .popup-content h2 {
+      color: #333;
+    }
+	
+		/* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+	
+	#cancel-delete-btn{
+	background-color: #898989;
+	}
+	
+	#cancel-delete-btn:hover{
+	background-color: #565555;
+	}
+	
+    .delete-account-container {
+	  margin:50;
+      text-align: center;
+	  align-items:center;
+	  justify-content:center;
+	  display:block;
+      max-width: 450px;
+      padding: 65px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+    }
+    .delete-account-container h2 {
+      color: #b00020;
+    }
+    .delete-account-container p {
+      color: #555;
+      margin: 10px 0;
+    }
+    .delete-account-container button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: white;
+      background-color: #b00020;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin: 2px;
+    }
+		
+    .delete-account-container button:hover {
+      background-color: #a0001e;
+
+    }
+
+
+
+
+    .popup-content .confirm-button, .popup-content .cancel-button {
+      margin: 10px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .popup-content .confirm-button {
+      background-color: #b00020;
+      color: white;
+    }
+    .popup-content .confirm-button:hover {
+      background-color: #a0001e;
+    }
+    .popup-content .cancel-button {
+      background-color: #ddd;
+      color: #333;
+    }
+    .popup-content .cancel-button:hover {
+      background-color: #ccc;
+    }
+	
+	
+	#success-popup {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+	}
+	
+	.success-icon {
+    color: #4CAF50; /* Couleur verte pour succès */
+    font-size: 50px;
+    margin-bottom: 15px;
+    animation: pop-in 0.4s ease; /* Animation */
+	}
+
+	@keyframes pop-in {
+		0% {
+			transform: scale(0);
+			opacity: 0;
+		}
+		100% {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+    
+  </style>
+</head>
+<body>
+  <!-- Inclure le header de façon dynamique -->
+  {% include "header.html" %}
+	<div style="display:flex; flex-direction: column; text-align:center;align-content: center;align-items: center; height: 83vh; justify-content: center;">
+	<div class="delete-account-container">
+		<h2>Suppression de votre compte</h2>
+		<p>Vous êtes sur le point de supprimer votre compte. Cette action est <strong>définitive</strong> et ne peut pas être annulée.</p>
+		<p style="margin-bottom: 40px;">Nous vous remercions de votre fidélité et espérons vous revoir un jour !</p>
+		<!-- Bouton pour déclencher la confirmation -->
+		<button id="confirm-delete-btn">Supprimer définitivement mon compte</button>
+    
+	
+		<!-- Popup de confirmation -->
+		<div id="confirmation-popup" class="popup-overlay" style="display: none;">
+			<div class="popup-content">
+				<h2>Confirmez la suppression de votre compte</h2>
+				<p>Cette action est irréversible. Voulez-vous vraiment supprimer votre compte ?</p>
+				<button id="final-delete-btn">Confirmer la suppression</button>
+				<button id="cancel-delete-btn">Annuler</button>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="popup-overlay" id="success-deletion-popup" style="display: none;">
+			<div class="popup-content">
+				 <i class="fas fa-check-circle success-icon"></i> <!-- Icône de succès -->
+				<h2 style="color: green">Votre compte a été supprimé avec succès !</h2>
+				<p>Vous allez être redirigé vers la page d'accueil dans quelques secondes...</p>
+			</div>
+	</div>
+	</div>
+
+		
+	<!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Adressator. Tous droits réservés.</p>
+    <p>
+      <a href="Mentions-légales">Mentions légales</a> |
+      <a href="CGU">Conditions générales d'utilisation</a> |
+      <a href="PDC">Politique de confidentialité</a> |
+      <a href="Contact">Contact</a>
+    </p>
+  </footer>
+  
+  
+	<script>
+
+    // Ouvre le popup de confirmation
+    document.getElementById('confirm-delete-btn').addEventListener('click', function() {
+        document.getElementById('confirmation-popup').style.display = 'flex';
+    });
+
+    // Ferme le popup de confirmation
+    document.getElementById('cancel-delete-btn').addEventListener('click', function() {
+        document.getElementById('confirmation-popup').style.display = 'none';
+    });
+
+    // Envoie la requête de suppression lors de la confirmation
+    document.getElementById('final-delete-btn').addEventListener('click', function() {
+      fetch('/api/delete-account', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+      })
+      .then(response => response.json().then(data => ({ status: response.status, body: data })))
+      .then(data => {
+      if (data.status === 200) {
+          document.getElementById('confirmation-popup').style.display = 'none';
+          // Affiche le popup de succès
+          const successPopup = document.getElementById('success-deletion-popup');
+          successPopup.style.display = 'flex';
+
+          // Redirige après une pause
+          setTimeout(() => {
+            successPopup.style.display = 'none';
+            window.location.href = '/';
+          }, 4000);
+        } else {
+        alert("Erreur : " + data.body.message);
+        }
+      })
+            .catch(error => console.error('Erreur lors de la suppression du compte :', error));
+    });
+</script>
+
+</body>
+</html>

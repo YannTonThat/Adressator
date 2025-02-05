@@ -1,0 +1,31 @@
+    <!-- // Fonction de connexion pour le formulaire du popup
+    window.submitLogin = function() {
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+        console.log("Tentative de connexion avec :", email);
+
+        fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Réponse de connexion :", data);
+            alert(data.message);
+            if (data.message === "Connexion réussie.") {
+                closeLoginPopup();  // Ferme le popup de connexion
+                window.location.href = '/dashboard';  // Redirection vers le tableau de bord
+            }
+        })
+        .catch(error => console.error('Erreur:', error));
+	}; -->
+	
+	
+	
+				    document.getElementById('login-btn').style.display = 'none';
+				document.getElementById('register-btn').style.display = 'none';
+				document.getElementById('logout-btn').style.display = 'block';
+				const initialBtn = document.getElementById('initial-btn');
+				initialBtn.textContent = data.body.user_initial;
+				initialBtn.style.display = 'block';

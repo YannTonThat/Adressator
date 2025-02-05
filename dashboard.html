@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accueil - Adressator</title>
+  <title>Tableau de bord - Adressator</title>
   <style>
     /* Global Styles */
     body {
@@ -14,158 +14,150 @@
       background-color: #f9f9f9;
     }
 
-    /* Header */
-    header {
-      background-color: #e0f7e9;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
+    /* Popup Styles */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
       align-items: center;
+	    z-index: 1000; /* Assure que le popup est au-dessus de tout */
     }
 
-    .logo-container {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo-container img {
-      height: 60px;
-      margin-right: 10px;
-    }
-
-    .logo-text {
-      font-size: 1.5rem;
-      color: #4CAF50;
-      font-weight: bold;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-    }
-
-    nav a {
-      margin: 0 15px;
-      color: #4CAF50;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .cta-btn {
-      padding: 8px 16px;
-      background-color: #4CAF50;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      text-transform: uppercase;
-      margin-left: 20px;
-    }
-
+    
     /* Hero Section */
     .hero {
-      
+      z-index: 100;
+      position: relative;
+      width: 100%; /* Pleine largeur de l'écran */
+      height: 50vh; /* Hauteur proportionnelle à la hauteur de l'écran */
+      min-height: fit-content;
+      overflow: hidden;
+      background-image: url('/static/dashboard.png'); /* Image de fond */
       background-size: cover;
-      background-position: center;
-      text-align: center;
-      padding: 80px 20px;
-      color: #fff;
+      background-position: center 40%;
+      background-repeat: no-repeat;
+      display: flex;
+		  flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      }
+
+    /* Overlay for darker background, making text more readable */
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Assombrissement */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      opacity: 0; /* Opacité à mettre à 0 si animation*/
+      visibility: hidden; /* Cache complètement l'overlay */
+      transition: opacity 1s ease-in-out, visibility 0s linear 1s;
+    }
+
+    .hero-overlay.fade-in {
+      opacity: 1; /* Opacité finale après transition */
+      visibility: visible;
+        transition: opacity 1s ease-in-out, visibility 0s;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      color: #4CAF50;
+      font-size: 2.8rem;
+      margin:10px;
+      color: #ffffff;
+      text-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);
     }
 
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      color: #333;
+    .hero h2 {
+      font-size: 1.5rem;
+      margin:10px;
+      color: #ffffff;
+      text-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);
     }
 
-    .hero .cta-btn {
-      background-color: #4CAF50;
-      color: #fff;
-      padding: 12px 24px;
+    .hero h3 {
       font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      border: none;
+      margin:10px;
     }
 
-    /* Features Section */
-    .features {
-      padding: 40px 20px;
-      text-align: center;
-      background-color: #fff;
+    .hero a{
+      text-decoration: none;
     }
 
-    .features h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: #4CAF50;
-    }
-
-    .feature-item {
-      display: inline-block;
-      width: 250px;
+    a.cta-btn {
+			font-family: 'lexend', sans-serif;
+			width: fit-content;
+    	padding-right: 20px;
+    	padding-left: 20px;
+			height: 25px;
+			background-color: #573095;
+			color: #fff;
+			border: none;
+			border-radius: 25px;
       margin: 20px;
-      text-align: center;
-      color: #666;
-    }
+			font-size: 1.1rem;
+			font-weight: 450;
+			cursor: pointer;
+			display: flex;
+			flex-direction: column;
+      align-items: center;
+		}
+		
+	  a.cta-btn:hover {
+				background-color: #462974;
+        color: #fff;
+			}
 
-    .feature-item img {
-      width: 200px;
-      height: 200px;
-      margin-bottom: 10px;
-    }
 
-    .feature-description {
-      background-color: #e0f7e9;
-      padding: 15px;
-      border-radius: 8px;
-      color: #333;
-      font-size: 0.9rem;
+
+	    /* Styles pour le tableau */
+		
+	.dashboard {
+		padding: 40px 40px;
+		}
+		
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0px;
+	  max-width: auto;  
+	  word-wrap: break-word;
+	  
+    }
+	
+    th, td {
+      padding: 12px;
       text-align: left;
-      line-height: 1.4;
-      margin-top: 10px;
+	  justify-content: center;
+      border-bottom: 1px solid #ddd;
     }
-
-    /* Testimonials Section */
-    .testimonials {
-      background-color: #f5f5f5;
-      padding: 40px 20px;
-      text-align: center;
+    th {
+      background-color: #573095c2;
+      color: white;
     }
-
-    .testimonials h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: #4CAF50;
-    }
-
-    .testimonial {
-      font-size: 1.1rem;
-      color: #666;
-      margin: 10px 0;
-    }
+	
+	/* Styles pour les icônes des statuts */
+	.status-icon {
+		margin-left: 5px; /* Espace entre le texte et l'icône */
+		font-size: 1.2rem; /* Taille des icônes */
+		vertical-align: middle; /* Aligner avec le texte */
+	}
 
 	
-	
-	
-	
-    /* Footer */
+	/* Footer */
     footer {
       background-color: #333;
       color: #fff;
-      padding: 20px;
+      padding: 10px;
       text-align: center;
       font-size: 0.9rem;
     }
@@ -180,42 +172,6 @@
       text-decoration: underline;
     }
 
-    /* Popup Styles */
-    .popup-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .popup-content {
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      max-width: 400px;
-      width: 90%;
-    }
-
-    .popup-content h2 {
-      color: #333;
-    }
-
-    .google-btn {
-      margin-top: 20px;
-      background-color: #4285F4;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
 
     .close-btn {
       background-color: #ddd;
@@ -226,113 +182,272 @@
       margin-top: 15px;
       font-size: 0.9rem;
     }
+	
+	/* Pour les petits écrans */
+	@media (max-width: 768px) {
+
+		.hero {
+      z-index: 100;
+      position: relative;
+      width: 100%; /* Pleine largeur de l'écran */
+      height: 27vh;
+      overflow: hidden;
+      background-image: url('/static/dashboard.png'); /* Image de fond */
+      background-size: cover;
+      background-position: center 63%;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.35); /* Assombrissement */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0; /* Opacité à mettre à 0 si animation*/
+      visibility: hidden; /* Cache complètement l'overlay */
+      transition: opacity 1s ease-in-out, visibility 0s linear 1s;
+    }
+
+	.hero-overlay.fade-in {
+		opacity: 1; /* Opacité finale après transition */
+		visibility: visible;
+    	transition: opacity 1s ease-in-out, visibility 0s;
+	}
+	
+		.hero h1 {
+		  font-size: 1.6rem;
+      text-align: center;
+		}
+
+    .hero h2 {
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .hero h3 {
+      font-size: 0.8rem;
+    }
+
+    a.cta-btn {
+			font-family: 'lexend', sans-serif;
+			width: fit-content;
+    	padding-right: 15px;
+    	padding-left: 15px;
+			height: 40px;
+			background-color: #573095;
+			color: #fff;
+			border: none;
+			border-radius: 20px;
+			font-size: 0.9rem;
+			font-weight: 450;
+			cursor: pointer;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+		
+	  a.cta-btn:hover {
+				background-color: #462974;
+			}
+    
+
+
+		
+		.dashboard {
+		padding: 10px;
+		}
+	
+		table {
+			display: flex;
+      overflow-x: auto;
+      white-space: nowrap;
+      flex-direction: column;
+      align-items: center;
+		}
+		
+		td[data-label="URL"] {
+			white-space: normal; /* Permet le retour à la ligne */
+			word-break: break-word; /* Coupe les mots longs si nécessaire */
+			max-width: 100%; /* S'assure que la largeur s'adapte au conteneur */
+		}
+
+		th, td {
+			font-size: 0.9rem; /* Réduit la taille de la police */
+			padding: 10px 5px; /* Réduit l'espacement */
+		}
+
+		tbody tr {
+			display: block; /* Affiche chaque ligne comme un bloc */
+			margin-bottom: 15px; /* Ajoute un espacement plus grand entre les lignes */
+			padding: 10px;
+			background-color: #fff; /* Fond blanc pour chaque ligne */
+			border-radius: 12px; /* Coins arrondis */
+			box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3); /* Effet d'ombre léger pour démarquer chaque ligne */
+		}
+
+		tbody tr td {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-bottom: none; /* Supprime les bordures des cellules */
+		}
+
+		tbody tr td::before {
+			content: attr(data-label); /* Utilise l'attribut personnalisé pour afficher les labels */
+			flex: 1;
+			text-align: left;
+			font-weight: bold;
+			padding-right: 10px;
+		}
+		
+		tbody tr:nth-child(even) {
+			background-color: #f6fbec; /* Couleur légèrement différente pour les lignes paires */
+		}
+
+		/* Ajuste l'en-tête pour qu'il reste accessible */
+		thead {
+			display: none; /* Masque les en-têtes sur mobile */
+		}
+		
+		
+	}
+	
+	
+	
   </style>
 </head>
 <body>
 
+  <!-- Inclure le header de façon dynamique -->
+  {% include "header.html" %}
+  
   <!-- Header -->
   <header>
-    <div class="logo-container">
-      <img src="/static/Logo Adressator petit vert.png" alt="Logo Adressator">
-      <span class="logo-text">Adressator</span>
-    </div>
-    <nav>
-      <a href="dashboard.html">Tableau de bord</a>
-      <a href="search.html">Recherche</a>
-      <a href="#">Mon compte</a>
-      <a href="#">Aide</a>
-      <button class="cta-btn" id="login-btn">Connexion</button>
-      <span id="user-initial" class="user-initial" style="display: none;"></span>
-    </nav>
+    <div id="header-placeholder"></div>
   </header>
 
-  
-    <!-- Popup for Google Authentication -->
-  <div class="popup-overlay" id="popup-overlay">
-    <div class="popup-content">
-      <h2>Se connecter avec Google</h2>
-      <button class="google-btn" id="google-signin-btn">Connexion avec Google</button>
-      <button class="close-btn" onclick="closePopup()">Fermer</button>
-    </div>
-  </div>
 
-    <!-- Hero Section -->
   <section class="hero">
-    <h1>Retrouvez ici votre Tableau de bord.</h1>
-    <p>""</p>
-    
+    <div class="hero-overlay">
+      <h1>Votre Tableau de bord</h1>
+      <h2>Retrouvez toutes vos recherches d'adresses ici</h2>
+      <a class="cta-btn" href="/"">🔎 Démarrer une recherche d’adresse</a>
+    </div>
   </section>
 
-    <!-- Footer -->
+  <section class="dashboard">
+    <table>
+      <thead>
+        <tr>
+          <th>Ref</th>
+          <th>URL</th>
+          <th>Statut</th>
+          <th>Date de Création</th>
+          <th>Adresse</th>
+          
+        </tr>
+      </thead>
+      <tbody id="search-table-body">
+        <!-- Les recherches seront insérées ici par JavaScript -->
+      </tbody>
+    </table>
+  </section>
+
+	<!-- Footer -->
   <footer>
-    <p>&copy; 2023 Adressator. Tous droits réservés.</p>
+    <p>&copy; 2024 Adressator. Tous droits réservés.</p>
     <p>
-      <a href="#">Politique de confidentialité</a> |
-      <a href="#">Conditions d'utilisation</a> |
-      <a href="#">Support</a> |
-      <a href="#">Réseaux sociaux</a>
+      <a href="Mentions-légales">Mentions légales</a> |
+      <a href="CGU">Conditions générales d'utilisation</a> |
+      <a href="PDC">Politique de confidentialité</a> |
+      <a href="Contact">Contact</a>
     </p>
   </footer>
 
-  <!-- Google Platform Library -->
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script>
-    // Show the popup when "Connexion" is clicked
-    document.getElementById('login-btn').addEventListener('click', function() {
-      document.getElementById('popup-overlay').style.display = 'flex';
-    });
+	  	
+  
+    // Charger les recherches de l'utilisateur
+    function loadUserSearches() {
+      fetch('/api/get-user-searches')
+        .then(response => response.json())
+        .then(data => {
+          const tableBody = document.getElementById('search-table-body');
+          tableBody.innerHTML = '';
 
-    // Close the popup
-    function closePopup() {
-      document.getElementById('popup-overlay').style.display = 'none';
+          data.forEach(search => {
+            const row = document.createElement('tr');
+			
+			// Déterminez l'icône Font Awesome et la couleur en fonction du statut
+			let iconHTML = '';
+			switch (search.statut) {
+				case 'en cours':
+					iconHTML = '<i class="fas fa-spinner status-icon" style="color: #ffcc00;"></i>'; // Spinner (jaune)
+					break;
+				case 'complété':
+					iconHTML = '<i class="fas fa-check-circle status-icon" style="color: #4caf50;"></i>'; // Check-circle (vert)
+					break;
+				case 'annulé':
+					iconHTML = '<i class="fas fa-ban status-icon" style="color: #f44336;"></i>'; // Ban (rouge)
+					break;
+				case 'non trouvé':
+					iconHTML = '<i class="fas fa-question-circle status-icon" style="color: #9e9e9e;"></i>'; // Question-circle (gris)
+					break;
+				default:
+					iconHTML = ''; // Aucun statut particulier
+					break;
+			}
+
+			
+			
+            row.innerHTML = `
+              <td data-label="Ref">${search.id}</td>
+              <td data-label="URL">${search.url}</td>
+              <td data-label="Statut">${search.statut} ${iconHTML}</td>
+              <td data-label="Date de Création">${search.date_creation}</td>
+              <td data-label="Adresse">${search.adresse || '-'}</td>
+              
+            `;
+            tableBody.appendChild(row);
+          });
+        })
+        .catch(error => console.error('Erreur lors du chargement des recherches:', error));
     }
 
-    // Fonction appelée après la connexion réussie avec Google
-    function handleCredentialResponse(response) {
-      const id_token = response.credential;
-      console.log("Encoded JWT ID token: " + id_token);
-      closePopup();
+    
 
-      // Envoyer le token au backend pour gérer l'authentification
-      fetch('/api/auth/google', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id_token })
-      })
-      .then(response => response.json())
-      .then(data => {
-          if (data.message === 'Connexion réussie') {
-              console.log('Bienvenue, ' + data.user.nom);
-              document.getElementById('login-btn').style.display = 'none';
-    	      const userInitial = document.getElementById('user-initial');
-              userInitial.textContent = data.user.initial;  // Utiliser l'initiale reçue du serveur
-              userInitial.style.display = 'inline-block';
-              userInitial.classList.add('cta-btn');
+    // Charger les recherches à l'ouverture de la page
+    window.onload = loadUserSearches;
 
-   	       // Rediriger après avoir mis à jour l'affichage
-   	      window.location.href = "/dashboard.html";
-          } else {
-              console.error('Erreur de connexion:', data.error);
-          }
-      })
-      .catch(error => console.error('Erreur:', error));
-    }
 
-    // Initialiser la connexion Google
-    window.onload = function() {
-      google.accounts.id.initialize({
-        //client_id: "434261287317-9djqaj05oio6rldc55sq67b17pjnv4jj.apps.googleusercontent.com", // LOCAL Remplace par ton client ID Google OAuth
-	//client_id: "434261287317-f5mhnvrf5gp41aevuhcivv9euc671498.apps.googleusercontent.com", //GITHUB
-	client_id: "434261287317-cb4sjdrpveidesagf210jnf7qtt0lbg5.apps.googleusercontent.com", //HEROKU
-        callback: handleCredentialResponse
-      });
 
-      google.accounts.id.renderButton(
-        document.getElementById("google-signin-btn"),
-        { theme: "outline", size: "large" }
-      );
-    }
+  document.addEventListener("DOMContentLoaded", function () {
+    const heroOverlay = document.querySelector(".hero-overlay");
+    const heroSection = document.querySelector(".hero");
+
+    // Vérifier si l'image de fond est déjà en cache
+    let bgImage = new Image();
+    bgImage.src = getComputedStyle(heroSection).backgroundImage.replace(/url\(["']?(.*?)["']?\)/, '$1');
+
+    bgImage.onload = function () {
+        setTimeout(() => {
+            heroOverlay.classList.add("fade-in");
+        }, 100); // Ajoute un délai de 0.1 seconde avant l'animation
+    };
+  });
   </script>
+  
+  
 
 </body>
 </html>

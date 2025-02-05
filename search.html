@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord - Adressator</title>
+  <style>
+    <!-- /* Global Styles */
+    body {
+      font-family: helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: #f9f9f9;
+    } -->
+
+    
+    /* Hero Section */
+    .hero {
+      
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      padding: 20px 20px;
+      color: #fff;
+    }
+
+    .hero h2 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+      color: #4CAF50;
+    }
+
+
+
+
+
+<!-- Barre de recherche -->
+@media (max-width: 768px) {
+	.search-container {
+        margin: 20px;
+    }
+
+    #url-input {
+        padding: 10px;
+        width: 85%;
+        margin-top: 0px;
+		margin-bottom: 0px;
+    }
+    #send-url-btn {
+        padding: 15px;
+		margin: 0px;
+        
+    }
+	
+	/* Style de la barre de progression */
+	.progress-container {
+		text-align: center;
+		margin-bottom: 0px;
+		margin-top: 0px;
+	}
+
+	.progress-text {
+		font-size: 0.9rem;
+		color: #555;
+		margin-bottom: 5px;
+	}
+
+	.progress-bar {
+		background-color: #eee;
+		border-radius: 5px;
+		height: 8px;
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.progress-fill {
+		background-color: #4CAF50;
+		height: 100%;
+		border-radius: 5px;
+		transition: width 0.3s ease;
+	}
+	
+	.img-container {
+	  flex: 1;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  width: 30%;
+	  height: 30%;
+	}
+	
+	.txt-container {
+	  flex-direction: column;
+	  display: flex;
+	  padding: 20px;
+	  width: auto;
+	  height: auto;
+
+	}
+	
+	
+	/* Styles pour l'icône de validation */
+	.input-container {
+	  position: relative;
+	}
+
+	.valid-icon {
+	  position: absolute;
+	  right: -6px;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  font-size: 1.6em;
+	  color: #59ef59;
+	  display: none; /* Cacher par défaut */
+	}
+
+	#url-input.valid {
+	  border: 2px solid #59ef59;
+	  animation: pulse 0.3s ease-out;
+	}
+
+
+	#url-input.invalid {
+		border: 2px solid #f26b0c;  /* Bordure orange pour l'URL invalide */
+	}
+
+	@keyframes pulse {
+	  0% {
+		box-shadow: 0 0 0 0 rgba(0, 128, 0, 0.4);
+	  }
+	  70% {
+		box-shadow: 0 0 10px 10px rgba(0, 128, 0, 0);
+	  }
+	  100% {
+		box-shadow: 0 0 0 0 rgba(0, 128, 0, 0);
+	  }
+	}
+}	
+	<!-- Fin Barre de recherche -->  
+
+
+
+
+
+	
+	/* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Inclure le header de façon dynamique -->
+  {% include "header.html" %}
+  
+  <!-- Header -->
+  <header>
+    <div id="header-placeholder"></div>
+  </header>
+
+	<!-------------------------- Popup de Recherche ------------------------------------->
+  <section class="hero">
+	  				
+		  <h2>Envoyez le lien de votre annonce immobilière</h2>  
+
+		  <!-- Champ URL avec message d'erreur -->
+		  <div class="input-container">
+			<input type="text" id="url-input" style="padding:10px;" placeholder="Entrez l'URL de l'annonce immobilière ici" />
+			<i class="valid-icon fas fa-check-circle" id="valid-icon" style="display: none"></i> <!-- Icône de validation -->
+			<div id="url-missing" style="display: none; color: red; margin-top: 4px; font-size:0.9rem;">Veuillez saisir l'URL de l'annonce.</div>
+			<div id="invalid-url" style="display: none; color: #f26b0c; margin-top: 4px; font-size:0.9rem;">L'URL saisie ne semble pas valide.<br>Si toutefois vous avez vérifié le lien : vous pouvez continuer.</div>
+		  </div>
+		          <!-- Section pour inscription/connexion si utilisateur non connecté -->
+		  <div id="auth-buttons" style="display: none; margin-top: 10px; background-color: rgba(139, 184, 209, 0.5); padding: 10px">
+		  <span> Inscrivez-vous pour accéder à toutes les fonctionnalités.<br> Déjà membre ? Connectez-vous.<br><br></span>
+			<button class="cta-btn" id="login-btn" onclick="openLoginPopup()">Se connecter</button>
+			<button class="register-btn" id="register-btn" onclick="openRegisterPopup()">S'inscrire</button>
+			<div class="info-section">
+				<div class="info-header" id="info-header">
+					Pourquoi dois-je m'inscrire ?  
+					<span class="arrow-icon">▼</span> <!-- Icône pour indiquer le déroulement -->
+				</div>
+				<div class="info-content" id="info-content" style="display: none;">
+					Nous avons besoin de votre adresse email pour vous envoyer les résultats de recherche. Vous pourrez ainsi y accéder directement depuis votre boîte mail, et depuis votre compte Adressator.
+				</div>
+			</div>
+		  </div>
+		  
+		  <div class="popup-content-2">
+			  <div class="img-container">
+					<img src="/static/cart.png" alt="Illustration panier adressator" class="popup-illustration">
+			  </div>
+				  
+			  <div class="txt-container">
+				  <p class="popup-footer-text" style="font-size:0.8rem; text-align:center;">
+					<strong>Vous y êtes presque !</strong>
+				  </p>
+				 <!-- Case à cocher pour accepter les CGV -->
+				  <div class="cgv-checkbox-container" id="cgv-container" style="padding:10px">
+					<input type="checkbox" id="cgv-checkbox">
+					<label for="cgv-checkbox" style="font-size:0.9rem;">J'accepte les <a href="/CGV" target="_blank" style="color:#333333">CGV</a></label>
+				  </div>
+				  
+				  <!-- Bouton de validation et message de paiement -->
+				  <button class="cnx-btn" id="send-url-btn">Valider et accéder au paiement</button>
+				  <p class="popup-footer-text" style="font-size:0.6rem">
+					Vous serez redirigé vers une page de paiement sécurisé.<br><strong>Coût du service : 49€ TTC</strong>.
+
+				  </p>
+			  </div>			  
+		  </div>
+		</div>
+		
+		<!-- Loader HTML -->
+		<div class="loading-overlay" id="loading-overlay" style="display: none;">
+			<div class="spinner"></div>
+			<p>   Redirection vers la page de paiement...</p>
+		</div>
+	</section>	
+
+
+	<!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Adressator. Tous droits réservés.</p>
+    <p>
+      <a href="Mentions-légales">Mentions légales</a> |
+      <a href="CGU">Conditions générales d'utilisation</a> |
+      <a href="PDC">Politique de confidentialité</a> |
+      <a href="Contact">Contact</a>
+    </p>
+  </footer>
+
+  <script>
+	  	
+  
+    // Charger les recherches de l'utilisateur
+    function loadUserSearches() {
+      fetch('/api/get-user-searches')
+        .then(response => response.json())
+        .then(data => {
+          const tableBody = document.getElementById('search-table-body');
+          tableBody.innerHTML = '';
+
+          data.forEach(search => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${search.id}</td>
+              <td>${search.url}</td>
+              <td>${search.statut}</td>
+              <td>${search.date_creation}</td>
+              
+            `;
+            tableBody.appendChild(row);
+          });
+        })
+        .catch(error => console.error('Erreur lors du chargement des recherches:', error));
+    }
+
+    
+
+    // Charger les recherches à l'ouverture de la page
+    window.onload = loadUserSearches;
+  </script>
+  
+  
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  <title>Adressator CGV</title>
+  <style>
+  
+    /* Popup Styles */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+	  z-index: 1000; /* Assure que le popup est au-dessus de tout */
+    }
+	
+	
+  @media (min-width: 768px) {
+      .cgv-page{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: flex-start;
+        text-align: left;
+        width: 100%;
+      }
+
+      .cgv-texte {
+      width: 50%;
+	  text-align : justify;
+    }
+
+    .cgv-image-container {
+      position: relative;
+      width: 36%;
+      padding-top: 33.49%; /* Maintient une forme carrée */
+      border-radius: 50%; /* Rend le conteneur rond */
+      overflow: hidden; /* Coupe l'image qui dépasse du cercle */
+      margin: 5% 5%; /* Centre le conteneur */
+      display: flex;
+      }
+  }
+
+  @media (max-width: 768px) {
+    .cgv-page{
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: left;
+      width: 100%;
+    }
+
+    .cgv-texte {
+    width: 90%;
+	text-align : justify;
+   }
+
+   .cgv-image-container {
+    position: relative;
+    width: 90%;
+    padding-top: 90%; /* Maintient une forme carrée */
+    border-radius: 50%; /* Rend le conteneur rond */
+    overflow: hidden; /* Coupe l'image qui dépasse du cercle */
+    margin: 5% 0px; /* Centre le conteneur */
+    display: flex;
+
+    }
+
+  }
+
+
+  .cgv-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Assure que l'image remplit le cercle sans déformation */
+  }
+	
+		/* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+	
+	
+	
+    
+  </style>
+</head>
+<body>
+  <!-- Inclure le header de façon dynamique -->
+  {% include "header.html" %}
+  <div class="cgv-page">
+    <div class="cgv-texte" style="margin:5%;">
+      
+		<span style="font-size:23px; font-weight: bold">Conditions Générales de Vente du site Adressator</span><br><br>  
+		<span style="font-size:17px; font-weight: bold">1. Objet</span><br><br>
+		Les présentes Conditions Générales de Vente (CGV) ont pour objet de définir les droits et obligations entre le site Adressator, exploité par Trottiflex, situé à 2B rue Hubertine Auclert 44600 Saint Nazaire, et ses utilisateurs dans le cadre de la fourniture de services de recherche d'adresse à partir de liens d’annonces immobilières.<br><br>
+		<span style="font-size:17px; font-weight: bold">2. Acceptation des CGV</span><br><br>
+		En effectuant un achat sur Adressator, l’utilisateur accepte sans réserve les présentes CGV. L’acceptation des CGV est requise lors de chaque commande et est formalisée par une case à cocher avant l'accès à la page de paiement.<br><br>
+		<span style="font-size:17px; font-weight: bold">3. Description du Service</span><br><br>
+		Adressator offre un service de recherche d’adresse correspondant à une annonce immobilière en ligne. L’utilisateur soumet une URL valide, puis il est dirigé vers une page de paiement sécurisé (Stripe Checkout) pour confirmer la demande afin d’accéder au service.<br><br>
+		<span style="font-size:13px; font-weight: bold">3.1 Limitations du service</span><br><br>
+		Adressator ne garantit pas que l'URL fournie mène à une annonce active, valide ou disponible, ni que l’annonce n’est pas périmée. L’utilisateur doit vérifier la validité de l’annonce avant de soumettre l’URL. En cas de page inaccessible ou périmée, l’utilisateur pourra soumettre une nouvelle URL valide ou demander un remboursement (voir section 7).<br><br>
+		<span style="font-size:17px; font-weight: bold">4. Prix et Conditions de Paiement</span><br><br>
+		<span style="font-size:13px; font-weight: bold">4.1 Tarification</span><br><br>
+		Le service est proposé au tarif de 49 € TTC par demande d’adresse, payable en une fois.<br><br>
+		<span style="font-size:13px; font-weight: bold">4.2 Paiement sécurisé</span><br><br>
+		Le paiement s’effectue via une page de paiement sécurisé fournie par <span style=" font-weight: bold">Stripe Checkout.</span> En validant son paiement, l’utilisateur confirme son consentement à la demande de service.<br><br>
+		<span style="font-size:13px; font-weight: bold">4.3 Validation de la commande</span><br><br>
+		Une fois le paiement confirmé, la commande est validée, et le service de recherche d’adresse est initié. Un e-mail de confirmation est envoyé à l’utilisateur pour l’informer de l’état de sa demande.<br><br>
+		<span style="font-size:17px; font-weight: bold">5. Exécution du Service</span><br><br>
+		<span style="font-size:13px; font-weight: bold">5.1 Délai de traitement</span><br><br>
+		Adressator s’engage à traiter la demande de recherche d’adresse dans un délai maximum de <span style=" font-weight: bold">3 jours</span> suivant la validation de la commande.<br><br>
+		<span style="font-size:13px; font-weight: bold">5.2 Statut de la demande</span><br><br>
+		L’utilisateur peut suivre le statut de sa demande dans son espace personnel (tableau de bord) sur le site Adressator.<br><br>
+		<span style="font-size:17px; font-weight: bold">6. Droit de rétractation et renonciation</span><br><br>
+		<span style="font-size:13px; font-weight: bold">6.1 Renonciation au droit de rétractation</span><br><br>
+		Conformément à l’article L221-28 du Code de la consommation, l’utilisateur reconnaît et accepte expressément que, <span style=" font-weight: bold">en validant sa commande et en demandant l’exécution immédiate du service,</span> il renonce à son droit de rétractation. Cette renonciation est applicable dès lors que la prestation a commencé à être fournie par Adressator.<br><br>
+		<span style="font-size:13px; font-weight: bold">6.2 Annulation de la commande</span><br><br>
+		Une fois l’adresse recherchée et communiquée à l’utilisateur, aucun remboursement ne peut être effectué. Si Adressator ne parvient pas à fournir l’adresse dans le délai prévu, l’utilisateur sera informé et pourra soumettre une nouvelle URL ou demander un remboursement (voir section 7).<br><br>
+		<span style="font-size:17px; font-weight: bold">7. Politique de Remboursement</span><br><br>
+		<span style="font-size:13px; font-weight: bold">7.1 Remboursement en cas d’échec de la recherche</span><br><br>
+		Si Adressator ne parvient pas à identifier l’adresse demandée en raison d’une URL périmée ou incorrecte, l’utilisateur sera informé par e-mail et aura la possibilité de :<br>
+		- Fournir une nouvelle URL valide pour poursuivre la demande ;<br>
+		- Demander un remboursement intégral.<br><br>
+		<span style="font-size:13px; font-weight: bold">7.2 Délai de remboursement</span><br><br>
+		Les remboursements sont effectués par virement bancaire sous un délai de <span style=" font-weight: bold">14 jours ouvrés</span> après réception de la demande de remboursement par l’utilisateur.<br><br>
+		<span style="font-size:17px; font-weight: bold">8. Responsabilité de l’utilisateur</span><br><br>
+		L’utilisateur est seul responsable des informations qu’il fournit et de l’exactitude de l’URL soumise. Adressator ne peut être tenu responsable en cas de recherche infructueuse due à une annonce incorrecte, périmée ou non accessible.<br><br>
+		<span style="font-size:17px; font-weight: bold">9. Propriété Intellectuelle</span><br><br>
+		Les contenus, logos, textes, images, et tous les éléments présents sur le site Adressator sont protégés par le droit d’auteur. Toute reproduction, totale ou partielle, est interdite sans autorisation préalable.<br><br>
+		<span style="font-size:17px; font-weight: bold">10. Données personnelles et confidentialité</span><br><br>
+		Adressator respecte la confidentialité des données personnelles de ses utilisateurs conformément au RGPD. Pour plus d’informations sur la gestion des données personnelles, veuillez consulter notre <a href="PDC">Politique de confidentialité</a>.<br><br>
+		<span style="font-size:17px; font-weight: bold">11. Modification des CGV</span><br><br>
+		Adressator se réserve le droit de modifier les présentes CGV à tout moment. Les utilisateurs seront informés des changements par e-mail. En cas de modification, les CGV applicables sont celles en vigueur à la date de la commande.<br><br>
+		<span style="font-size:17px; font-weight: bold">12. Service Client et Réclamations</span><br><br>
+		Pour toute question ou réclamation, l’utilisateur peut contacter le service client par e-mail à l’adresse adressator.team@gmail.com.
+
+	  
+    </div>
+
+    <div class="cgv-image-container">
+      <img src="/static/CGV.png" alt="Conditions générales d'utilisation">
+    </div>
+
+  </div> 
+
+		
+	<!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Adressator. Tous droits réservés.</p>
+    <p>
+      <a href="Mentions-légales">Mentions légales</a> |
+      <a href="CGU">Conditions générales d'utilisation</a> |
+      <a href="PDC">Politique de confidentialité</a> |
+      <a href="Contact">Contact</a>
+    </p>
+  </footer>
+  
+  
+  <script>
+
+ 
+  </script>
+
+</body>
+</html>
