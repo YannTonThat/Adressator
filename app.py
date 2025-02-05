@@ -30,6 +30,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 import hashlib
 import sys
+from whitenoise import WhiteNoise
 
 WEBHOOK_SECRET ='whsec_23152e2ccdacb25dba3314e94fa91d8e489d08081341595939c633bf3dbc757e'
 
@@ -43,6 +44,8 @@ recovery_codes = {}
 
 # Initialisation de l'application Flask
 app = Flask(__name__)
+#Intégration de whitenoise pour optimiser le chargement des images et autres fichiers statiques
+app.wsgi_app = WhiteNoise(app.wsgi_app, root="static/") 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Utilisez vos configs SMTP
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
