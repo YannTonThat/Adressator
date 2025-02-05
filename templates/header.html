@@ -1,0 +1,2056 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Adressator</title>
+	<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+	<style>
+		/* Global Styles */
+
+
+		.noto-sans {
+			font-family: "system_ui", sans-serif;
+			font-optical-sizing: auto;
+			font-weight: 669;
+			font-style: normal;
+			font-variation-settings:
+				"wdth" 89.2;
+		}
+
+
+		body {
+			font-family: 'Lexend', sans-serif;
+			/*font-family: 'system-ui', sans-serif;*/
+			margin: 0;
+			padding: 0;
+			color: #333;
+			background-color: white;
+		}
+
+		
+
+		/* Fixe la largeur du header et le centre horizontalement */
+		.header-container {
+			max-width: 100%;
+			width: 100%;
+			margin: 0 auto;
+			padding: 2px 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+
+		/* Header */
+		header {
+
+			background-color: rgb(114, 171, 25);
+			z-index: 500;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.logo-container {
+			display: flex;
+			align-items: center;
+			text-decoration: none;
+		}
+
+		/* Assure que le texte ne sera pas souligné même lors du survol */
+		.logo-container:hover {
+			text-decoration: none;
+		}
+
+		.logo-container img {
+			height: 55px;
+			margin-right: 10px;
+			margin-top: 9px;
+			margin-bottom: 9px;
+		}
+
+		.logo-text {
+			font-size: 1.7rem;
+			color: #FFFFFF;
+			font-weight: bold;
+
+		}
+
+
+		nav {
+			display: flex;
+			align-items: center;
+			text-decoration: none;
+			justify-content: space-between;
+		}
+
+		nav a {
+			margin: 0 3px;
+			color: #FFFFFF;
+			text-decoration: none;
+			border-radius: 15px;
+			font-size: 0.9rem;
+		}
+
+		.right {
+			display: flex;
+			align-items: center;
+			margin-left: auto;
+			/* Force l'alignement du bloc de navigation à droite */
+			text-decoration: none;
+		}
+
+
+		.nav-icon-container {
+			margin-bottom: 5px;
+		}
+
+
+		.nav-text {
+			margin: 5px;
+		}
+
+
+
+
+		.cta-btn {
+			font-family: 'lexend', sans-serif;
+			margin-left: 20px;
+			padding: 8px 0px;
+			width: 135px;
+			background-color: rgb(250, 250, 250);
+			color: rgb(43, 43, 43);
+			border: none;
+			border-radius: 25px;
+			font-size: 1rem;
+			font-weight: 400;
+			cursor: pointer;
+
+		}
+
+
+		.register-btn {
+			font-family: 'lexend', sans-serif;
+			margin-left: 20px;
+			padding: 8px 20px;
+			width: 135px;
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 25px;
+			font-size: 1rem;
+			font-weight: 400;
+			cursor: pointer;
+
+		}
+
+		.initial-btn {
+			font-family: 'lexend', sans-serif;
+			margin-left: 20px;
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 25px;
+			font-size: 1rem;
+			font-weight: 550;
+			cursor: pointer;
+			width: 45px;
+    		height: 45px;
+
+		}
+
+
+
+		.search-btn {
+			/* Bouton "Lancer une recherche" */
+			font-family: 'lexend', sans-serif;
+			margin-left: 20px;
+			margin-right: 20px;
+			padding: 11px 23px;
+			background-color: #573095;
+			color: #fff;
+			border: none;
+			border-radius: 20px;
+			font-size: 1rem;
+			font-weight: 650;
+			cursor: pointer;
+
+		}
+
+		
+
+		.cnx-btn {
+			margin-left: 0px;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			padding: 13px 30px;
+			width: 100%;
+			background-color: #4fb4f6;
+			color: #fff;
+			border: 1px solid #99999900;
+			border-radius: 8px;
+			font-size: 1rem;
+			font-weight: 550;
+			cursor: pointer;
+
+		}
+
+
+
+		/* Effet de surbrillance pour les boutons */
+		.cta-btn:hover {
+			background-color: rgb(209, 216, 210);
+			/* Couleur de fond surbrillance pour "Se connecter" */
+			color: #000;
+			
+			
+		}
+
+		.register-btn:hover {
+			background-color: #2E7D32;
+			/* Couleur de fond surbrillance pour "S'inscrire" */
+			color: #fff;
+			/* Couleur du texte sur surbrillance */
+			/*box-shadow: 2px 2px 12px #19191a75;*/
+		}
+
+		.initial-btn:hover {
+			background-color: #2E7D32;
+			/* Couleur de fond surbrillance pour "S'inscrire" */
+			color: #fff;
+			/* Couleur du texte sur surbrillance */
+			/*box-shadow: 2px 2px 12px #19191a75;*/
+		}
+
+
+		.search-btn:hover {
+			background-color: #462974;
+			/* Couleur de fond surbrillance pour "Lancer une recherche" */
+			color: #fff;
+			/* Couleur du texte sur surbrillance */
+			/*box-shadow: 2px 2px 12px #19191a75;*/
+		}
+
+		
+
+		.cnx-btn:hover {
+			background-color: #2472a4;
+			/* Couleur de fond surbrillance pour "S'inscrire" */
+			/*box-shadow: 2px 2px 12px #19191a75;*/
+		}
+
+
+		<!------ Popup Styles ------>
+		.popup-overlay {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			justify-content: center;
+			align-items: center;
+			z-index: 1000;
+			/* Assure que le popup est au-dessus de tout */
+		}
+
+		.popup-content {
+
+			margin: 1%;
+			background-color: #fff;
+			padding-bottom: 20px;
+			border-radius: 20px;
+			max-width: 90%;
+			width: 450px;
+			position: relative; /* Important pour rendre le popup déplaçable */
+			line-height: 1.6;
+			/*top: 50%;
+			left: 50%;*/
+			/*transform: translateX (50%); /* Centre initialement
+			transform: translateY (50%);*/
+			transition: top 0.2s ease, left 0.2s ease;
+			max-height: 80vh; /* Hauteur maximale à 80% de la fenêtre pour laisser de l'espace */
+			overflow-y: auto; /* Ajoute le défilement vertical si le contenu dépasse la hauteur max */
+		}
+
+		.search-popup-container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.search-popup-container .search-container {
+			flex: 0 0 60%;
+			
+		}
+
+		.search-popup-container .image-container {
+			flex: 0 0 40%;
+			background: url('/static/search-popup.png') no-repeat center center;
+			background-size: cover;
+			margin-right: -40px;
+			margin-top: -30px;
+			margin-bottom: -20px;
+			height: 415px; /* Ajuster selon le besoin */
+    		display: block;	
+		}
+
+		.search-popup-container .image-container-mobile {
+			display: none;
+		}
+
+		@media (max-width: 768px){
+
+			.search-popup-container {
+				flex-direction: column;
+				align-items: center;
+			}
+
+			
+
+			.search-popup-container .image-container {
+				display: none;
+			}
+
+			/* Afficher l'image mobile en paysage */
+			.search-popup-container .image-container-mobile {
+				display: flex;
+				width: -webkit-fill-available;
+				height: 165px;
+				background: url(/static/search-popup-mobile.png) no-repeat center center;
+				background-size: cover;
+				margin-bottom: 15px;
+				margin-top: -30px;
+				margin-left: -20px;
+				margin-right: -20px;
+			}
+
+			/* Ajuster le conteneur de recherche */
+			.search-popup-container .search-container {
+				width: 100%;
+			}
+
+		}
+
+		.stripe-image {
+			width: 100px;
+			background: url('/static/stripe-payment.png') no-repeat center center;
+			background-size: contain;
+		}
+
+		.confirmation-popup {
+			width:100%;
+		}
+
+		@media (min-width: 768px) {
+			.popup-content {
+				padding-left: 40px;
+				padding-right: 40px;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.popup-content {
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+		}
+
+		.popup-scroll-container {
+			width: 100%;
+			height: 80%; /* Limite la hauteur de la zone défilable */
+			overflow-y: auto;
+			padding: 10px;
+			box-sizing: border-box; /* Inclut le padding dans les dimensions */
+			}
+
+		
+
+		@media (min-width: 768px) {
+			.popup-content-2 {
+				flex: 1;
+				padding: 1%;
+				width: auto;
+				height: auto;
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+			}
+		}
+
+		.popup-content h2 {
+			color: #333;
+			font-size: 28px;
+			margin-top: 0px;
+			margin-bottom: 4px;
+			font-weight: 600;
+		}
+
+		.popup-content h3 {
+			color: #333;
+			font-size: 16px;
+			margin-top: 0px;
+			font-weight: 400;
+
+		}
+
+		.popup-content h4 {
+			color: #333;
+			font-size: 1.5rem;
+			padding: 10px 70px;
+		}
+
+		.popup-content h5 {
+			color: #333;
+			font-size: 0.9rem;
+			margin-top: 10px;
+			margin-bottom: 10px;
+
+		}
+
+		.popup-content h6 {
+			color: #333;
+			font-size: 0.7rem;
+			margin-bottom: 10px;
+
+		}
+
+		.url-display {
+			font-size: 14px;
+			color:#333;
+			word-break: break-word;
+			font-family: system-ui;
+			
+		}
+
+		/* Optionnel : ajouter un style pour le défilement pour une apparence personnalisée */
+		.popup-content::-webkit-scrollbar {
+			width: 8px;
+		}
+
+		.popup-content::-webkit-scrollbar-thumb {
+			background-color: #ccc;
+			border-radius: 4px;
+		}
+
+		.popup-content::-webkit-scrollbar-thumb:hover {
+			background-color: #aaa;
+		}
+
+
+		/* Style des champs de saisie avec icônes */
+		.input-icon-container {
+			position: relative;
+			margin-bottom: 16px;
+			
+			
+		}
+
+		.input-icon-container input {
+			padding: 8px 12px;
+			padding-left: 62px;
+			/* Espace pour l'icône */
+			font-size: 1rem;
+			/* Augmente la taille du texte */
+			border: 1px solid #cccccc00;
+			border-radius: 8px;
+			width: -webkit-fill-available;
+			height: 32px;
+			background-color: #E8F0FE;
+			position: relative;
+			
+			
+		}
+
+		.input-icon-container .icon {
+			position: absolute;
+			left: 22px;
+			transform: translateY(16px);
+			font-size: 1.2rem;
+			color: #8A939E;
+			z-index: 1100;
+		}
+
+		/*Style supplémentaire pour améliorer l'affichage du lien d' inscription*/
+		.register-prompt {
+			text-align: center;
+			font-size: 0.9rem;
+		}
+
+		.register-prompt span {
+			margin-right: 5px;
+		}
+
+		.register-prompt a {
+			color: #0737c0f0;
+			font-weight: bold;
+			cursor: pointer;
+			text-decoration: none;
+		}
+
+		.register-prompt a:hover {
+			text-decoration: underline;
+		}
+
+		.forgot-password {
+			margin-top: 10px;
+			text-align: right;
+			font-size: 0.9rem;
+		}
+
+		.forgot-password span {
+			margin-right: 5px;
+		}
+
+		.forgot-password a{
+			color: #0078FA;
+			cursor: pointer;
+			text-decoration: none;
+		}
+
+		.forgot-password a:hover {
+			text-decoration: underline;
+		}
+
+		
+		.popup-illustration {
+			width: 80px;
+			height: 80px;
+			margin-bottom: 15px;
+		}
+
+		.popup-description {
+			font-size: 14px;
+			color: #333;
+			margin-bottom: 20px;
+		}
+
+		.input-container {
+			position: relative;
+		}
+
+		.popup-footer {
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+			justify-content: space-evenly;
+			align-items: center;
+			width: 100%;
+		}
+
+		.popup-footer-text {
+			font-size: 12px;
+			color: #666;
+			margin-top: 3px;
+			line-height: 1.5;
+			text-align: left;
+		}
+
+		.close-btn {
+			position: relative;
+			top: 12px;
+			background: #ffffff00;
+			/* Supprime le fond pour un style plus propre */
+			border-radius: 12px;
+			/* Supprime les bordures */
+			border-color: #ffffff00;
+			font-size: 1em;
+			/* Taille du texte pour le bouton */
+			color: #3a3838;
+			/* Couleur du bouton, à ajuster selon votre thème */
+			cursor: pointer;
+			margin: 0px;
+			font-weight: bold;
+			font-size: large;
+		}
+		@media (min-width: 768px){
+			.close-btn {
+				left: 100%;
+			}
+		}
+
+		@media (max-width: 768px){
+			.close-btn {
+				left: 96%;
+			}
+		}
+
+
+		.close-btn:hover {
+			color: #000000;
+			background: #6666661e;
+			/* Supprime le fond pour un style plus propre */
+			border-radius: 12px;
+			/* Supprime les bordures */
+			border-color: #66666600;
+			/* Couleur au survol, pour indiquer que c’est cliquable */
+		}
+
+		.search-close-btn {
+			position: relative;
+			top: 12px;
+			background: #ffffff00;
+			border-radius: 12px;
+			border-color: #ffffff00;
+			font-size: 1em;
+			color: #e0dfdf;
+			cursor: pointer;
+			margin: 0px;
+			font-weight: bold;
+			font-size: large;
+		}
+		@media (min-width: 768px){
+			.search-close-btn {
+				left: 100%;
+			}
+		}
+
+		@media (max-width: 768px){
+			.search-close-btn {
+				left: 96%;
+			}
+		}
+
+		.search-close-btn:hover {
+			color: #ffffff;
+			background: #6666664f;
+			border-radius: 12px;
+			border-color: #66666600;
+		}
+
+
+		/* Fin Popup Styles */
+		.google-btn {
+			margin-top: 20px;
+			background-color: #4285F4;
+			color: white;
+			padding: 10px 15px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 1rem;
+		}
+
+
+
+		#user-initial {
+			display: none;
+			/* Masqué par défaut */
+			visibility: hidden;
+			font-size: 1rem;
+			/* Ajuste la taille si nécessaire */
+			padding: 5px;
+			border-radius: 50%;
+			/* Pour un aspect rond */
+			background-color: #4CAF50;
+			/* Couleur de fond de l'initiale */
+			color: white;
+		}
+
+		/* Popup de recherche */
+		.search-container {
+			color :#333;
+			line-height: 1.2;
+		}
+
+		.search-container i{
+			font-size: 20px;
+			margin-right : 15px;
+			color: #333;
+		}
+
+		.search-container-text{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			font-size: 14px;
+			margin-top: -10px;
+			
+		}
+
+		
+
+		#send-url-btn {
+			padding: 10px 12px;
+			margin-bottom: 10px;
+
+		}
+
+		/* Style de la barre de progression */
+		.progress-container {
+			text-align: center;
+			margin-bottom: 5px;
+			margin-top: -29px;
+		}
+
+		.progress-text {
+			font-size: 0.75rem;
+			color: #555;
+			margin-bottom: 5px;
+		}
+
+		.progress-bar {
+			background-color: #eee;
+			border-radius: 5px;
+			height: 8px;
+			width: 98%;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.progress-fill {
+			background-color: #4CAF50;
+			height: 100%;
+			border-radius: 5px;
+			transition: width 0.3s ease;
+		}
+
+		.img-container {
+			flex: 1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 6cm;
+			height: 6cm;
+		}
+
+		.txt-container {
+			flex-direction: column;
+			display: flex;
+			padding: 2%;
+			width: auto;
+			height: auto;
+
+		}
+
+
+		/* Styles pour l'icône de validation */
+		.input-container {
+			position: relative;
+		}
+
+		.valid-icon {
+			position: absolute;
+			right: -6px;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 1.6em;
+			color: #59ef59;
+			display: none;
+			/* Cacher par défaut */
+		}
+
+		#url-input-old.valid {
+			border: 2px solid #59ef59;
+			animation: pulse 0.3s ease-out;
+		}
+
+
+		#url-input-old.invalid {
+			border: 2px solid #f26b0c;
+			/* Bordure orange pour l'URL invalide */
+		}
+
+		@keyframes pulse {
+			0% {
+				box-shadow: 0 0 0 0 rgba(0, 128, 0, 0.4);
+			}
+
+			70% {
+				box-shadow: 0 0 10px 10px rgba(0, 128, 0, 0);
+			}
+
+			100% {
+				box-shadow: 0 0 0 0 rgba(0, 128, 0, 0);
+			}
+		}
+
+		/*-- Fin Barre de recherche --*/
+		
+		/*----------------- Menu utilisateur ---------------*/
+
+		/* Style de base pour le bouton */
+		.user-menu {
+			position: relative;
+			display: inline-block;
+		}
+
+		#dropdown-menu {
+			display: none;
+			/* Masqué par défaut */
+			position: absolute;
+			top: 42px;
+			/* Ajustez en fonction de la position du bouton */
+			right: 0px;
+			width: 290px;
+			background-color: #ffffff;
+			border: 1px solid #ddd;
+			border-radius: 12px;
+			padding: 10px 7px;
+			box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+			z-index: 1000;
+		}
+
+		.dropdown-menu.show {
+			display: block;
+			/* Affiche le menu lorsque la classe 'show' est présente */
+		}
+
+		/* Style des éléments du menu */
+		.dropdown-item {
+			padding: 9px 8px;
+			text-decoration: none;
+			display: block;
+			color: #333;
+			transition: background-color 0.2s ease;
+			font-size: 0.9rem;
+		}
+
+		.dropdown-item i {
+			color: #72ab19;
+			font-size: 1.2rem;
+			width: 40px;
+		}
+
+		.dropdown-item:hover {
+			background-color: #e2e8f0;
+		}
+
+		.dropdown-menu a {
+			text-decoration: none;
+		}
+
+		.dropdown-menu a:hover {
+			text-decoration: none;
+		}
+
+		/*----------------- Fin Menu utilisateur ---------------*/
+		
+		/*----------------- Loader ---------------*/
+
+		/* Styles pour le loader */
+		.loading-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(255, 255, 255, 0.8);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+		}
+
+		.spinner {
+			border: 4px solid rgba(0, 0, 0, 0.1);
+			border-left-color: #4CAF50;
+			/* Couleur principale du spinner */
+			border-radius: 50%;
+			width: 50px;
+			height: 50px;
+			margin-right: 20px;
+			animation: spin 1s linear infinite;
+		}
+
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		/*----------------- Fin Loader ---------------*/
+		
+		/*------------- Début affichage Mdp -----------*/
+		.password-container {
+			position: relative;
+			
+		}
+
+		.password-container input {
+			padding-right: 2%;
+			/* pour laisser de la place à l'icône */
+		}
+
+		.toggle-password {
+			position: absolute;
+			right: 32px;
+			top: 50%;
+			transform: translateY(-50%);
+			cursor: pointer;
+			color: #999;
+		}
+
+		/*------------- Fin affichage Mdp -----------*/
+		/*------------- Connexion/Inscription réussie -----------*/
+		#success-popup {
+			display: flex;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+			flex-direction: column;
+			height: 200px;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.success-popup {
+			display: flex;
+			flex-direction: column;
+			height: 200px;
+			justify-content: center;
+			align-items: center;
+
+		}
+
+		.success-icon {
+			color: #4CAF50;
+			/* Couleur verte pour succès */
+			font-size: 50px;
+			margin-bottom: 15px;
+			animation: pop-in 0.4s ease;
+			/* Animation */
+		}
+
+		@keyframes pop-in {
+			0% {
+				transform: scale(0);
+				opacity: 0;
+			}
+
+			100% {
+				transform: scale(1);
+				opacity: 1;
+			}
+		}
+
+		/*----------- Fin Connexion/Inscription réussie --------*/
+		/*------------ Case à cocher ----------*/
+
+		/* Style de la case à cocher */
+		.cgu-checkbox-container {
+			
+			margin-top: 10px;
+			display: flex;
+			align-items: flex-start;
+			padding: 5px;
+			border-radius: 4px;
+			border: 2px solid rgba(255, 0, 0, 0);
+			font-size:15px;
+			text-decoration: none;
+		}
+
+		.cgu-checkbox-container a {
+			text-decoration: none;
+		}
+
+		.cgu-checkbox-container a:hover {
+			text-decoration: underline;
+		}
+
+
+		/*----------- Fin Case à cocher --------*/
+		/*------------ Case à cocher ----------*/
+
+		/* Style de la case à cocher */
+		.cgv-checkbox-container {
+			display: flex;
+			align-items: flex-end;
+			padding: 2px;
+			border-radius: 4px;
+			border: 2px solid rgba(255, 0, 0, 0);
+			color :#3a3838;
+		}
+
+		/*----------- Fin Case à cocher --------*/
+
+		/* Bordure rouge en cas d'erreur */
+		.checkbox-error {
+			border: 2px solid red;
+			padding: 2px;
+			border-radius: 3px;
+		}
+		/*----------- Info --------*/
+
+		/* Style pour la section d'information */
+		.info-section {
+			margin-top: 10px;
+			padding: 5px;
+
+			color: #333;
+		}
+
+		.info-header {
+			cursor: pointer;
+			font-weight: 400;
+			font-size: 0.8rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #555;
+			margin-top: 15px;
+		}
+
+		.arrow-icon {
+			font-size: 0.8rem;
+			transition: transform 0.6s ease;
+		}
+
+		/* Contenu déroulant */
+		.info-content {
+			margin-top: 5px;
+			font-size: 0.85rem;
+			color: #555;
+			line-height: 1.4;
+			overflow: hidden;
+			transition: max-height 0.4s ease;
+		}
+
+		/* Rotation de l'icône flèche quand le menu est déroulé */
+		.info-header.active .arrow-icon {
+			transform: rotate(180deg);
+		}
+
+
+
+		.mobile-menu {
+			display: none;
+			width: 100%;
+			margin-right: 3%;
+
+		}
+
+
+		.mobile-nav {
+			display: none;
+			flex-direction: column;
+			background-color: #ffffff;
+			position: absolute;
+			right: 0;
+			max-width: 75%;
+			text-align: center;
+			text-decoration: none;
+			position: absolute;
+			top: 7%;
+			right: 2%;
+			border: 1px solid #ddd;
+			border-radius: 12px;
+			padding: 10px 0px;
+			padding-right:10px;
+			box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+			z-index: 500;
+			text-align: left;
+			LINE-HEIGHT: 1.8;
+		}
+
+		.mobile-nav a {
+			text-decoration: none;
+			padding: 9px 2px;
+			text-decoration: none;
+			display: block;
+			color: #333;
+			font-weight: 400;
+			transition: background-color 0.2s ease;
+		}
+
+
+		.mobile-nav-btn {
+			text-decoration: none;
+			padding: 9px 8px;
+			text-decoration: none;
+			display: block;
+			color: #333;
+			font-weight: 550;
+			background-color: white;
+			border: none;
+			font-size: 0.9rem;
+		}
+
+		.mobile-nav i {
+			font-size: 1.3rem;
+			margin-right: 15px;
+			/* Espace entre l'icône et le texte */
+			color: #72ab19;
+			/* Couleur personnalisée de l'icône */
+		}
+
+		.mobile-nav:hover {
+			background-color: #ffffff;
+			/* Couleur de survol */
+		}
+
+
+		/* Maintient l'absence de soulignement même lors du survol */
+		.dropdown-menu a:hover {
+			text-decoration: none;
+		}
+
+
+
+		/* Styles pour le menu hamburger */
+		#menu-toggle {
+			font-size: 1.5rem;
+			color: white;
+			cursor: pointer;
+		}
+
+		/* Pour mobiles uniquement */
+		@media (min-width: 768px) {
+			.desktop-menu {
+				display: flex;
+				width: 100%;
+			}
+
+			.mobile-menu {
+				display: none;
+			}
+		}
+
+
+
+		/* Pour mobiles uniquement */
+		@media (max-width: 768px) {
+			.desktop-menu {
+				display: none;
+				width: 100%;
+			}
+
+			.mobile-menu {
+				display: flex;
+			}
+		}
+
+		/* Pour mobiles uniquement */
+		@media (max-width: 768px) {
+
+			nav {
+				display: flex;
+				align-items: center;
+				margin-left: auto;
+				/* Force l'alignement du bloc de navigation à droite */
+				text-decoration: none;
+			}
+
+			nav a {
+				margin: 0 4px;
+				color: #FFFFFF;
+				text-decoration: none;
+				border-radius: 15px;
+				font-size: 0.9rem;
+			}
+
+
+			.nav-icon-container {
+				margin-bottom: 5px;
+			}
+
+
+			.nav-text {
+				margin: 5px;
+			}
+
+			.mobile-menu-btn {
+				font-family: 'lexend', sans-serif;
+				margin-left: 20px;
+				padding: 8px 20px;
+				background-color: rgb(255, 255, 255);
+				color: rgb(2, 2, 2);
+				border: none;
+				font-size: 1rem;
+				font-weight: 545;
+				cursor: pointer;
+
+			}
+
+			.popup-content {
+				max-width: 100%;
+				width: 100%;
+				position: relative; /* Important pour rendre le popup déplaçable */
+				/*top: 50%;
+				left: 50%;
+				/*transform: translate(-50%, -50%); /* Centre initialement */
+				transition: top 0.2s ease, left 0.2s ease;
+				text-decoration: none;
+			}
+
+			.popup-content a{
+				text-decoration: none;
+			}
+
+			
+			.popup-content-2 {
+				flex: 1;
+				padding: 1%;
+				width: auto;
+				height: auto;
+				display: flex;
+				flex-direction: column;
+    			align-items: center;
+			}
+		
+			.popup-header {
+				cursor: grab; /* Indique que la barre est draggable */
+				background-color: #f3f3f3;
+				padding: 10px;
+				border-bottom: 1px solid #ddd;
+				border-radius: 10px 10px 0 0;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+	<!-- Header -->
+	<header>
+
+		<nav class="desktop-menu">
+			<div class="header-container">
+				<a href="/" class="logo-container"> <!-- Lien autour du logo -->
+					<img src="/static/Logo Adressator grand.png?v=1" alt="Logo Adressator">
+					
+				</a>
+				<button style="display: none" class="search-btn" id="search-btn"
+					data-logged-in="{{ 'true' if user_logged_in else 'false' }}"><i class="fa-solid fa-circle-plus" style="width: 30px;"></i>Envoyer une annonce</button>
+				<div class="right">
+					
+					{% if user_logged_in %}
+					<!-- Afficher l'initiale de l'utilisateur et le bouton de déconnexion -->
+					
+					<div class="user-menu">
+						{% if not session.get('is_admin') %}
+						<button class="initial-btn" style="display : block" id="initial-btn"><i class="fa-solid fa-user"></i></button>
+						{% endif %}
+						{% if session.get('is_admin') %}
+						<button class="initial-btn" style="display : block; background-color:#e13636"
+							id="initial-btn"><i class="fa-solid fa-user-shield"></i></button>
+						{% endif %}
+						<div class="dropdown-menu" id="dropdown-menu">
+							<a href="/dashboard" class="dropdown-item">
+								<i class="fas fa-folder-open"></i> <!-- Icône tableau de bord -->
+								Mon Tableau de bord
+							</a>
+							<a href="/change-password" class="dropdown-item">
+								<i class="fas fa-lock"></i> <!-- Icône de cadenas pour mot de passe -->
+								Modifier mon mot de passe
+							</a>
+							<a href="/delete-account" id="delete-account-btn" class="dropdown-item">
+								<i class="fas fa-user-slash"></i> <!-- Icône de suppression de compte -->
+								Supprimer mon compte
+							</a>
+							{% if session.get('is_admin') %}
+							<a href="/admin" class="dropdown-item">
+								<i class="fas fa-shield-alt"></i>
+								Administrateur
+							</a>
+							{% endif %}
+							<a href="FAQ"  class="dropdown-item"><i class="fas fa-question-circle"></i>FAQ</a>
+							<a href="/logout" class="dropdown-item">
+								<i class="fas fa-sign-out-alt"></i> <!-- Icône de déconnexion -->
+								Se déconnecter
+							</a>
+						</div>
+					</div>
+					{% else %}
+					<!-- Boutons de connexion et d'inscription -->
+					<button class="cta-btn" id="login-btn">Se connecter</button>
+					<button class="register-btn" id="register-btn">S'inscrire</button>
+					<button class="initial-btn" id="initial-btn" style="display : none"><i class="fa-solid fa-user"></i></button>
+					<div class="dropdown-menu" id="dropdown-menu" style="display : none">
+						<a href="/dashboard" class="dropdown-item">
+							<i class="fas fa-folder-open"></i> <!-- Icône tableau de bord -->
+							Mon Tableau de bord
+						</a>
+						<a href="/change-password" class="dropdown-item">
+							<i class="fas fa-lock"></i> <!-- Icône de cadenas pour mot de passe -->
+							Modifier mon mot de passe
+						</a>
+						<a href="/delete-account" id="delete-account-btn" class="dropdown-item">
+							<i class="fas fa-user-slash"></i> <!-- Icône de suppression de compte -->
+							Supprimer mon compte
+						</a>
+						{% if session.get('is_admin') %}
+						<a href="/admin" class="dropdown-item">Administrateur</a>
+						{% endif %}
+						<a href="/logout" class="dropdown-item">
+							<i class="fas fa-sign-out-alt"></i> <!-- Icône de déconnexion -->
+							Se déconnecter
+						</a>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</nav>
+
+		<nav class="mobile-menu">
+
+			<a href="/" class="logo-container"> <!-- Lien autour du logo -->
+				<img src="/static/Logo Adressator grand.png?v=1" alt="Logo Adressator">
+			</a>
+
+			<i class="fas fa-bars" id="menu-toggle"></i>
+
+			<div class="mobile-nav" id="mobile-nav">
+				
+					<a href="#" class="mobile-menu-btn" id="login-btn" onclick="openLoginPopup()"><i class="fas fa-sign-in-alt" style="width: 27px"></i>Se connecter</a>
+					<a href="#" class="mobile-menu-btn" id="register-btn" onclick="openRegisterPopup()"><i class="fas fa-user-plus" style="width: 27px"></i>S'inscrire</a>
+					{% if user_logged_in %}<a href="dashboard" class="mobile-menu-btn"><i class="fas fa-folder-open" style="width: 27px"></i>Mon tableau de bord</a>
+					<a href="/change-password" class="mobile-menu-btn">
+						<i class="fas fa-lock" style="width: 27px"></i> <!-- Icône de cadenas pour mot de passe -->
+						Modifier mot de passe
+					</a>
+					<a href="/delete-account" id="delete-account-btn" class="mobile-menu-btn">
+						<i class="fas fa-user-slash" style="width: 27px"></i> <!-- Icône de suppression de compte -->
+						Supprimer compte
+					</a>
+						{% if session.get('is_admin') %}
+						<a href="/admin" class="mobile-menu-btn">
+							<i class="fas fa-shield-alt" style="width: 27px"></i>
+							Administrateur
+						</a>
+						{% endif %}
+					{% endif %}
+					<a href="FAQ" class="mobile-menu-btn"><i class="fas fa-question-circle" style="width: 27px"></i>FAQ</a>
+					{% if user_logged_in %}<a href="/logout" class="mobile-menu-btn"><i class="fas fa-sign-out-alt" style="width: 27px"></i>Déconnexion</a>{% endif %}
+			</div>
+		</nav>
+
+	</header>
+
+	<!------------------- Popup d'Inscription ------------------------>
+	<div class="popup-overlay" id="register-popup" style="display: none; z-index:1020">
+		<div class="popup-content"> 
+			
+			<button class="close-btn" id="closeRegisterPopupBtn" onclick="closeRegisterPopup()">x</button>
+			
+			<h2>Créer un compte</h2>
+			<h3>Reseignez les champs ci-dessous pour créer votre profil</h3>
+
+			
+			<!-- Champ d'email avec icône -->
+			<div class="input-icon-container">
+				<i class="icon fas fa-envelope"></i>
+				<input type="email" id="register-email" placeholder="Adresse email" required>
+			</div>
+			<!-- Champ de mot de passe avec icône -->
+			<div class="password-container">
+				<div class="input-icon-container">
+					<i class="icon fas fa-lock"></i>
+					<input type="password" class="password-input" id="register-password" placeholder="Mot de passe"
+						required>
+					<i class="toggle-password fas fa-eye" id="toggle-password"></i>
+				</div>
+			</div>
+			
+				<!-- Message d'erreur pour utilisateur existant -->
+				<div id="existing-user-message"
+					style="display: none; background-color: rgb(179 228 255 / 50%); margin-top: 10px; padding: 10px">
+					<span> On vous connait déjà ! Cliquez sur le bouton ci-dessous pour accéder à votre compte.</span>
+					<button class="cnx-btn" onclick="switchToLoginPopup()">Connectez-vous</button>
+				</div>
+
+				<!-- Message d'erreur pour les champs manquants -->
+				<div id="register-error-message" style="display: none; color: rgb(214, 25, 25); margin-top: 10px;">
+					Veuillez renseigner un email et mot de passe svp.
+				</div>
+
+				<!-- Case à cocher pour accepter les CGU -->
+			
+				<div class="cgu-checkbox-container" id="cgu-container" style="padding:10px">
+					<input type="checkbox" id="cgu-checkbox">
+					<label for="cgu-checkbox">&nbsp;J'accepte les <a href="/CGU" target="_blank"
+							style="color:#333333; font-weight: 500;">Conditions générales d'utilisation</a></label>
+				</div>
+
+			<div class ="popup-footer">
+				<!-- Texte pour l'inscription sous le champ de saisie du mail -->
+				
+				<div id="register-container" style="width: 100%;">
+					<button class="cnx-btn" onclick="submitRegistration()">S'inscrire</button>
+				</div>
+				<div class="register-prompt" style="display:flex; justify-content:center;">
+					<span id="deja-un-compte" style="color:#939292; font-weight: 200;">Vous avez déjà un compte ?</span>
+					<a href="#" id="switch-to-login" onclick="window.switchToLoginPopup()">Se connecter</a>
+				</div>
+
+				<div class="register-prompt">
+					<span style="font-size:0.8rem; color:#333333"> <a href="/PDC" target="_blank"
+							style="font-size:0.8rem; color:#1f1f1fb4">Politique de confidentialité</a></span>
+				</div>				
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="popup-overlay" id="email-confirmation-message" style="z-index:1200; display: none;">
+		<div class="popup-content">
+			
+				<button class="close-btn" onclick="closeEmailConfMsgPopup()">x</button>
+				<h1> Finalisez l'inscription</h1>
+				<span>Un email de confirmation vous a été envoyé. </span>
+				<span>Cliquez sur le lien de l'email pour finaliser l'inscription.</span>
+				<div class ="popup-footer">
+					<button class="cnx-btn" id="closeEmailConfMsgPopupBtn" onclick="closeEmailConfMsgPopup()">J'ai compris, retour au site</div>
+				</div>
+		</div>
+	</div>
+
+
+
+	<div class="popup-overlay" id="registration-success-popup" style="display: none;">
+		<div class="popup-content">
+			<div class="success-popup">
+				<i class="fas fa-check-circle success-icon"></i> <!-- Icône de succès -->
+				<h2>Inscription réussie !</h2>
+			</div>
+			
+		</div>
+	</div>
+
+
+
+
+	<!-------------------------------- Popup de Connexion ------------------------>
+	<div class="popup-overlay" id="login-popup" style="display: none; z-index:1010">
+		<div class="popup-content">
+			
+				<button class="close-btn" id="closeLoginPopupBtn" onclick="closeLoginPopup()">x</button>
+			
+			<h2>Content de vous revoir !</h2>
+			<h3>Connectez-vous pour accéder à votre compte</h3>
+			<!-- Champ d'email avec icône -->
+			<div class="input-icon-container">
+				<i class="icon fas fa-envelope"></i>
+				<input type="email" id="login-email" placeholder="Adresse e-mail" required>
+			</div>
+
+			<!-- Champ de mot de passe avec icône -->
+			<div class="password-container">
+				<div class="input-icon-container">
+					<i class="icon fas fa-lock"></i>
+					<input type="password" class="password-input" id="login-password" placeholder="Mot de passe"
+						required>
+					<i class="toggle-password fas fa-eye" id="toggle-password"></i>
+				</div>
+			</div>
+			<!-- Message d'erreur pour utilisateur existant -->
+			<div id="invalid-password" style="display: none; color: red; margin: 2px; padding: 2px">
+				Email ou mot de passe incorrect.
+			</div>
+
+			<!-- Lien "Mot de passe oublié?"  -->
+			<div class="forgot-password">
+				<a href="#" id="forgot-password-link" 
+					onclick="openForgotPasswordPopup()">Mot de passe oublié ?</a>
+			</div>
+
+			<div class="register-prompt">
+				<button class="cnx-btn" id="login-btn" onclick="submitLogin()">Se connecter</button>
+			</div>
+
+			<!-- Texte pour l'inscription sous le champ de saisie du mail -->
+			<div class="register-prompt">
+				<span>Pas encore membre ?</span>
+				<a href="#" id="switch-to-register" onclick="window.switchToRegisterPopup()">Créez un compte</a>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="popup-overlay" id="login-success-popup" style="display: none;">
+		<div class="popup-content">
+			<div class="success-popup">
+				<i class="fas fa-check-circle success-icon"></i> <!-- Icône de succès -->
+				<h2>Connexion réussie !</h2>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Popup de récupération de mot de passe -->
+	<div class="popup-overlay" id="forgot-password-popup" style="display: none; z-index:1500">
+		<div class="popup-content">
+			<button class="close-btn" id="closeForgotPasswordPopupBtn" onclick="closeForgotPasswordPopup()">x</button>
+			<h2>Mot de passe perdu</h2>
+
+			<!-- Étape 1 : Entrée de l'email -->
+			<div id="step-email">
+				<p>Veuillez saisir votre adresse email ci-dessous.<br>Nous vous enverrons un email contenant un code de
+					vérification. </p>
+				<div class="input-icon-container">
+					<i class="icon fas fa-envelope"></i>
+					<input type="email" id="recovery-email" placeholder="Entrez votre email" required>
+				</div>
+				<!-- Message d'erreur pour email non reconnu -->
+				<p id="email-not-found" style="color: red; display: none;">Votre email n'est pas reconnu.</p>
+				<button class="cnx-btn" onclick="sendRecoveryCode()">Envoyer le code</button>
+			</div>
+
+			<!-- Étape 2 : Entrée du code de vérification -->
+			<div id="step-code" style="display: none;">
+				<p>Entrez le code de vérification envoyé à votre email :</p>
+				<div class="input-icon-container" style="margin-top: 10px; display: flex; flex-direction: row; align-items: center;">
+					<i class="fas fa-key" style="margin-right: 20px"></i>
+					<input type="text" id="recovery-code" placeholder="Entrez le code reçu" maxlength="4" required>
+				</div>
+				<button class="cnx-btn" onclick="checkCode()">Vérification</button>
+				<p id="code-error" style="color: red; display: none;">Code incorrect.</p>
+			</div>
+
+			<!-- Étape 3 : Entrée du nouveau mot de passe -->
+			<div id="step-password" style="display: none;">
+				<p>Entrez votre nouveau mot de passe :</p>
+				<div class="input-icon-container">
+					<i class="icon fas fa-lock"></i>
+					<input type="password" id="new-password" placeholder="Nouveau mot de passe" required>
+				</div>
+				<div class="input-icon-container">
+					<i class="icon fas fa-lock"></i>
+					<input type="password" id="confirm-password" placeholder="Confirmer le nouveau mot de passe"
+						required>
+				</div>
+				<p id="password-error" style="color: red; display: none;">Les mots de passe ne correspondent pas.</p>
+				<button class="cnx-btn" onclick="resetPassword()">Changer de mot de passe</button>
+			</div>
+
+			<!-- Message de succès de mise à jour du mot de passe -->
+			<i class="fas fa-check-circle success-icon" style="display: none"></i>
+			<p id="password-success" style="color: green; display: none;">Mot de passe mis à jour avec succès!</p>
+
+		</div>
+	</div>
+
+	<!-------------------------- Popup de Recherche ------------------------------------->
+	<div class="popup-overlay" id="search-popup" style="display: none; z-index: 1001">
+		<div class="popup-content" style ="width: 600px;">
+			<button class="search-close-btn" id="closeSearchPopupBtn" onclick="closeSearchPopup()">x</button>
+			
+			<div class="search-popup-container">
+				<div class="image-container-mobile"></div>
+				<div class="search-container">
+
+					<h2>Confirmez votre demande et obtenez l’adresse !</h2>
+					<p style="font-size: 12px;"> Lien saisi : </p>
+					<p id="url-display" class="url-display"></p>
+					<p id="validation-result" style="font-size: 12px; text-align: right;">&nbsp;</p>
+
+					<div style="display: flex; flex-direction: row; justify-content: space-between;">
+						<div class="search-container-text"> <i class="fas fa-coins"></i> <p> Coût du service : 49 € TTC </p></div>
+						<div class="stripe-image"> </div>
+					</div>
+						
+					<div class="cgv-checkbox-container" id="cgv-container" >
+						<input type="checkbox" id="cgv-checkbox" style="margin-right: 18px; margin-left: 0px;">
+						<label for="cgv-checkbox" style="font-size:14px;">J'accepte les <a href="/CGU"
+								target="_blank" style="color:#333333; font-size:500; text-decoration: none">CGU</a> et les <a href="/CGV"
+								target="_blank" style="color:#333333; font-size:500; text-decoration: none">CGV</a></label>
+					</div>
+					<div class="popup-footer">
+						<!-- Bouton de validation et message de paiement -->
+						<button class="cnx-btn" id="send-url-btn" style="margin-top:20px">Valider</button>
+					</div>
+					
+				</div>
+
+				<div class="image-container"></div>
+			</div>
+
+			<!-- Loader HTML -->
+			<div class="loading-overlay" id="loading-overlay" style="display: none;">
+				<div class="spinner"></div>
+				<p> Redirection vers la page de paiement...</p>
+			</div>
+
+		</div>
+	</div>
+	<script>
+
+		document.querySelector('.logo-container').addEventListener('click', function (event) {
+			window.location.href = '/'; // Redirige vers la page d'accueil
+		});
+
+		function updateHeaderButtons() {
+			fetch('/api/header-buttons')
+				.then(response => response.json())
+				.then(data => {
+					const loginBtn = document.getElementById('login-btn');
+					const registerBtn = document.getElementById('register-btn');
+					const initialBtn = document.getElementById('initial-btn');
+					
+
+
+					if (data.user_logged_in) {
+						// Affiche les éléments connectés
+						if (initialBtn) {
+							initialBtn.style.display = 'block';
+							//initialBtn.textContent = data.user_initial;
+						}
+						
+
+						// Cache les boutons de connexion et d'inscription
+						if (loginBtn) loginBtn.style.display = 'none';
+						if (registerBtn) registerBtn.style.display = 'none';
+					} else {
+						// Affiche les boutons de connexion et d'inscription
+						if (loginBtn) loginBtn.style.display = 'block';
+						if (registerBtn) registerBtn.style.display = 'block';
+
+						// Cache les éléments connectés
+						if (initialBtn) initialBtn.style.display = 'none';
+						
+					}
+				})
+				.catch(error => console.error('Erreur lors de la mise à jour des boutons du header:', error));
+		}
+
+
+		// Attachement des événements de popups
+		function attachPopupEvents() {
+			console.log("Fonction attachPopupEvents()");
+			const searchPopup = document.getElementById('search-popup');
+			console.log("Valeur de display (Début Fonction attachPopupEvents()) :", searchPopup.style.display);
+			const registerBtn = document.getElementById('register-btn');
+			const closeRegisterBtn = document.getElementById('closeRegisterPopupBtn');
+			const loginBtn = document.getElementById('login-btn');
+			const closeLoginBtn = document.getElementById('closeLoginPopupBtn');
+			const searchBtn = document.getElementById('search-btn');
+			const closeSearchBtn = document.getElementById('closeSearchPopupBtn');
+			const closeEmailConfMsgBtn= document.getElementById('closeEmailConfMsgPopupBtn');
+			
+			if (registerBtn) registerBtn.addEventListener('click', openRegisterPopup);
+			if (closeRegisterBtn) closeRegisterBtn.addEventListener('click', closeRegisterPopup);
+			if (loginBtn) loginBtn.addEventListener('click', openLoginPopup);
+			if (closeLoginBtn) closeLoginBtn.addEventListener('click', closeLoginPopup);
+			if (closeEmailConfMsgBtn) closeEmailConfMsgBtn.addEventListener('click', closeEmailConfMsgPopup);
+			
+		}
+
+		document.addEventListener("DOMContentLoaded", function () {
+			
+			// Appel initial pour attacher les événements sur le contenu chargé
+			attachPopupEvents();
+
+			updateHeaderButtons(); // Vérifie et met à jour les boutons au chargement de la page
+
+		});
+
+		<!------------------------- Menu utilisateur -------------------------->
+		document.addEventListener('DOMContentLoaded', function () {
+			const userInitialButton = document.getElementById('initial-btn');
+			const dropdownMenu = document.getElementById('dropdown-menu');
+
+			if (userInitialButton) {
+				userInitialButton.addEventListener('click', function () {
+					
+					toggleDropdownMenu();
+				});
+			} else {
+				console.error("L'élément avec l'ID 'initial-btn' n'a pas été trouvé.");
+			}
+
+			if (dropdownMenu) {
+				// Ferme le menu si la souris quitte la zone du menu
+				dropdownMenu.addEventListener('mouseleave', function () {
+					console.log("la souris quitte le dropdownMenu");
+					dropdownMenu.classList.remove('show');
+					dropdownMenu.style.display = 'none';
+				});
+
+				// Ferme le menu si un clic est fait en dehors
+				document.addEventListener('click', function (event) {
+					const dropdownMenu = document.getElementById('dropdown-menu');
+					if (dropdownMenu.classList.contains('show') && !dropdownMenu.contains(event.target) && event.target !== userInitialButton) {
+						dropdownMenu.classList.remove('show');
+						dropdownMenu.style.display = 'none';
+						
+					}
+				});
+			}
+		});
+
+
+
+		function toggleDropdownMenu() {
+			const dropdownMenu = document.getElementById('dropdown-menu');
+			if (!dropdownMenu) {
+				console.error("L'élément 'dropdown-menu' est introuvable dans le DOM.");
+				return;
+			}
+
+			if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+				dropdownMenu.style.display = 'block';
+			} else {
+				dropdownMenu.style.display = 'none';
+			}
+		}
+
+  /*----------------------- Fin Menu utilisateur------------------------*/
+	
+	
+ /*----------------------------Connexion -------------------------------*/
+			window.submitLogin = function() {
+				console.log("window.submitLogin");
+				const email = document.getElementById('login-email').value;
+				const password = document.getElementById('login-password').value;
+				// Cache le message d'erreur à chaque tentative d'inscription
+				document.getElementById('invalid-password').style.display = 'none';
+				
+				document.getElementById('initial-btn').style.display = 'none';
+				// authButtons = document.getElementById('auth-buttons');
+				const closeSearchBtn = document.getElementById('closeSearchPopupBtn');
+				const searchPopup = document.getElementById('search-popup');
+
+				fetch('/api/login', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ email, password })
+				})
+					.then(response => {
+						// Capture le statut de la réponse et le contenu JSON
+						return response.json().then(data => ({ status: response.status, body: data }));
+					})
+					.then(data => {
+						console.log("Données de la réponse JSON :", data);
+						if (data.status === 200) {
+
+							closeLoginPopup();  // Ferme le popup de connexion
+							//authButtons.style.display = 'none';
+							updateHeaderButtons(); // Mise à jour des boutons après connexion réussie
+							// Affiche le popup de succès
+							const successPopup = document.getElementById('login-success-popup');
+							successPopup.style.display = 'flex';
+							setTimeout(() => {
+								successPopup.style.display = 'none';
+							}, 1500);
+							window.location.href = '/';
+
+						} else if (data.status === 401) {  // Cas où des champs sont manquants
+							document.getElementById('invalid-password').style.display = 'block';
+
+						} else if (data.status === 403) {  // Cas où l'inscription n'a pas été finalisée
+							document.getElementById('email-confirmation-message').style.display = 'flex';
+
+						} else {
+							alert("Erreur : " + data.body.message);
+						}
+					})
+					.catch(error => console.error('Erreur lors de la connexion:', error));
+			}
+
+		// Ouvrir le popup de connexion
+		window.openLoginPopup = function () {
+			document.getElementById('login-popup').style.display = 'flex';
+		};
+
+		// Fonction pour fermer le popup de connexion
+		window.closeLoginPopup = function () {
+			document.getElementById('login-popup').style.display = 'none';
+			document.getElementById('invalid-password').style.display = 'none';
+		};
+/*----------------------------Fin Connexion-------------------------------*/
+	
+/*----------------------------Inscription -------------------------------*/
+			window.openRegisterPopup = function() {
+				document.getElementById('register-popup').style.display = 'flex';
+			};
+
+		// Fonction pour fermer le popup d'inscription
+		window.closeRegisterPopup = function () {
+			document.getElementById('register-popup').style.display = 'none';
+			// Cache le message d'erreur à chaque tentative d'inscription
+			document.getElementById('existing-user-message').style.display = 'none';
+			document.getElementById('register-error-message').style.display = 'none';
+			document.getElementById('register-container').style.display = 'flex';
+			document.getElementById('switch-to-login').style.display = 'flex';
+			document.getElementById('deja-un-compte').style.display = 'flex';
+		};
+
+		window.closeEmailConfMsgPopup = function () {
+			document.getElementById('email-confirmation-message').style.display = 'none';
+		};
+
+		// Fonction d'inscription pour le formulaire du popup
+		window.submitRegistration = function () {
+			const email = document.getElementById('register-email').value;
+			const password = document.getElementById('register-password').value;
+			const cguCheckbox = document.getElementById('cgu-checkbox'); // Case à cocher CGU
+			const cguContainer = document.getElementById('cgu-container'); // Conteneur de la case CGU
+			const errorMessage = document.getElementById('register-error-message');
+			const registerContainer = document.getElementById('register-container');
+			console.log("Tentative d'envoi de la requête d'inscription avec :", email, password);
+
+			errorMessage.style.display = 'none';
+			registerContainer.style.display = 'flex';
+			document.getElementById('existing-user-message').style.display = 'none';
+			document.getElementById('switch-to-login').style.display = 'flex';
+			document.getElementById('deja-un-compte').style.display = 'flex';
+			document.getElementById('email-confirmation-message').style.display = 'none';
+			cguContainer.classList.remove('checkbox-error'); // Réinitialise la bordure rouge
+
+			// Vérifier que tous les champs sont remplis
+			if ( !email || !password) {
+				errorMessage.style.display = 'block';  // Afficher le message d'erreur
+				return;  // Arrêter la fonction si un champ est manquant
+			}
+
+			// Vérifier que la case CGU est cochée
+			if (!cguCheckbox.checked) {
+				cguContainer.classList.add('checkbox-error'); // Ajoute la bordure rouge
+				return; // Arrête la fonction si la case CGU n'est pas cochée
+			}
+
+
+			fetch('/api/register', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email, password })
+			})
+				.then(response => {
+					// Capture le statut de la réponse et le contenu JSON
+					return response.json().then(data => ({ status: response.status, body: data }));
+				})
+				.then(data => {
+					console.log("Données de la réponse JSON :", data);
+					if (data.status === 409) {
+						// Affiche le message d'erreur si l'email est déjà connu
+						document.getElementById('existing-user-message').style.display = 'block';
+						registerContainer.style.display = 'none';
+						document.getElementById('switch-to-login').style.display = 'none';
+						document.getElementById('deja-un-compte').style.display = 'none';
+						throw new Error("Utilisateur existant");
+					} else if (data.status === 400) {  // Cas où des champs sont manquants
+						alert(data.body.message);  // Affiche le message d'erreur dans un popup
+					} else if (data.status === 201) {  // Cas de succès
+						alert(data.body.message);
+						document.getElementById('email-confirmation-message').style.display = 'flex';
+						closeRegisterPopup();
+						window.location.href = '/';
+					} else {
+						alert("Erreur lors de l'inscription.");
+					}
+				})
+				.catch(error => console.error('Erreur:', error));
+		};
+
+
+		// Écouteur sur la case CGV pour enlever la bordure rouge lorsqu'elle est cochée
+		document.addEventListener('DOMContentLoaded', function () {
+			const cguCheckbox = document.getElementById('cgu-checkbox'); // Case à cocher CGU
+			const cguContainer = document.getElementById('cgu-container'); // Conteneur de la case CGU
+			cguCheckbox.addEventListener('change', function () {
+				if (cguCheckbox.checked) {
+					cguContainer.classList.remove('checkbox-error'); // Enlève la bordure rouge une fois cochée
+				}
+			});
+		});
+
+	
+/*----------------------------Fin Inscription-------------------------------*/	
+
+
+
+	
+/*----------------------- Switch Inscription / Connexion---------------------*/
+
+			// Fonction pour passer de Se Connecter à S'inscrire
+			window.switchToRegisterPopup = function() {
+				window.closeLoginPopup(); // Utiliser la fonction de fermeture existante
+				document.getElementById('register-popup').style.display = 'flex';
+			};
+
+		// Fonction pour passer de S'inscrire à Se Connecter
+		window.switchToLoginPopup = function () {
+			window.closeRegisterPopup(); // Utiliser la fonction de fermeture existante
+			document.getElementById('login-popup').style.display = 'flex';
+		};
+	
+	
+/*------------------------Script mot passe oublié------------------------------*/
+			// Ouvre le popup de récupération de mot de passe
+			function openForgotPasswordPopup() {
+				document.getElementById('forgot-password-popup').style.display = 'flex';
+				// Réinitialise le popup à la première étape
+				document.getElementById('step-email').style.display = 'block';
+				document.getElementById('step-code').style.display = 'none';
+				document.getElementById('step-password').style.display = 'none';
+				document.getElementById('code-error').style.display = 'none';
+				document.getElementById('password-error').style.display = 'none';
+				closeLoginPopup();
+			}
+
+		// Ferme le popup de récupération de mot de passe
+		function closeForgotPasswordPopup() {
+			document.getElementById('forgot-password-popup').style.display = 'none';
+			document.getElementById('password-success').style.display = 'none';
+			document.getElementById('email-not-found').style.display = 'none';
+		}
+
+		// Étape 1 : Envoie le code de vérification
+		function sendRecoveryCode() {
+			const email = document.getElementById('recovery-email').value;
+			document.getElementById('email-not-found').style.display = 'none';
+
+			fetch('/api/send-recovery-code', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email })
+			})
+				.then(response => {
+					if (response.status === 404) {
+						// Affiche le message d'erreur si l'email n'est pas trouvé
+						document.getElementById('email-not-found').style.display = 'block';
+						throw new Error("Email non trouvé");
+					}
+					return response.json();
+				})
+				.then(data => {
+					if (data.message === "Code envoyé") {
+						// Passe à l'étape suivante si le code a été envoyé
+						document.getElementById('step-email').style.display = 'none';
+						document.getElementById('step-code').style.display = 'block';
+					} else {
+						alert(data.message);
+					}
+				})
+				.catch(error => console.error('Erreur:', error));
+		}
+
+		// Étape 2 : Vérifie le code de vérification
+		function checkCode() {
+			const email = document.getElementById('recovery-email').value;
+			const code = document.getElementById('recovery-code').value;
+
+			fetch('/api/check-code', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email, code })
+			})
+				.then(response => response.json())
+				.then(data => {
+					if (data.message === "Code correct") {
+						// Passe à l'étape suivante si le code est correct
+						document.getElementById('step-code').style.display = 'none';
+						document.getElementById('step-password').style.display = 'block';
+					} else {
+						// Affiche un message d'erreur si le code est incorrect
+						document.getElementById('code-error').style.display = 'block';
+					}
+				})
+				.catch(error => console.error('Erreur:', error));
+		}
+
+		// Étape 3 : Change le mot de passe
+		function resetPassword() {
+			const email = document.getElementById('recovery-email').value;
+			const newPassword = document.getElementById('new-password').value;
+			const confirmPassword = document.getElementById('confirm-password').value;
+
+			// Cache le message d'erreur de mot de passe
+			document.getElementById('password-error').style.display = 'none';
+
+			if (newPassword !== confirmPassword) {
+				// Affiche un message d'erreur si les mots de passe ne correspondent pas
+				document.getElementById('password-error').style.display = 'block';
+				return;
+			}
+
+			fetch('/api/reset-password', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email, newPassword })
+			})
+				.then(response => response.json())
+				.then(data => {
+					if (data.message === "Mot de passe mis à jour avec succès.") {
+						// Cache les champs de saisie et affiche le message de succès
+						document.getElementById('step-password').style.display = 'none';
+						document.getElementById('password-success').style.display = 'flex';
+					} else {
+						alert("Erreur lors de la mise à jour du mot de passe : " + data.message);
+					}
+				})
+				.catch(error => console.error('Erreur:', error));
+		}
+/*--------------------------Fin mot passe oublié--------------------------------*/
+	
+	
+/*--------------------Afficher et Masquer les mots de passe---------------------*/
+
+			document.addEventListener('DOMContentLoaded', function () {
+				// Sélectionne tous les champs de mot de passe et les icônes de basculement
+				const passwordInputs = document.querySelectorAll('.password-input');
+				const togglePasswordIcons = document.querySelectorAll('.toggle-password');
+
+				togglePasswordIcons.forEach((toggleIcon, index) => {
+					toggleIcon.addEventListener('click', function () {
+						// Récupère le champ de mot de passe associé
+						const passwordInput = passwordInputs[index];
+
+						// Bascule le type de l'input entre password et text
+						const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+						passwordInput.setAttribute('type', type);
+
+						// Change l'icône
+						toggleIcon.classList.toggle('fa-eye-slash');
+						toggleIcon.classList.toggle('fa-eye');
+					});
+				});
+			});
+/*--------------------Fin Afficher et Masquer les mots de passe---------------------*/	
+
+			/*--------------------- Version mobile------------------------*/
+			document.addEventListener('DOMContentLoaded', () => {
+				const menuToggle = document.getElementById('menu-toggle');
+				const mobileNav = document.getElementById('mobile-nav');
+
+				// Affichage / Masquage du menu en cliquant sur le bouton
+				menuToggle.addEventListener('click', (event) => {
+					event.stopPropagation(); // Empêche le clic sur le bouton de fermer immédiatement le menu
+					mobileNav.style.display = (mobileNav.style.display === 'flex') ? 'none' : 'flex';
+				});
+
+				// Fermer le menu si l'utilisateur clique ailleurs
+				document.addEventListener('click', (event) => {
+					if (mobileNav.style.display === 'flex' && !mobileNav.contains(event.target) && event.target !== menuToggle) {
+						mobileNav.style.display = 'none';
+					}
+				});
+			});
+			/*--------------------Fin Version mobile-----------------------*/
+
+			document.addEventListener("DOMContentLoaded", function () {
+				// Sélectionner tous les overlays des popups
+				const popups = document.querySelectorAll(".popup-overlay");
+
+				popups.forEach(popup => {
+					popup.addEventListener('click', function (event) {
+						// Si le clic est sur l'overlay mais pas à l'intérieur du contenu
+						if (event.target === popup) {
+							popup.style.display = "none"; // Masquer le popup
+							console.log("Popup fermé");
+						}
+					});
+				});
+			});
+
+	</script>
+  </body>
+
+</html>
