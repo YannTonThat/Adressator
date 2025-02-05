@@ -1,7 +1,8 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv("confidential.env")
+if os.path.exists("confidential.env"):
+    load_dotenv("confidential.env")  # ✅ Charge les variables uniquement en local
 
 class Config:
 
