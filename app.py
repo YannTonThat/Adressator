@@ -221,6 +221,9 @@ def FAQ():
 def sitemap():
     return send_from_directory('static', 'sitemap.xml', mimetype='application/xml')
 
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('static', 'robots.txt', mimetype='text/plain')
 
 class Utilisateur(db.Model):
     __tablename__ = 'utilisateur'
