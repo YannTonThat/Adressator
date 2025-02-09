@@ -32,7 +32,7 @@ import hashlib
 import sys
 from whitenoise import WhiteNoise
 
-WEBHOOK_SECRET ='whsec_23152e2ccdacb25dba3314e94fa91d8e489d08081341595939c633bf3dbc757e'
+
 
 
 france_tz = timezone("Europe/Paris")
@@ -53,6 +53,7 @@ app.config['MAIL_USE_TLS'] = True
 stripe.api_key = Config.STRIPE_API_KEY
 app.secret_key = Config.APP_SECRET_KEY
 SECRET_KEY = Config.SECRET_KEY
+WEBHOOK_SECRET = Config.WEBHOOK_SECRET
 app.config['MAIL_USERNAME'] = Config.APP_MAIL_USERNAME
 app.config['MAIL_PASSWORD'] = Config.APP_MAIL_PASSWORD
 app.config['MAIL_DEFAULT_SENDER'] = Config.APP_MAIL_DEFAULT_SENDER
