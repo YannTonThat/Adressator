@@ -216,30 +216,11 @@ def contact():
 def FAQ():
     return render_template('FAQ.html')
 
+@app.route('/sitemap.xml')
+@limiter.limit("100 per minute")
+def sitemap():
+    return send_from_directory('static', 'sitemap.xml', mimetype='application/xml')
 
-@app.route('/add-test-search')
-def add_test_search():
-
-    # Simuler l'ajout d'une recherche pour un utilisateur existant avec l'ID 1 (par exemple)
-    user_id = 1  # Remplace par la méthode pour récupérer l'ID de l'utilisateur réel
-
-    # Créer une nouvelle instance du modèle Recherche
-    nouvelle_recherche = Recherche(user_id=user_id, url="http://exemple.com", statut="en cours")
-
-    # Ajouter l'instance de Recherche à la session
-    db.session.add(nouvelle_recherche)
-    
-    # Valider la transaction pour enregistrer dans la base de données
-    db.session.flush()  # Force l'écriture
-    try:
-        print(f"Chemin de la base de données utilisé : {app.config['SQLALCHEMY_DATABASE_URI']}")
-        db.session.commit()
-        
-    except Exception as e:
-        db.session.rollback()  # Annule la transaction en cas d'erreur
-        print(f"Erreur lors du commit: {e}")
-
-    return "Recherche ajoutée avec succès !"
 
 class Utilisateur(db.Model):
     __tablename__ = 'utilisateur'
@@ -447,18 +428,6 @@ def get_user_searches():
 
     return jsonify(search_data)
 
-@app.route('/api/delete-search/<int:search_id>', methods=['DELETE'])
-def delete_search(search_id):
-    if 'user_id' not in session:
-        return jsonify({'error': 'Utilisateur non connecté'}), 403
-
-    recherche = Recherche.query.get(search_id)
-    if recherche and recherche.user_id == session['user_id']:
-        db.session.delete(recherche)
-        db.session.commit()
-        return jsonify({'message': 'Recherche supprimée avec succès'})
-    else:
-        return jsonify({'error': 'Recherche non trouvée ou non autorisée'}), 404
 
 @app.route('/api/login', methods=['POST'])
 def login():
@@ -640,31 +609,6 @@ def check_password():
     else:
         return jsonify({"valid": False}), 200
 #------------------Fin Modifier son Mot de passe ----------------#
-
-#-------------------------Notifications--------------------------#
-
-
-##@app.route('/api/send-email-payment', methods=['POST'])
-##def send_email_payment():
-##
-##    user_id = session.get('user_id')  # Récupère l'ID de l'utilisateur depuis la session
-##    if not user_id:
-##        return jsonify({'success': False, 'message': 'Aucun user_id'}), 401
-##    
-##    utilisateur = Utilisateur.query.get(user_id)
-##    data = request.get_json()  # Récupère les données envoyées par le client
-##    url = data.get('url')  # L'URL soumise par l'utilisateur
-##
-##
-##    if not url:
-##        return jsonify({'success': False, 'message': 'URL manquante.'}), 400
-##
-##
-##
-##    envoyer_confirmation_paiement_client(utilisateur, nouvelle_recherche)
-##    print(f"Nouvelle confirmation de paiement envoyé au client {user_id}, pour la recherche : {url}")
-##
-##    return jsonify({'success': True, 'message': "Nouvelle confirmation de paiement envoyé au client !"}), 200
 
     
 
