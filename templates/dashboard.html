@@ -35,7 +35,7 @@
       position: relative;
       width: 100%; /* Pleine largeur de l'écran */
       height: 50vh; /* Hauteur proportionnelle à la hauteur de l'écran */
-      min-height: fit-content;
+      min-height: 300px;
       overflow: hidden;
       background-image: url('/static/dashboard.png'); /* Image de fond */
       background-size: cover;
@@ -183,14 +183,14 @@
       font-size: 0.9rem;
     }
 	
-	/* Pour les petits écrans */
-	@media (max-width: 768px) {
-
-		.hero {
+/* Pour les petits écrans */
+@media (max-width: 768px) {
+      .hero {
       z-index: 100;
       position: relative;
       width: 100%; /* Pleine largeur de l'écran */
       height: 27vh;
+      min-height: 300px;
       overflow: hidden;
       background-image: url('/static/dashboard.png'); /* Image de fond */
       background-size: cover;
