@@ -2,7 +2,9 @@ User-agent: *
 
 Disallow: /admin/  
 
-Disallow: /login/  
+Disallow: /login/
+
+Disallow: /api/
  
 
 
