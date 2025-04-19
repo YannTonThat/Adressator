@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Adressator Actualités et conseils</title>
+  <style>
+    /* Popup Styles */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+	  z-index: 1000; /* Assure que le popup est au-dessus de tout */
+    }
+
+
+
+	    /* Hero Section */
+    .hero {
+      z-index: 100;
+      position: relative;
+      width: 100%; /* Pleine largeur de l'écran */
+      height: 50vh; /* Hauteur proportionnelle à la hauteur de l'écran */
+      min-height: 300px;
+      overflow: hidden;
+      background-image: url('/static/FAQ.png'); /* Image de fond */
+      background-size: cover;
+      background-position: center 50%;
+      background-repeat: no-repeat;
+      display: flex;
+	  flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      }
+
+    /* Overlay for darker background, making text more readable */
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Assombrissement */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      opacity: 0; /* Opacité à mettre à 0 si animation*/
+      visibility: hidden; /* Cache complètement l'overlay */
+      transition: opacity 1s ease-in-out, visibility 0s linear 1s;
+    }
+
+	.hero-overlay.fade-in {
+		opacity: 1; /* Opacité finale après transition */
+		visibility: visible;
+    	transition: opacity 1s ease-in-out, visibility 0s;
+	}
+
+    .hero h1 {
+      font-size: 3.3rem;
+	  margin:10px;
+      color: #ffffff;
+      text-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+	  margin:10px;
+      color: #ffffff;
+      text-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero h3 {
+      font-size: 1rem;
+	  margin:10px;
+    }
+
+    .hero a{
+      text-decoration: none;
+    }
+
+    a.cta-btn {
+		font-family: 'lexend', sans-serif;
+		width: fit-content;
+		padding-right: 20px;
+		padding-left: 20px;
+		height: 25px;
+		background-color: #573095;
+		color: #fff;
+		border: none;
+		border-radius: 25px;
+		margin: 20px;
+		font-size: 1.1rem;
+		font-weight: 450;
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+		
+	a.cta-btn:hover {
+		background-color: #2e1358;
+        color: #fff;
+	}
+
+
+@media (max-width: 768px) {
+
+	.hero {
+		z-index: 100;
+		position: relative;
+		width: 100%; /* Pleine largeur de l'écran */
+		height: 27vh;
+		min-height: 300px;
+		overflow: hidden;
+		background-image: url('/static/FAQ.png'); /* Image de fond */
+		background-size: cover;
+		background-position: center 63%;
+		background-repeat: no-repeat;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.hero-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5); /* Assombrissement */
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		opacity: 0; /* Opacité à mettre à 0 si animation*/
+      visibility: hidden; /* Cache complètement l'overlay */
+      transition: opacity 1s ease-in-out, visibility 0s linear 1s;
+    }
+
+	.hero-overlay.fade-in {
+		opacity: 1; /* Opacité finale après transition */
+		visibility: visible;
+    	transition: opacity 1s ease-in-out, visibility 0s;
+	}
+
+	.hero h1 {
+		font-size: 1.6rem;
+		text-align: center;
+	}
+
+	.hero h2 {
+		font-size: 0.9rem;
+		text-align: center;
+	}
+
+	.hero h3 {
+		font-size: 0.8rem;
+	}
+
+	a.cta-btn {
+		font-family: 'lexend', sans-serif;
+		font-size: 0.9rem;
+		width: fit-content;
+    	padding-right: 15px;
+    	padding-left: 15px;
+		background-color: #573095;
+		color: #fff;
+		border: none;
+		border-radius: 25px;
+		font-weight: 450;
+		cursor: pointer;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	a.cta-btn:hover {
+		background-color: #2e1358;
+	}
+}
+
+.scroll-to-top {
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		width: 50px;
+		height: 50px;
+		background-color: rgb(153,202,60);
+		color: white;
+		border: none;
+		border-radius: 50%;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+		cursor: pointer;
+		z-index: 1000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+	}
+
+	.scroll-to-top i {
+		font-size: 20px;
+	}
+
+	.scroll-to-top.show {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.scroll-to-top:hover {
+		background-color: #a8e24e;
+	}
+	
+		/* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+
+    
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+  <!-- Inclure le header de façon dynamique -->
+  {% include "header.html" %}
+
+	<section class="hero">
+		<div class="hero-overlay">
+			<h1>Besoin de conseils ?</h1>
+			<h2>On vous aide dans votre projet immobilier</h2>
+			<a class="cta-btn" href="/""> 🔎 Démarrer une recherche d’adresse</a>
+		</div>
+	</section>
+
+
+	<header class="bg-white shadow">
+	  <div class="max-w-7xl mx-auto px-4 py-6">
+		<h1 class="text-3xl font-bold text-gray-900">Articles & Conseils</h1>
+		<p class="text-gray-500 mt-1">Retrouvez ici nos derniers conseils pour réussir votre projet immobilier.</p>
+	  </div>
+	</header>
+  
+	<main class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+	  <!-- Carte Article -->
+	  <article class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+		<h2 class="text-xl font-semibold mb-2">5 erreurs à éviter lors d’un investissement locatif</h2>
+		<p class="text-sm text-gray-600 mb-4">Évitez les pièges courants en découvrant les erreurs classiques des investisseurs débutants.</p>
+		<a href="#" class="text-blue-600 hover:underline text-sm font-medium">Lire l'article →</a>
+	  </article>
+  
+	  <article class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+		<h2 class="text-xl font-semibold mb-2">Comment bien choisir l’emplacement de votre bien</h2>
+		<p class="text-sm text-gray-600 mb-4">Découvrez les critères essentiels pour sélectionner une localisation rentable et sereine.</p>
+		<a href="#" class="text-blue-600 hover:underline text-sm font-medium">Lire l'article →</a>
+	  </article>
+  
+	  <article class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+		<h2 class="text-xl font-semibold mb-2">Fiscalité : choisir le bon régime pour optimiser ses revenus</h2>
+		<p class="text-sm text-gray-600 mb-4">Micro foncier, réel, LMNP… Quel régime fiscal est le plus adapté à votre situation ?</p>
+		<a href="#" class="text-blue-600 hover:underline text-sm font-medium">Lire l'article →</a>
+	  </article>
+	  <!-- Ajoute ici d'autres articles si besoin -->
+	</main>
+
+  	<!-- Footer -->
+	  <footer>
+		<p>&copy; 2024 Adressator. Tous droits réservés.</p>
+		<p>
+		  <a href="Mentions-légales">Mentions légales</a> |
+		  <a href="CGU">Conditions générales d'utilisation</a> |
+		  <a href="PDC">Politique de confidentialité</a> |
+		  <a href="Contact">Contact</a>
+		</p>
+	  </footer>
+
+</body>
+
+		
+
+  
+  
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+	const scrollToTopBtn = document.getElementById("scroll-to-top-btn");
+
+	// Affiche ou cache le bouton en fonction du scroll
+	window.addEventListener("scroll", () => {
+		if (window.scrollY > 300) { // Affiche le bouton après 300px de scroll
+			scrollToTopBtn.classList.add("show");
+		} else {
+			scrollToTopBtn.classList.remove("show");
+		}
+	});
+
+	// Scroll en haut de la page lors du clic
+	scrollToTopBtn.addEventListener("click", () => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
+	});
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const heroOverlay = document.querySelector(".hero-overlay");
+    const heroSection = document.querySelector(".hero");
+
+    // Vérifier si l'image de fond est déjà en cache
+    let bgImage = new Image();
+    bgImage.src = getComputedStyle(heroSection).backgroundImage.replace(/url\(["']?(.*?)["']?\)/, '$1');
+
+    bgImage.onload = function () {
+        setTimeout(() => {
+            heroOverlay.classList.add("fade-in");
+        }, 100); // Ajoute un délai de 0.1 seconde avant l'animation
+    };
+});
+</script>
+
+</body>
+</html>
