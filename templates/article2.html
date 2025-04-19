@@ -313,6 +313,9 @@
     </section>
    </article>
 	
+   <button id="scroll-to-top-btn" class="scroll-to-top">
+     <i class="fas fa-chevron-up"></i>
+   </button>
     <!-- Footer -->
    <footer>
       <p>&copy; 2024 Adressator. Tous droits réservés.</p>
@@ -325,4 +328,28 @@
     </footer>
  
 </body>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+	const scrollToTopBtn = document.getElementById("scroll-to-top-btn");
+
+	// Affiche ou cache le bouton en fonction du scroll
+	window.addEventListener("scroll", () => {
+		if (window.scrollY > 300) { // Affiche le bouton après 300px de scroll
+			scrollToTopBtn.classList.add("show");
+		} else {
+			scrollToTopBtn.classList.remove("show");
+		}
+	});
+
+	// Scroll en haut de la page lors du clic
+	scrollToTopBtn.addEventListener("click", () => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
+	});
+});
+
+</script>
 </html>
