@@ -129,7 +129,7 @@
 			display: flex;
 			align-items: center;
 			margin-left: auto;
-			/* Force l'alignement du bloc de navigation à droite */
+			margin-top: 17px;
 			text-decoration: none;
 		}
 
@@ -148,27 +148,26 @@
 
 		.cta-btn {
 			font-family: 'lexend', sans-serif;
-			margin-left: 20px;
-			padding: 8px 0px;
-			width: 135px;
-			background-color: rgb(250, 250, 250);
-			color: rgb(43, 43, 43);
+			padding-top: 7px;
+    			padding-bottom: 9px;
+			width: 115px;
+			background-color: rgb(250 250 250 / 0%);
+			color: rgb(250 250 250);
 			border: none;
 			border-radius: 25px;
 			font-size: 1rem;
 			font-weight: 400;
 			cursor: pointer;
-
 		}
 
 
 		.register-btn {
 			font-family: 'lexend', sans-serif;
-			margin-left: 20px;
-			padding: 8px 20px;
-			width: 135px;
-			background-color: #4CAF50;
-			color: #fff;
+			padding-top: 7px;
+    			padding-bottom: 9px;
+			width: 115px;
+			background-color: rgb(250 250 250 / 0%);
+			color: rgb(250 250 250);
 			border: none;
 			border-radius: 25px;
 			font-size: 1rem;
@@ -232,19 +231,12 @@
 
 		/* Effet de surbrillance pour les boutons */
 		.cta-btn:hover {
-			background-color: rgb(209, 216, 210);
-			/* Couleur de fond surbrillance pour "Se connecter" */
-			color: #000;
-			
+			background-color: rgb(95 147 15);		
 			
 		}
 
 		.register-btn:hover {
-			background-color: #2E7D32;
-			/* Couleur de fond surbrillance pour "S'inscrire" */
-			color: #fff;
-			/* Couleur du texte sur surbrillance */
-			/*box-shadow: 2px 2px 12px #19191a75;*/
+			background-color: rgb(95 147 15);
 		}
 
 		.initial-btn:hover {
@@ -1299,8 +1291,8 @@
 					</div>
 					{% else %}
 					<!-- Boutons de connexion et d'inscription -->
-					<button class="cta-btn" id="login-btn">Se connecter</button>
-					<button class="register-btn" id="register-btn">S'inscrire</button>
+					<button class="cta-btn" id="login-btn">Connexion</button>
+					<button class="register-btn" id="register-btn">Inscription</button>
 					<button class="initial-btn" id="initial-btn" style="display : none"><i class="fa-solid fa-user"></i></button>
 					<div class="dropdown-menu" id="dropdown-menu" style="display : none">
 						<a href="/dashboard" class="dropdown-item">
