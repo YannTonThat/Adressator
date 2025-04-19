@@ -167,6 +167,21 @@ def search():
 def actu():
     return render_template('actu-conseils.html')
 
+@app.route('/article1')
+@limiter.limit("100 per minute")
+def article1():
+    return render_template('article1.html')
+
+@app.route('/article2')
+@limiter.limit("100 per minute")
+def article2():
+    return render_template('article2.html')
+
+@app.route('/article3')
+@limiter.limit("100 per minute")
+def article3():
+    return render_template('article3.html')
+
 
 # Route pour la page de tableau de bord
 @app.route('/dashboard')
