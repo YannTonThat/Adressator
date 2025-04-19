@@ -249,107 +249,103 @@
 
 </style>
 
-<body>
-	<!-- Inclure le header de faÃ§on dynamique -->
-	{% include "header.html" %}
-  
+<body class="bg-gray-50 text-gray-800 font-sans">
+{% include "header.html" %}
 <article class="max-w-3xl mx-auto px-4 py-12">
-
   <section class="mb-10">
-      <img src="article2-M.png" alt="Couple emplacement achat maison" class="rounded-xl shadow mb-6 w-full object-cover h-64 img-top-offset">
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">Acheter une maison : comment évaluer si l’emplacement est bon ?</h1>
-      <p class="text-gray-600 text-lg">Quand on achète une maison pour la première fois, l’emplacement peut sembler secondaire face à un coup de cœur. Pourtant, c’est souvent ce qui fait toute la différence entre un achat réussi… ou une longue série de compromis.</p>
+    <img src="article3-M.png" alt="Visite maison et vérifications" class="rounded-xl shadow mb-6 w-full object-cover h-64 img-top-offset">
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">Défauts d’une maison : comment les repérer avant de faire une offre ?</h1>
+    <p class="text-gray-600 text-lg">Acheter sa première maison, c’est souvent un mélange d’excitation… et de stress. Et s’il y avait des problèmes qu’on ne voit pas ? Des défauts cachés derrière un coup de peinture ? Des vices qui coûteront cher après la signature ?</p>
   </section>
-	  
-   <div class="mb-10 text-sm text-blue-700">
-       <ul style="color:#616161" class="list-none space-y-3">
-        <li><a href="#emplacement" class="hover:underline flex items-center gap-2"><i class="fas fa-map-marker-alt"></i> Pourquoi l’emplacement est important</a></li>
-        <li><a href="#criteres" class="hover:underline flex items-center gap-2"><i class="fas fa-list"></i> Les 7 critères à analyser</a></li>
-        <li><a href="#infos" class="hover:underline flex items-center gap-2"><i class="fas fa-search-location"></i> Comment obtenir plus d’infos</a></li>
-        <li><a href="#erreurs" class="hover:underline flex items-center gap-2"><i class="fas fa-exclamation-circle"></i> Ce que révèlent les erreurs des autres acheteurs</a></li>
-      </ul>
-    </div>
 
+  <div class="mb-10 text-sm text-blue-700">
+    <ul style="color:#616161" class="list-none space-y-3">
+      <li><a href="#lecture" class="hover:underline flex items-center gap-2"><i class="fas fa-eye"></i> Lire entre les murs</a></li>
+      <li><a href="#checklist" class="hover:underline flex items-center gap-2"><i class="fas fa-tools"></i> Les 9 points techniques à vérifier</a></li>
+      <li><a href="#conseils" class="hover:underline flex items-center gap-2"><i class="fas fa-lightbulb"></i> 3 conseils pour éviter les pièges</a></li>
+      <li><a href="#vendeur" class="hover:underline flex items-center gap-2"><i class="fas fa-file-signature"></i> Ce que vous pouvez demander au vendeur</a></li>
+    </ul>
+  </div>
 
+  <section id="lecture" class="mb-10">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Pourquoi il faut apprendre à “lire entre les murs”</h2>
+    <p class="mb-4">Lorsqu’on visite une maison, on est souvent happé par la déco ou le charme du lieu. Mais attention : une peinture fraîche ou un parfum d’ambiance peuvent masquer des défauts importants.</p>
+    <p>Les agents et vendeurs ne signalent pas toujours les défauts visibles. À vous d’être vigilant et d’aller chercher l’information.</p>
+  </section>
 
-    <section id="emplacement" class="mb-10">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Pourquoi l’emplacement est (presque) tout dans l’immobilier</h2>
-      <p class="mb-4">Un bon emplacement, ce n’est pas forcément “en centre-ville” ou “à la campagne”. C’est un endroit qui correspond à vos besoins, à votre rythme de vie, et qui gardera sa valeur dans le temps. Il faut penser à long terme : qualité de vie aujourd’hui, revente demain.</p>
-      <p>Même si le marché immobilier fluctue, certaines constantes restent : une maison bien située se revend plus vite, souvent plus cher, et avec moins de stress. L’emplacement peut même compenser certains défauts du bien.</p>
-    </section>
+  <section id="checklist" class="mb-10">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Les 9 points techniques à vérifier absolument lors d’une visite</h2>
+    <ul class="list-decimal pl-5 space-y-4">
+      <li><strong>Traces d’humidité et moisissures :</strong> regardez les bas de murs, angles, placards, tapis… et sentez l’air ambiant.</li>
+      <li><strong>Le toit :</strong> tuiles, mousses, affaissements, isolation du grenier ou trappe.</li>
+      <li><strong>Fissures :</strong> large, oblique, en escalier ou proche d’un angle : à faire expertiser.</li>
+      <li><strong>Électricité :</strong> tableau vétuste, absence de différentiel, prises aux normes.</li>
+      <li><strong>Chauffage et ventilation :</strong> type, âge, état, entretien, VMC dans les pièces d’eau.</li>
+      <li><strong>Pression d’eau et évacuation :</strong> testez les robinets et écoutez les bruits de canalisation.</li>
+      <li><strong>Menuiseries :</strong> état, fermeture, courants d’air, double vitrage embué.</li>
+      <li><strong>Odeurs :</strong> humidité, renfermé ou chimique : toujours suspect.</li>
+      <li><strong>Extérieurs :</strong> drainage, pente, vis-à-vis, bruit, traces d’inondation.</li>
+    </ul>
+  </section>
 
-    <section id="criteres" class="mb-10">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Les 7 critères à analyser pour juger de la situation d’un bien</h2>
-      <ul class="list-disc pl-5 space-y-4">
-        <li><strong>L’environnement immédiat :</strong> bruit, vis-à-vis, circulation – que voit-on depuis le jardin ou les fenêtres ? Y a-t-il une ligne de train, une route passante, des voisins bruyants ?</li>
-        <li><strong>Les transports et l’accessibilité :</strong> Combien de temps pour aller au travail ? Aux écoles ? Aux loisirs ?</li>
-        <li><strong>Les commerces, écoles et services :</strong> Avoir une boulangerie, une pharmacie ou une crèche à pied peut changer le quotidien.</li>
-        <li><strong>Le quartier :</strong> dynamique ou en déclin ? Un quartier vivant et entretenu est un bon signe.</li>
-        <li><strong>L’exposition et la luminosité naturelle :</strong> orientation, ensoleillement, confort thermique.</li>
-        <li><strong>Les projets urbains ou nuisances prévues :</strong> nouvelles constructions, voirie, zones industrielles à venir.</li>
-        <li><strong>Le ressenti personnel :</strong> visitez à différentes heures, observez l’ambiance, discutez avec les voisins.</li>
-      </ul>
-    </section>
+  <section id="conseils" class="mb-10">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">3 conseils pour ne pas se faire piéger par un bien “maquillé”</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li><strong>Venir équipé :</strong> lampe, niveau, mètre, appli décibel.</li>
+      <li><strong>Revenir à un autre moment :</strong> matin, soir, semaine, week-end…</li>
+      <li><strong>Prendre le temps :</strong> observez, testez, posez des questions même si l’agent presse.</li>
+    </ul>
+  </section>
 
-    <section id="infos" class="mb-10">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Comment obtenir plus d’infos sur l’emplacement avant d’acheter</h2>
-      <p class="mb-4"><strong>Rechercher l’adresse exacte :</strong> c’est essentiel pour faire ses propres recherches et éviter les mauvaises surprises.</p>
-      <p class="mb-4"><strong>Utiliser les outils en ligne :</strong> Geoportail, cadastre, cartes de bruit et pollution permettent une vision plus complète de l’environnement.</p>
-      <p><strong>Parler aux voisins ou visiter à différents moments :</strong> ces échanges révèlent souvent des détails invisibles lors des visites classiques.</p>
-    </section>
+  <section id="vendeur" class="mb-10">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Ce que vous pouvez demander légalement au vendeur</h2>
+    <p class="mb-4"><strong>Diagnostics obligatoires :</strong> DPE, amiante, plomb, électricité, gaz, termites… Et parfois étude de sol.</p>
+    <p class="mb-4"><strong>Historique des travaux ou incidents :</strong> fuites, toiture, inondations passées.</p>
+    <p><strong>Environnement immédiat :</strong> droit de passage, servitudes, voisins bruyants. N’hésitez pas à poser des questions précises.</p>
+  </section>
 
-    <section id="erreurs" class="mb-10">
-      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Ce que révèlent les erreurs des autres acheteurs</h2>
-      <p class="mb-4">Beaucoup de primo-accédants racontent avoir choisi une maison trop vite, puis avoir découvert un vis-à-vis gênant, une école bruyante ou des bouchons quotidiens.</p>
-      <p><strong>Pour éviter ces pièges :</strong> prenez le temps, multipliez les visites, posez les bonnes questions, et surtout, informez-vous avec précision avant de vous engager.</p>
-    </section>
+  <section class="mt-16 border-t pt-6 text-sm text-gray-600 text-center">
+    <p class="mb-2">
+      <a href="/actu" class="text-blue-600 hover:underline">← Voir tous les articles</a>
+      &nbsp;|&nbsp;
+      <a href="/" class="text-blue-600 hover:underline">Retour à l’accueil</a>
+    </p>
+  </section>
+</article>
 
-    <section class="mt-16 border-t pt-6 text-sm text-gray-600 text-center">
-      <p class="mb-2">
-        <a href="/actu" class="text-blue-600 hover:underline">← Voir tous les articles</a>
-        &nbsp;|&nbsp;
-        <a href="/" class="text-blue-600 hover:underline">Retour à l’accueil</a>
-      </p>
-    </section>
-   </article>
-	
-   <button id="scroll-to-top-btn" class="scroll-to-top">
-     <i class="fas fa-chevron-up"></i>
-   </button>
-    <!-- Footer -->
-   <footer>
-      <p>&copy; 2024 Adressator. Tous droits réservés.</p>
-      <p>
-	  <a href="Mentions-légales">Mentions légales</a> |
-	  <a href="CGU">Conditions générales d'utilisation</a> |
-	  <a href="PDC">Politique de confidentialité</a> |
-	  <a href="Contact">Contact</a>
-      </p>
-    </footer>
- 
+<button id="scroll-to-top-btn" class="scroll-to-top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<footer>
+  <p>&copy; 2024 Adressator. Tous droits réservés.</p>
+  <p>
+    <a href="Mentions-légales">Mentions légales</a> |
+    <a href="CGU">Conditions générales d'utilisation</a> |
+    <a href="PDC">Politique de confidentialité</a> |
+    <a href="Contact">Contact</a>
+  </p>
+</footer>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-	const scrollToTopBtn = document.getElementById("scroll-to-top-btn");
+  const scrollToTopBtn = document.getElementById("scroll-to-top-btn");
 
-	// Affiche ou cache le bouton en fonction du scroll
-	window.addEventListener("scroll", () => {
-		if (window.scrollY > 300) { // Affiche le bouton après 300px de scroll
-			scrollToTopBtn.classList.add("show");
-		} else {
-			scrollToTopBtn.classList.remove("show");
-		}
-	});
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollToTopBtn.classList.add("show");
+    } else {
+      scrollToTopBtn.classList.remove("show");
+    }
+  });
 
-	// Scroll en haut de la page lors du clic
-	scrollToTopBtn.addEventListener("click", () => {
-		window.scrollTo({
-			top: 0,
-			behavior: "smooth",
-		});
-	});
+  scrollToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
 });
-
 </script>
 </body>
 </html>
