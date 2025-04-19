@@ -161,6 +161,11 @@ def search():
     return render_template('search.html', user_logged_in=user_logged_in, user_initial=user_initial) # Affiche la page d'accueil
 
 
+#Route pour Actualités et Conseils
+@app.route('/actu')
+@limiter.limit("100 per minute")
+def actu():
+    return render_template('actu-conseils.html')
 
 
 # Route pour la page de tableau de bord
