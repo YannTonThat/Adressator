@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comment évaluer si l’emplacement est bon ? | Adressator</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<style>
+    /* Popup Styles */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+	  z-index: 1000; /* Assure que le popup est au-dessus de tout */
+    }
+
+
+
+	    /* Hero Section */
+    .hero {
+      z-index: 100;
+      position: relative;
+      width: 100%; /* Pleine largeur de l'Ã©cran */
+      height: 50vh; /* Hauteur proportionnelle Ã  la hauteur de l'Ã©cran */
+      min-height: 300px;
+      overflow: hidden;
+      background-image: url('/static/FAQ.png'); /* Image de fond */
+      background-size: cover;
+      background-position: center 50%;
+      background-repeat: no-repeat;
+      display: flex;
+	  flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      }
+
+    /* Overlay for darker background, making text more readable */
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* Assombrissement */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      opacity: 0; /* OpacitÃ© Ã  mettre Ã  0 si animation*/
+      visibility: hidden; /* Cache complÃ¨tement l'overlay */
+      transition: opacity 1s ease-in-out, visibility 0s linear 1s;
+    }
+
+	.hero-overlay.fade-in {
+		opacity: 1; /* OpacitÃ© finale aprÃ¨s transition */
+		visibility: visible;
+    	transition: opacity 1s ease-in-out, visibility 0s;
+	}
+
+    .hero h1 {
+      font-size: 3.3rem;
+	  margin:10px;
+      color: #ffffff;
+      text-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+	  margin:10px;
+      color: #ffffff;
+      text-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero h3 {
+      font-size: 1rem;
+	  margin:10px;
+    }
+
+    .hero a{
+      text-decoration: none;
+    }
+
+    a.cta-btn {
+		font-family: 'lexend', sans-serif;
+		width: fit-content;
+		padding-right: 20px;
+		padding-left: 20px;
+		height: 25px;
+		background-color: #573095;
+		color: #fff;
+		border: none;
+		border-radius: 25px;
+		margin: 20px;
+		font-size: 1.1rem;
+		font-weight: 450;
+		cursor: pointer;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+		
+	a.cta-btn:hover {
+		background-color: #2e1358;
+        color: #fff;
+	}
+
+
+@media (max-width: 768px) {
+
+	.hero {
+		z-index: 100;
+		position: relative;
+		width: 100%; /* Pleine largeur de l'Ã©cran */
+		height: 27vh;
+		min-height: 300px;
+		overflow: hidden;
+		background-image: url('/static/FAQ.png'); /* Image de fond */
+		background-size: cover;
+		background-position: center 63%;
+		background-repeat: no-repeat;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.hero-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5); /* Assombrissement */
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		opacity: 0; /* OpacitÃ© Ã  mettre Ã  0 si animation*/
+      visibility: hidden; /* Cache complÃ¨tement l'overlay */
+      transition: opacity 1s ease-in-out, visibility 0s linear 1s;
+    }
+
+	.hero-overlay.fade-in {
+		opacity: 1; /* OpacitÃ© finale aprÃ¨s transition */
+		visibility: visible;
+    	transition: opacity 1s ease-in-out, visibility 0s;
+	}
+
+	.hero h1 {
+		font-size: 1.6rem;
+		text-align: center;
+	}
+
+	.hero h2 {
+		font-size: 0.9rem;
+		text-align: center;
+	}
+
+	.hero h3 {
+		font-size: 0.8rem;
+	}
+
+	a.cta-btn {
+		font-family: 'lexend', sans-serif;
+		font-size: 0.9rem;
+		width: fit-content;
+    	padding-right: 15px;
+    	padding-left: 15px;
+		background-color: #573095;
+		color: #fff;
+		border: none;
+		border-radius: 25px;
+		font-weight: 450;
+		cursor: pointer;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	a.cta-btn:hover {
+		background-color: #2e1358;
+	}
+}
+
+.scroll-to-top {
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		width: 50px;
+		height: 50px;
+		background-color: rgb(153,202,60);
+		color: white;
+		border: none;
+		border-radius: 50%;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+		cursor: pointer;
+		z-index: 1000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+	}
+
+	.scroll-to-top i {
+		font-size: 20px;
+	}
+
+	.scroll-to-top.show {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.scroll-to-top:hover {
+		background-color: #a8e24e;
+	}
+	
+		/* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+
+</style>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+	<!-- Inclure le header de faÃ§on dynamique -->
+	{% include "header.html" %}
+  
+  <article class="max-w-3xl mx-auto px-4 py-12">
+    <header class="mb-10">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Acheter une maison : comment évaluer si l’emplacement est bon ?</h1>
+      <p class="text-gray-600 text-lg">Quand on achète une maison pour la première fois, l’emplacement peut sembler secondaire face à un coup de cœur. Pourtant, c’est souvent ce qui fait toute la différence entre un achat réussi… ou une longue série de compromis.</p>
+    </header>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Pourquoi l’emplacement est (presque) tout dans l’immobilier</h2>
+      <p class="mb-4">Un bon emplacement, ce n’est pas forcément “en centre-ville” ou “à la campagne”. C’est un endroit qui correspond à vos besoins, à votre rythme de vie, et qui gardera sa valeur dans le temps. Il faut penser à long terme : qualité de vie aujourd’hui, revente demain.</p>
+      <p>Même si le marché immobilier fluctue, certaines constantes restent : une maison bien située se revend plus vite, souvent plus cher, et avec moins de stress. L’emplacement peut même compenser certains défauts du bien.</p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Les 7 critères à analyser pour juger de la situation d’un bien</h2>
+      <ul class="list-disc pl-5 space-y-4">
+        <li><strong>L’environnement immédiat :</strong> bruit, vis-à-vis, circulation – que voit-on depuis le jardin ou les fenêtres ? Y a-t-il une ligne de train, une route passante, des voisins bruyants ?</li>
+        <li><strong>Les transports et l’accessibilité :</strong> Combien de temps pour aller au travail ? Aux écoles ? Aux loisirs ?</li>
+        <li><strong>Les commerces, écoles et services :</strong> Avoir une boulangerie, une pharmacie ou une crèche à pied peut changer le quotidien.</li>
+        <li><strong>Le quartier :</strong> dynamique ou en déclin ? Un quartier vivant et entretenu est un bon signe.</li>
+        <li><strong>L’exposition et la luminosité naturelle :</strong> orientation, ensoleillement, confort thermique.</li>
+        <li><strong>Les projets urbains ou nuisances prévues :</strong> nouvelles constructions, voirie, zones industrielles à venir.</li>
+        <li><strong>Le ressenti personnel :</strong> visitez à différentes heures, observez l’ambiance, discutez avec les voisins.</li>
+      </ul>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Comment obtenir plus d’infos sur l’emplacement avant d’acheter</h2>
+      <p class="mb-4"><strong>Rechercher l’adresse exacte :</strong> c’est essentiel pour faire ses propres recherches et éviter les mauvaises surprises.</p>
+      <p class="mb-4"><strong>Utiliser les outils en ligne :</strong> Geoportail, cadastre, cartes de bruit et pollution permettent une vision plus complète de l’environnement.</p>
+      <p><strong>Parler aux voisins ou visiter à différents moments :</strong> ces échanges révèlent souvent des détails invisibles lors des visites classiques.</p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Ce que révèlent les erreurs des autres acheteurs</h2>
+      <p class="mb-4">Beaucoup de primo-accédants racontent avoir choisi une maison trop vite, puis avoir découvert un vis-à-vis gênant, une école bruyante ou des bouchons quotidiens.</p>
+      <p><strong>Pour éviter ces pièges :</strong> prenez le temps, multipliez les visites, posez les bonnes questions, et surtout, informez-vous avec précision avant de vous engager.</p>
+    </section>
+  </article>
+</body>
+</html>
