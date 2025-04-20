@@ -301,7 +301,7 @@
 			padding-bottom: 20px;
 			border-radius: 20px;
 			max-width: 90%;
-			width: 450px;
+			width: 510px;
 			position: relative; /* Important pour rendre le popup déplaçable */
 			line-height: 1.6;
 			/*top: 50%;
@@ -309,8 +309,9 @@
 			/*transform: translateX (50%); /* Centre initialement
 			transform: translateY (50%);*/
 			transition: top 0.2s ease, left 0.2s ease;
-			max-height: 80vh; /* Hauteur maximale à 80% de la fenêtre pour laisser de l'espace */
+			max-height: 90vh; /* Hauteur maximale à 90% de la fenêtre pour laisser de l'espace */
 			overflow-y: auto; /* Ajoute le défilement vertical si le contenu dépasse la hauteur max */
+			box-sizing: border-box;
 		}
 
 		.search-popup-container {
@@ -1411,7 +1412,7 @@
 				<!-- Case à cocher pour accepter les CGU -->
 			
 				<div class="cgu-checkbox-container" id="cgu-container" style="padding:10px">
-					<input type="checkbox" id="cgu-checkbox" style="transform:translateY(6px)">
+					<input type="checkbox" id="cgu-checkbox" style="transform:translateY(2px)">
 					<label for="cgu-checkbox">&nbsp;J'accepte les <a href="/CGU" target="_blank"
 							style="color:#333333; font-weight: 500;">Conditions générales d'utilisation</a></label>
 				</div>
