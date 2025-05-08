@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulation de pr�t immobilier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulation de pr�t immobilier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Lexend', sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        min-height: 100vh;
+        background-color: white;
+        overflow-x: hidden;
+        flex-direction: column;
+      }
+
+      .wrapper {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .angled-section {
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .background-angled {
+        position: absolute;
+        top: 226px;
+        left: 0;
+        width: 100vw;
+        height: 42%;
+        background-color: #99ca3c;
+        transform: skewY(-4deg);
+        transform-origin: top left;
+        z-index: -1;
+      }
+
+      .background-angled-r {
+        position: absolute;
+        bottom: 178px;
+        left: 0;
+        width: 100vw;
+        height: 42%;
+        background-color: #99ca3c;
+        transform: skewY(4deg);
+        transform-origin: top left;
+        z-index: -1;
+      }
+
+      .page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 1800px;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        padding: 2rem;
+        box-sizing: border-box;
+      }
+
+      .resultats,
+      .inputs {
+        flex: 1;
+        padding: 1rem;
+      }
+
+      .resultats {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        margin: 1rem;
+        height: 430px;
+      }
+
+      .resultats .header-mensualite {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .resultats .header-mensualite .label {
+        font-size: 1.2rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+
+      .resultats .header-mensualite .value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #000;
+      }
+
+      .resultats .item {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
+      }
+
+      .resultats .border {
+        border-bottom: 2px solid #77777754;
+        padding-top: 0.25rem;
+      }
+
+      .resultats .label {
+        font-weight: 500;
+        color: #555;
+      }
+
+      .resultats .label.light {
+        font-weight: 400;
+        color: #777;
+        font-size: 0.9rem;
+      }
+
+      .resultats .value {
+        font-weight: bold;
+        color: #333333;
+      }
+
+      .resultats .value.light {
+        font-weight: 400;
+        color: #777;
+        font-size: 0.9rem;
+      }
+
+      .inputs {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        margin: 1rem;
+      }
+
+      .inputs h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #333;
+        border-bottom: 2px solid #99ca3c;
+        padding-bottom: 0.5rem;
+      }
+
+      .input-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: baseline;
+      }
+
+      .input-block {
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+      }
+
+      .input-block .label {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-weight: bold;
+        color: #555;
+        margin-bottom: 0.5rem;
+      }
+
+      .input-block .value {
+        text-align: right;
+        font-size: 1.5rem;
+        color: #333333;
+        border-color: #0000;
+        font-family: 'Lexend';
+        font-weight: 600;
+        width: 7rem;
+        background-color: #f6f6f9;
+        border-radius: 0.5rem;
+      }
+
+      .input-block .value:focus-visible {
+        outline-color: #0000002b;
+      }
+
+      .input-block .value.small {
+        text-align: right;
+        font-size: 1rem;
+        color: #555555;
+        border-color: #0000;
+        font-family: 'Lexend';
+        font-weight: 600;
+        width: 6rem;
+      }
+
+      .input-block .value .small:focus-visible {
+        outline-color: #0000002b;
+      }
+
+
+      .toggle-detail {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #555;
+      }
+
+      .toggle-detail svg {
+        background-color: rgb(153, 202, 60);
+        border-radius: 50%;
+        padding: 4px;
+        width: 16px;
+        height: 16px;
+        fill: white;
+        font-weight: bold;
+        transition: transform 0.3s, background-color 0.3s;
+      }
+
+      .toggle-detail.open svg {
+        transform: rotate(180deg);
+      }
+
+      .toggle-detail svg:hover {
+        background: rgb(95, 147, 15);
+      }
+
+      .detail-slider {
+        display: none;
+        margin-top: 1rem;
+        width: 75%;
+        margin-left: 12.5%;
+        padding-bottom: 10px;
+      }
+
+      .detail-slider.show {
+        display: block;
+      }
+
+      .detail-slider span {
+        font-size: 0.8rem;
+      }
+
+      input[type=range] {
+        width: 100%;
+        height: 8px;
+        background: linear-gradient(to right, rgb(153, 202, 60) 0%, rgb(153, 202, 60) var(--val), #ddd var(--val), #ddd 100%);
+        border-radius: 3px;
+        outline: none;
+        appearance: none;
+        cursor: pointer;
+      }
+
+      input[type=range]:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      input[type=range]::-webkit-slider-thumb {
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: rgb(153, 202, 60);
+        transition: background 0.3s;
+      }
+
+      input[type=range]:disabled::-webkit-slider-thumb {
+        background: #aaa;
+      }
+
+      input[type=range]::-webkit-slider-thumb:hover {
+        background: rgb(95, 147, 15);
+      }
+
+      input[type=range]::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: rgb(153, 202, 60);
+        transition: background 0.3s;
+      }
+
+      input[type=range]:disabled::-moz-range-thumb {
+        background: #aaa;
+      }
+
+      .note {
+        font-size: 0.7rem;
+        color: #888;
+        margin-top: 0.3rem;
+        text-align: right;
+      }
+
+      .graph-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .graph-area {
+        width: 60%;
+        max-width: 1200px;
+        margin-bottom: 3rem;
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .graph-area h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #333;
+        border-bottom: 2px solid #99ca3c;
+        padding-bottom: 0.5rem;
+      }
+
+
+      #full-page-line {
+        position: absolute;
+        top: 300px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 5px;
+        background-image: repeating-linear-gradient(to bottom,
+            #99ca3c,
+            #99ca3c 50px,
+            transparent 50px,
+            transparent 100px);
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .cta-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin: 3rem auto;
+        width: 100%;
+        max-width: 1000px;
+      }
+
+
+      .cta-section {
+        margin-top: 120px;
+        margin-bottom: 120px;
+        margin: 3rem auto;
+        text-align: center;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem 1rem;
+        padding-bottom: 5rem;
+        width: 100%;
+        max-width: 800px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+
+      .mascotte-cta {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 263px;
+        pointer-events: none;
+        z-index: 2;
+        transform: translate(21%, 15%);
+      }
+
+      .cta-text {
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background-color: #573095;
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        transition: background-color 0.3s;
+      }
+
+      .cta-button:hover {
+        background-color: #2e1358;
+      }
+
+
+      @media (max-width: 768px) {
+        body {
+          flex-direction: column;
+        }
+
+
+        .container {
+          flex-direction: column-reverse;
+          align-items: center;
+          padding-bottom: 0rem;
+        }
+
+        .resultats,
+        .inputs {
+          width: 100%;
+          padding: 1rem;
+          margin: 0;
+          margin-bottom: 1.5rem;
+        }
+
+        .detail-slider {
+          width: 90%;
+          margin-left: 1rem;
+        }
+
+        .input-block .label {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .input-block .label span:last-child {
+          align-self: flex-end;
+          margin-top: 0.3rem;
+        }
+
+        .inputs h2 {
+          font-size: 1.2rem;
+        }
+
+        .resultats .header-mensualite .label {
+          font-size: 1rem;
+        }
+
+        .resultats .header-mensualite .value {
+          font-size: 1.5rem;
+        }
+
+        .graph-area {
+          width: 83%;
+          margin: 0 auto;
+          padding: 1rem;
+        }
+
+        .graph-area h2 {
+          font-size: 1.2rem;
+        }
+
+        .cta-section {
+          width: 83%;
+          padding-bottom: 322px;
+        }
+
+        .mascotte-cta {
+          position: static;
+          display: block;
+          margin: 2rem auto 0 auto;
+          transform: translateY(-389px);
+          height: 289px;
+          /* facultatif : taille un peu réduite en mobile */
+        }
+
+        .cta-wrapper {
+          flex-direction: column;
+          align-items: center;
+          margin-top: 1rem;
+        }
+
+        .background-angled {
+          opacity: 0;
+        }
+
+        .background-angled-r {
+          opacity: 0;
+        }
+
+        #full-page-line {
+          opacity: 0;
+        }
+      }
+
+      /* Footer */
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      footer a {
+        color: #ddd;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      .social-links {
+        margin-top: 10px;
+      }
+
+      .social-links a {
+        display: inline-block;
+        margin: 0 8px;
+        font-size: 1.5rem;
+        color: #ddd;
+        transition: color 0.3s ease-in-out;
+      }
+
+      .social-links a:hover {
+        color: #1da1f2;
+      }
+
+      .scroll-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background-color: rgb(153, 202, 60);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+      }
+
+      .scroll-to-top i {
+        font-size: 20px;
+      }
+
+      .scroll-to-top.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .scroll-to-top:hover {
+        background-color: #a8e24e;
+      }
+    </style>
+  </head>
+
+<body>
+  <!-- Inclure le header de façon dynamique -->
+  {% include "header.html" %}
+  
+  <div id="full-page-line"></div>
+  <div class="wrapper">
+    <div class="angled-section">
+      <div class="background-angled"></div>
+      <div class="background-angled-r"></div>
+
+      <div class="page">
+        <h1> Pr�t immobilier : simulation </h1>
+        <div class="container">
+          <div class="resultats">
+            <div class="header-mensualite">
+              <div class="label">Votre mensualit� sera de</div>
+              <div class="value" style="color:rgb(153, 202, 60); font-size:3.5rem" id="mensualite">0 �</div>
+            </div>
+            <div class="item border">
+              <div class="label">Montant de votre pr�t :</div>
+              <div class="value" id="montantPret">300 000 �</div>
+            </div>
+            <div class="item">
+              <div class="label">Votre mensualit� :</div>
+              <div class="value" id="mensualiteDetail">0 �/mois</div>
+            </div>
+            <div class="item border">
+              <div class="label light">dont assurance :</div>
+              <div class="value light" id="assuranceMensuelle">0 �/mois</div>
+            </div>
+            <div class="item">
+              <div class="label">Co�t total du cr�dit :</div>
+              <div class="value" id="coutTotal">0 �</div>
+            </div>
+            <div class="item border">
+              <div class="label light">dont assurance :</div>
+              <div class="value light" id="coutAssurance">0 �</div>
+            </div>
+          </div>
+          <div class="inputs">
+            <h2>Param�tres</h2>
+            <div class="input-block">
+              <div class="toggle-detail" onclick="toggleDetail(this)">
+                <span>Montant de l'emprunt</span>
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M1.646 5.646a.5.5 0 0 1 .708 0L8 11.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                </svg>
+              </div>
+              <div class="input-container"><input type="text" class="value" id="valMontant" value="250 000">
+                <div class="label"><span>&nbsp;�</span></div>
+              </div>
+              <input type="range" id="montant" min="20000" max="1200000" step="1000" value="250000">
+
+              <div class="detail-slider" id="detailSlider">
+                <div class="input-block">
+                  <div class="label">
+                    <span>Co�t du bien</span>
+                    <div class="input-container">
+                      <input type="text" class="value small" id="valBien" value="250 000">
+                      <div class="label"><span>&nbsp;�</span></div>
+                    </div>
+                  </div>
+                  <input type="range" id="bien" min="10000" max="1000000" step="1000" value="250000">
+                </div>
+                <div class="input-block">
+                  <div class="label">
+                    <span>Frais d'agence</span>
+                    <div class="input-container">
+                      <input type="text" class="value small" id="valAgence" value="17 500">
+                      <div class="label"><span>&nbsp; �</span></div>
+                    </div>
+                  </div>
+                  <input type="range" id="agence" min="0" max="70000" step="100" value="17500">
+                  <div class="note">Par d�faut : 7 %<br>Montant choisi = <span id="agencePourcent"></span>%</div>
+                </div>
+                <div class="input-block">
+                  <div class="label">
+                    <span>Frais de notaire</span>
+                    <div class="input-container">
+                      <input type="text" class="value small" id="valNotaire" value="17 500">
+                      <div class="label"><span>&nbsp; �</span></div>
+                    </div>
+                  </div>
+                  <input type="range" id="notaire" min="0" max="80000" step="100" value="17500">
+                  <div class="note">Par d�faut 6,6 % + 1000 � : <span id="notaireDefaut"></span><br>Montant choisi =
+                    <span id="notairePourcent"></span>%
+                  </div>
+                  <div class="input-block">
+                    <div class="label">
+                      <span>Apport personnel</span>
+                      <div class="input-container">
+                        <input type="text" class="value small" id="valApport" value="35 000">
+                        <div class="label"><span>&nbsp; �</span></div>
+                      </div>
+                    </div>
+                    <input type="range" id="apport" min="0" max="500000" step="1000" value="35000">
+                  </div>
+                </div>
+              </div>
+
+              <div class="input-block">
+                <div class="label"><span>Dur�e</span><span id="valDuree">20 ans</span></div>
+                <input type="range" id="duree" min="2" max="25" step="1" value="20">
+              </div>
+              <div class="input-block">
+                <div class="label"><span>Taux d'int�r�t (%)</span><span id="valTaux">1.5 %</span></div>
+                <input type="range" id="taux" min="0" max="7" step="0.1" value="1.5">
+              </div>
+              <div class="input-block">
+                <div class="label"><span>Taux d'assurance (%)</span><span id="valAssurance">0.3 %</span></div>
+                <input type="range" id="assurance" min="0" max="3" step="0.1" value="0.3">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const montant = document.getElementById("montant");
+      const duree = document.getElementById("duree");
+      const taux = document.getElementById("taux");
+      const assurance = document.getElementById("assurance");
+
+      const bien = document.getElementById("bien");
+      const agence = document.getElementById("agence");
+      const apport = document.getElementById("apport");
+      const notaire = document.getElementById("notaire");
+
+      const valMontant = document.getElementById("valMontant");
+      const valBien = document.getElementById("valBien");
+      const valAgence = document.getElementById("valAgence");
+      const valAgencePourcent = document.getElementById("agencePourcent");
+      const valNotaire = document.getElementById("valNotaire");
+      const valNotaireDefaut = document.getElementById("notaireDefaut");
+      const valNotairePourcent = document.getElementById("notairePourcent");
+      const valApport = document.getElementById("valApport");
+
+      const mensualiteEl = document.getElementById("mensualite");
+      const mensualiteDetailEl = document.getElementById("mensualiteDetail");
+      const montantPretEl = document.getElementById("montantPret");
+      const assuranceMensuelleEl = document.getElementById("assuranceMensuelle");
+      const coutTotalEl = document.getElementById("coutTotal");
+      const coutAssuranceEl = document.getElementById("coutAssurance");
+
+      function formatMontant(valeur) {
+        return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(valeur);
+      }
+
+      function updateSliderFill(slider) {
+        const min = slider.min;
+        const max = slider.max;
+        const val = slider.value;
+        const percentage = ((val - min) / (max - min)) * 100;
+        slider.style.setProperty('--val', percentage + '%');
+      }
+
+      function calculer() {
+        valDuree.textContent = duree.value + ' ans';
+        valTaux.textContent = taux.value + ' %';
+        valAssurance.textContent = assurance.value + ' %';
+        const useDetail = document.getElementById("detailSlider").classList.contains("show");
+
+        let capital = parseInt(montant.value);
+        if (useDetail) {
+          const bienVal = parseInt(bien.value);
+          const notairePourcent = Math.round(bienVal * 0.066 + 1000);
+          //notaire.max = Math.round((bien.valueAsNumber + agence.valueAsNumber) * 0.15);
+          valNotaireDefaut.textContent = formatMontant(notairePourcent);
+
+          const agenceVal = parseInt(agence.value);
+          const notaireVal = parseInt(notaire.value);
+          const apportVal = parseInt(apport.value);
+          capital = bienVal + agenceVal + notaireVal - apportVal;
+
+          valBien.textContent = formatMontant(bienVal);
+          valAgence.textContent = formatMontant(agenceVal);
+          const agencePourcent = bienVal > 0 ? (agenceVal / bienVal * 100).toFixed(2) : '0.00';
+          valAgencePourcent.textContent = agencePourcent.replace('.', ',');
+          valNotaire.textContent = formatMontant(notaireVal);
+
+          const pourcentReel = bienVal > 0 ? (notaireVal / bienVal * 100).toFixed(2) : '0.00';
+          valNotairePourcent.textContent = pourcentReel.replace('.', ',');
+          valApport.textContent = formatMontant(apportVal);
+          valMontant.value = capital.toLocaleString("fr-FR");
+        } else {
+          capital = parseInt(montant.value);
+          valMontant.value = capital.toLocaleString("fr-FR");
+        }
+
+        montantPretEl.textContent = formatMontant(capital);
+
+        const annees = parseInt(duree.value);
+        const tauxAnnuel = parseFloat(taux.value) / 100;
+        const tauxAssurance = parseFloat(assurance.value) / 100;
+
+        const mensualites = annees * 12;
+        const tauxMensuel = tauxAnnuel / 12;
+
+        const mensualite = tauxMensuel > 0
+          ? capital * tauxMensuel / (1 - Math.pow(1 + tauxMensuel, -mensualites))
+          : capital / mensualites;
+
+        const assuranceMensuelle = capital * tauxAssurance / 12;
+        const mensualiteTotale = mensualite + assuranceMensuelle;
+        const coutCredit = mensualite * mensualites - capital;
+        const coutAssurance = assuranceMensuelle * mensualites;
+
+        mensualiteEl.textContent = formatMontant(mensualiteTotale);
+        mensualiteDetailEl.textContent = formatMontant(mensualiteTotale) + "/mois";
+        assuranceMensuelleEl.textContent = formatMontant(assuranceMensuelle) + "/mois";
+        coutTotalEl.textContent = formatMontant(coutCredit + coutAssurance);
+        coutAssuranceEl.textContent = formatMontant(coutAssurance);
+
+        [montant, bien, agence, apport, duree, taux, assurance].concat(notaire).forEach(updateSliderFill);
+      }
+
+      [montant, bien, agence, apport, notaire, duree, taux, assurance].forEach(input => {
+        if (input) input.addEventListener("input", calculer);
+      });
+
+
+      function toggleDetail(el) {
+        const isOpen = el.classList.toggle("open");
+        const detail = document.getElementById("detailSlider");
+        const montant = document.getElementById("montant");
+        detail.classList.toggle("show", isOpen);
+        montant.disabled = isOpen;
+        calculer();
+        updateChartFromInputs();
+      }
+
+      function lierChampEtSlider(champTexte, slider) {
+        // Texte vers slider
+        champTexte.addEventListener("input", () => {
+          const cleaned = champTexte.value.replace(/\s/g, "").replace(/[^\d]/g, "");
+          const value = parseInt(cleaned, 10);
+          if (!isNaN(value)) {
+            slider.value = value;
+            updateSliderFill(slider);
+            calculer();
+          }
+        });
+
+        // Slider vers texte
+        slider.addEventListener("input", () => {
+          champTexte.value = parseInt(slider.value).toLocaleString("fr-FR");
+        });
+      }
+
+      // Active le scroll de la souris pour tous les sliders
+      document.querySelectorAll('input[type="range"]').forEach(slider => {
+        slider.addEventListener('wheel', (e) => {
+          e.preventDefault(); // �vite le scroll de la page
+          const step = parseFloat(slider.step) || 1;
+          const currentValue = parseFloat(slider.value);
+          const delta = e.deltaY < 0 ? step : -step; // molette haut = +, bas = -
+          let newValue = currentValue + delta;
+
+          // clamp la valeur entre min et max
+          newValue = Math.max(parseFloat(slider.min), Math.min(parseFloat(slider.max), newValue));
+          slider.value = newValue;
+
+          // mets � jour le champ de texte associ� si existant
+          const id = slider.id;
+          const champTexte = document.getElementById("val" + id.charAt(0).toUpperCase() + id.slice(1));
+          if (champTexte) {
+            champTexte.value = parseInt(slider.value).toLocaleString("fr-FR");
+          }
+
+          // mets � jour le calcul et l'affichage
+          updateSliderFill(slider);
+          calculer();
+        });
+      });
+
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const scrollToTopBtn = document.getElementById("scroll-to-top-btn");
+
+        // Affiche ou cache le bouton en fonction du scroll
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 300) { // Affiche le bouton après 300px de scroll
+            scrollToTopBtn.classList.add("show");
+          } else {
+            scrollToTopBtn.classList.remove("show");
+          }
+        });
+
+        // Scroll en haut de la page lors du clic
+        scrollToTopBtn.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      });
+      window.onload = () => {
+        valBien.textContent = formatMontant(bien.value);
+        valAgence.textContent = formatMontant(agence.value);
+        valAgencePourcent.textContent = "7";
+        valNotaire.textContent = formatMontant(notaire.value);
+        valApport.textContent = formatMontant(apport.value);
+        valMontant.textContent = formatMontant(montant.value);
+        valNotaireDefaut.textContent = "17500 �";
+        valNotairePourcent.textContent = "7";
+        lierChampEtSlider(valMontant, montant);
+        lierChampEtSlider(valBien, bien);
+        lierChampEtSlider(valAgence, agence);
+        lierChampEtSlider(valNotaire, notaire);
+        lierChampEtSlider(valApport, apport);
+        calculer();
+      };
+
+      function updateLineHeight() {
+        const line = document.getElementById("full-page-line");
+        if (line) {
+          line.style.height = document.body.scrollHeight - 300 + "px";
+        }
+      }
+
+      window.addEventListener("load", updateLineHeight);
+      window.addEventListener("resize", updateLineHeight);
+      window.addEventListener("scroll", updateLineHeight);
+    </script>
+    <div class="angled-section">
+      <div class="background-angled"></div>
+      <div class="background-angled-r"></div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <div class="graph-container">
+        <div class="graph-area">
+          <h2> Résultat de votre simulation </h2>
+          <canvas id="graphiqueEmprunt" width="800" height="400"></canvas>
+          <script>
+            const ctx = document.getElementById('graphiqueEmprunt').getContext('2d');
+            let chartInstance;
+
+            function calculGraphData(capital, tauxAnnuel, tauxAssurance) {
+              const durees = [10, 15, 20, 25];
+              const mensualites = [];
+              const coutsCredits = [];
+
+              durees.forEach(duree => {
+                const mensualitesTotales = duree * 12;
+                const tauxMensuel = tauxAnnuel / 12;
+
+                const mensualite = tauxMensuel > 0
+                  ? capital * tauxMensuel / (1 - Math.pow(1 + tauxMensuel, -mensualitesTotales))
+                  : capital / mensualitesTotales;
+
+                const assuranceMensuelle = capital * tauxAssurance / 12;
+                const mensualiteTotale = mensualite + assuranceMensuelle;
+                const coutCredit = mensualite * mensualitesTotales - capital + assuranceMensuelle * mensualitesTotales;
+
+                mensualites.push(Math.round(mensualiteTotale));
+                coutsCredits.push(Math.round(coutCredit));
+              });
+
+              return { durees, mensualites, coutsCredits };
+            }
+
+            function createChart(capital, tauxAnnuel, tauxAssurance) {
+              const { durees, mensualites, coutsCredits } = calculGraphData(capital, tauxAnnuel, tauxAssurance);
+
+              const maxCout = Math.max(...coutsCredits);
+              const echelleCout = Math.ceil(maxCout / 7 / 1000) * 1000;
+              const ticksCout = Array.from({ length: 8 }, (_, i) => i * echelleCout);
+
+              if (chartInstance) {
+                chartInstance.data.datasets[0].data = mensualites;
+                chartInstance.data.datasets[1].data = coutsCredits;
+                chartInstance.options.scales.y1.suggestedMax = maxCout;
+                chartInstance.update();
+                return;
+              }
+              chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: durees.map(d => `${d} ans`),
+                  datasets: [
+                    {
+                      label: 'Mensualités',
+                      data: mensualites,
+                      backgroundColor: 'rgb(153, 202, 60)',
+                      borderRadius: 6,
+                      barThickness: 40,
+                      yAxisID: 'y',
+                      hoverBackgroundColor: '#a5d636'
+                    },
+                    {
+                      type: 'line',
+                      label: 'Coût du crédit',
+                      data: coutsCredits,
+                      borderColor: '#ccc',
+                      backgroundColor: '#ccc',
+                      yAxisID: 'y1',
+                      tension: 0.4,
+                      pointBackgroundColor: '#ccc',
+                      pointBorderColor: '#fff',
+                      pointRadius: 10,
+                      pointHoverRadius: 6,
+                      borderWidth: 6
+                    }
+                  ]
+                },
+                options: {
+                  responsive: true,
+                  interaction: {
+                    mode: 'nearest',
+                    intersect: true
+                  },
+                  plugins: {
+                    tooltip: {
+                      callbacks: {
+                        label: (context) => {
+                          const index = context.dataIndex;
+                          const duree = `Durée : ${durees[index]} ans`;
+                          const mensualite = `\u25A0 Mensualité : ${mensualites[index].toLocaleString('fr-FR')} €`;
+                          const cout = `\u25A0 Coût du crédit : ${coutsCredits[index].toLocaleString('fr-FR')} €`;
+                          return [duree, mensualite, cout];
+                        },
+                        title: () => null
+                      },
+                      enabled: false,
+                      external: customTooltip
+                    }
+                  },
+                  scales: {
+                    y: {
+                      beginAtZero: true,
+                      max: 6000,
+                      ticks: {
+                        callback: (value) => value / 1000 + 'k€'
+                      },
+                      title: {
+                        display: true,
+                        text: 'Mensualités'
+                      }
+                    },
+                    y1: {
+                      position: 'right',
+                      beginAtZero: true,
+                      suggestedMax: maxCout,
+                      ticks: {
+                        callback: (value) => Math.round(value / 1000) + 'k€'
+                      },
+                      grid: {
+                        drawOnChartArea: false
+                      },
+                      title: {
+                        display: true,
+                        text: 'Coût du crédit'
+                      }
+                    }
+                  }
+                }
+              });
+            }
+
+            // Mettre à jour dynamiquement avec les entrées utilisateur
+            function updateChartFromInputs() {
+              const useDetail = document.getElementById("detailSlider")?.classList.contains("show");
+
+              let capital;
+              if (useDetail) {
+                const bien = parseInt(document.getElementById("bien").value);
+                const agence = parseInt(document.getElementById("agence").value);
+                const notaire = parseInt(document.getElementById("notaire").value);
+                const apport = parseInt(document.getElementById("apport").value);
+                capital = bien + agence + notaire - apport;
+              } else {
+                capital = parseInt(document.getElementById("montant").value);
+              }
+
+              const taux = parseFloat(document.getElementById("taux").value) / 100;
+              const assurance = parseFloat(document.getElementById("assurance").value) / 100;
+
+              createChart(capital, taux, assurance);
+            }
+
+            function customTooltip(context) {
+              // Tooltip element (on le crée une seule fois)
+              let tooltipEl = document.getElementById('chartjs-tooltip');
+
+              if (!tooltipEl) {
+                tooltipEl = document.createElement('div');
+                tooltipEl.id = 'chartjs-tooltip';
+                tooltipEl.style.position = 'absolute';
+                tooltipEl.style.background = 'white';
+                tooltipEl.style.border = '2px solid rgb(153, 202, 60)';
+                tooltipEl.style.borderRadius = '6px';
+                tooltipEl.style.padding = '10px';
+                tooltipEl.style.pointerEvents = 'none';
+                tooltipEl.style.boxShadow = '0px 0px 6px rgba(0,0,0,0.1)';
+                document.body.appendChild(tooltipEl);
+              }
+
+              const tooltipModel = context.tooltip;
+
+              if (tooltipModel.opacity === 0) {
+                tooltipEl.style.opacity = 0;
+                return;
+              }
+
+              const dataIndex = tooltipModel.dataPoints[0].dataIndex;
+              const label = tooltipModel.dataPoints[0].label;
+              const mensualite = chartInstance.data.datasets[0].data[dataIndex].toLocaleString('fr-FR');
+              const coutCredit = chartInstance.data.datasets[1].data[dataIndex].toLocaleString('fr-FR');
+
+              tooltipEl.innerHTML = `
+                <div><strong>Durée : ${label}</strong></div>
+                <div><span style="color: rgb(153,202,60); font-size: 1.2em;">■</span> Mensualité : ${mensualite} €</div>
+                <div><span style="color: #ccc; font-size: 1.2em;">■</span> Coût du crédit : ${coutCredit} €</div>
+              `;
+
+              const canvas = context.chart.canvas;
+              const position = canvas.getBoundingClientRect();
+
+              tooltipEl.style.opacity = 1;
+              tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
+              tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
+            }
+
+            // Attache aux entrées utilisateur
+            ["montant", "taux", "assurance", "bien", "agence", "notaire", "apport"].forEach(id => {
+              const input = document.getElementById(id);
+              if (input) input.addEventListener("input", updateChartFromInputs);
+            });
+
+            // Initialisation
+            window.addEventListener("load", () => {
+              updateChartFromInputs();
+            });
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="cta-wrapper">
+      <div class="cta-section">
+
+        <p class="cta-text">
+          Certains acheteurs préfèrent visiter eux-mêmes et économiser les frais d’intermédiaire.<br>
+          Si c’est votre cas, <strong>Adressator</strong> peut vous aider à retrouver l’adresse exacte du bien.
+        </p>
+        <a href="/" class="cta-button">👉 &nbsp; Obtenir l’adresse d'une annonce &nbsp; →</a>
+      </div>
+      <img src="mascotte-conseil.png" alt="Mascotte Adressator" class="mascotte-cta">
+    </div>
+  </div>
+  </div>
+
+
+  <button id="scroll-to-top-btn" class="scroll-to-top">
+		<i class="fas fa-chevron-up"></i>
+	</button>
+
+  <footer>
+    <p>&copy; 2024 Adressator. Tous droits réservés.</p>
+    <p>
+      <a href="Mentions-légales">Mentions légales</a> |
+      <a href="CGU">Conditions générales d'utilisation</a> |
+      <a href="PDC">Politique de confidentialité</a> |
+      <a href="Contact">Contact</a>
+    </p>
+
+    <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=61573067127688&locale=fr_FR" target="_blank"><i
+          class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/adressator/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@adressator1" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.linkedin.com/company/adressator-trouvez-l%E2%80%99adresse-exacte-des-annonces-immobili%C3%A8res/posts/?feedView=all"
+        target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://x.com/Adressator" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  </footer>
+</body>
+
+</html>
