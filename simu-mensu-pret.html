@@ -11,14 +11,14 @@
 
 <meta property="og:title" content="Simulation de prêt immobilier - Estimez vos mensualités | Adressator">
 <meta property="og:description" content="Utilisez notre outil pour simuler vos mensualités de prêt immobilier et mieux préparer votre achat. Simple, rapide, précis.">
-<meta property="og:image" content="https://www.adressator.com/static/simulation-pret-adressator.png">
+<meta property="og:image" content="https://www.adressator.com/static/mascotte-conseil.png">
 <meta property="og:url" content="https://www.adressator.com/simulation">
 <meta property="og:type" content="website">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Simulation de prêt immobilier - Adressator">
 <meta name="twitter:description" content="Calculez vos mensualités de crédit et anticipez le coût total de votre emprunt immobilier.">
-<meta name="twitter:image" content="https://www.adressator.com/static/simulation-pret-twitter.png">
+<meta name="twitter:image" content="https://www.adressator.com/static/mascotte-conseil.png">
 	
 <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
 
@@ -601,36 +601,36 @@
       <div class="background-angled-r"></div>
 
       <div class="page">
-        <h1> Pr�t immobilier : simulation </h1>
+        <h1> Prêt immobilier : simulation </h1>
         <div class="container">
           <div class="resultats">
             <div class="header-mensualite">
-              <div class="label">Votre mensualit� sera de</div>
-              <div class="value" style="color:rgb(153, 202, 60); font-size:3.5rem" id="mensualite">0 �</div>
+              <div class="label">Votre mensualité sera de</div>
+              <div class="value" style="color:rgb(153, 202, 60); font-size:3.5rem" id="mensualite">0 €</div>
             </div>
             <div class="item border">
-              <div class="label">Montant de votre pr�t :</div>
-              <div class="value" id="montantPret">300 000 �</div>
+              <div class="label">Montant de votre prêt :</div>
+              <div class="value" id="montantPret">300 000 €</div>
             </div>
             <div class="item">
-              <div class="label">Votre mensualit� :</div>
-              <div class="value" id="mensualiteDetail">0 �/mois</div>
+              <div class="label">Votre mensualité :</div>
+              <div class="value" id="mensualiteDetail">0 €/mois</div>
             </div>
             <div class="item border">
               <div class="label light">dont assurance :</div>
-              <div class="value light" id="assuranceMensuelle">0 �/mois</div>
+              <div class="value light" id="assuranceMensuelle">0 €/mois</div>
             </div>
             <div class="item">
-              <div class="label">Co�t total du cr�dit :</div>
-              <div class="value" id="coutTotal">0 �</div>
+              <div class="label">Coût total du crédit :</div>
+              <div class="value" id="coutTotal">0 €</div>
             </div>
             <div class="item border">
               <div class="label light">dont assurance :</div>
-              <div class="value light" id="coutAssurance">0 �</div>
+              <div class="value light" id="coutAssurance">0 €</div>
             </div>
           </div>
           <div class="inputs">
-            <h2>Param�tres</h2>
+            <h2>Paramètres</h2>
             <div class="input-block">
               <div class="toggle-detail" onclick="toggleDetail(this)">
                 <span>Montant de l'emprunt</span>
@@ -640,17 +640,17 @@
                 </svg>
               </div>
               <div class="input-container"><input type="text" class="value" id="valMontant" value="250 000">
-                <div class="label"><span>&nbsp;�</span></div>
+                <div class="label"><span>&nbsp;€</span></div>
               </div>
               <input type="range" id="montant" min="20000" max="1200000" step="1000" value="250000">
 
               <div class="detail-slider" id="detailSlider">
                 <div class="input-block">
                   <div class="label">
-                    <span>Co�t du bien</span>
+                    <span>Coût du bien</span>
                     <div class="input-container">
                       <input type="text" class="value small" id="valBien" value="250 000">
-                      <div class="label"><span>&nbsp;�</span></div>
+                      <div class="label"><span>&nbsp;€</span></div>
                     </div>
                   </div>
                   <input type="range" id="bien" min="10000" max="1000000" step="1000" value="250000">
@@ -660,22 +660,22 @@
                     <span>Frais d'agence</span>
                     <div class="input-container">
                       <input type="text" class="value small" id="valAgence" value="17 500">
-                      <div class="label"><span>&nbsp; �</span></div>
+                      <div class="label"><span>&nbsp; €</span></div>
                     </div>
                   </div>
                   <input type="range" id="agence" min="0" max="70000" step="100" value="17500">
-                  <div class="note">Par d�faut : 7 %<br>Montant choisi = <span id="agencePourcent"></span>%</div>
+                  <div class="note">Par défaut : 7 %<br>Montant choisi = <span id="agencePourcent"></span>%</div>
                 </div>
                 <div class="input-block">
                   <div class="label">
                     <span>Frais de notaire</span>
                     <div class="input-container">
                       <input type="text" class="value small" id="valNotaire" value="17 500">
-                      <div class="label"><span>&nbsp; �</span></div>
+                      <div class="label"><span>&nbsp; €</span></div>
                     </div>
                   </div>
                   <input type="range" id="notaire" min="0" max="80000" step="100" value="17500">
-                  <div class="note">Par d�faut 6,6 % + 1000 � : <span id="notaireDefaut"></span><br>Montant choisi =
+                  <div class="note">Par défaut 6,6 % + 1000 € : <span id="notaireDefaut"></span><br>Montant choisi =
                     <span id="notairePourcent"></span>%
                   </div>
                   <div class="input-block">
@@ -683,7 +683,7 @@
                       <span>Apport personnel</span>
                       <div class="input-container">
                         <input type="text" class="value small" id="valApport" value="35 000">
-                        <div class="label"><span>&nbsp; �</span></div>
+                        <div class="label"><span>&nbsp; €</span></div>
                       </div>
                     </div>
                     <input type="range" id="apport" min="0" max="500000" step="1000" value="35000">
@@ -692,11 +692,11 @@
               </div>
 
               <div class="input-block">
-                <div class="label"><span>Dur�e</span><span id="valDuree">20 ans</span></div>
+                <div class="label"><span>Durée</span><span id="valDuree">20 ans</span></div>
                 <input type="range" id="duree" min="2" max="25" step="1" value="20">
               </div>
               <div class="input-block">
-                <div class="label"><span>Taux d'int�r�t (%)</span><span id="valTaux">1.5 %</span></div>
+                <div class="label"><span>Taux d'intérêt (%)</span><span id="valTaux">1.5 %</span></div>
                 <input type="range" id="taux" min="0" max="7" step="0.1" value="1.5">
               </div>
               <div class="input-block">
@@ -844,7 +844,7 @@
       // Active le scroll de la souris pour tous les sliders
       document.querySelectorAll('input[type="range"]').forEach(slider => {
         slider.addEventListener('wheel', (e) => {
-          e.preventDefault(); // �vite le scroll de la page
+          e.preventDefault(); // évite le scroll de la page
           const step = parseFloat(slider.step) || 1;
           const currentValue = parseFloat(slider.value);
           const delta = e.deltaY < 0 ? step : -step; // molette haut = +, bas = -
@@ -854,14 +854,14 @@
           newValue = Math.max(parseFloat(slider.min), Math.min(parseFloat(slider.max), newValue));
           slider.value = newValue;
 
-          // mets � jour le champ de texte associ� si existant
+          // mets à jour le champ de texte associé si existant
           const id = slider.id;
           const champTexte = document.getElementById("val" + id.charAt(0).toUpperCase() + id.slice(1));
           if (champTexte) {
             champTexte.value = parseInt(slider.value).toLocaleString("fr-FR");
           }
 
-          // mets � jour le calcul et l'affichage
+          // mets à jour le calcul et l'affichage
           updateSliderFill(slider);
           calculer();
         });
@@ -895,7 +895,7 @@
         valNotaire.textContent = formatMontant(notaire.value);
         valApport.textContent = formatMontant(apport.value);
         valMontant.textContent = formatMontant(montant.value);
-        valNotaireDefaut.textContent = "17500 �";
+        valNotaireDefaut.textContent = "17500 €";
         valNotairePourcent.textContent = "7";
         lierChampEtSlider(valMontant, montant);
         lierChampEtSlider(valBien, bien);
@@ -1141,7 +1141,7 @@
         </p>
         <a href="/" class="cta-button">👉 &nbsp; Obtenir l’adresse d'une annonce &nbsp; →</a>
       </div>
-      <img src="/static/macotte-conseil.png" alt="Mascotte Adressator" class="mascotte-cta">
+      <img src="static/mascotte-conseil.png" alt="Mascotte Adressator" class="mascotte-cta">
     </div>
   </div>
   </div>
