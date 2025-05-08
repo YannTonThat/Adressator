@@ -182,6 +182,10 @@ def article2():
 def article3():
     return render_template('article3.html')
 
+@app.route('/simu-mensu-pret')
+@limiter.limit("100 per minute")
+def simu_mensu_pret():
+    return render_template('simu-mensu-pret.html')
 
 # Route pour la page de tableau de bord
 @app.route('/dashboard')
