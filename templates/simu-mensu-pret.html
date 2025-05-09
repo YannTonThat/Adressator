@@ -762,6 +762,16 @@
       const assuranceMensuelleEl = document.getElementById("assuranceMensuelle");
       const coutTotalEl = document.getElementById("coutTotal");
       const coutAssuranceEl = document.getElementById("coutAssurance");
+	  
+	  let isUserTypingMontant = false;
+	  
+	  valMontant.addEventListener("focus", () => {
+		  isUserTypingMontant = true;
+		});
+		valMontant.addEventListener("blur", () => {
+		  isUserTypingMontant = false;
+		});
+
 
       function formatMontant(valeur) {
         return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(valeur);
@@ -802,10 +812,14 @@
           const pourcentReel = bienVal > 0 ? (notaireVal / bienVal * 100).toFixed(2) : '0.00';
           valNotairePourcent.textContent = pourcentReel.replace('.', ',');
           valApport.textContent = formatMontant(apportVal);
-          valMontant.value = capital.toLocaleString("fr-FR");
+          if (!isUserTypingMontant) {
+			  valMontant.value = capital.toLocaleString("fr-FR");
+			}
         } else {
           capital = parseInt(montant.value);
-          valMontant.value = capital.toLocaleString("fr-FR");
+          if (!isUserTypingMontant) {
+			  valMontant.value = capital.toLocaleString("fr-FR");
+			}
         }
 
         montantPretEl.textContent = formatMontant(capital);
