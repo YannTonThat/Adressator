@@ -119,7 +119,7 @@
 	.url-input {
 			padding: 20px;
 			height: 19px;
-			width: 70%;
+			width: 50%;
 			border-radius: 7px 0px 0px 7px;
 			border: 2px solid #99ca3c;
     		outline: none; /* Supprime le contour lors du focus */
@@ -161,6 +161,21 @@
 		justify-content: center;
 		width: 99%;
 	}
+
+	.mascotte-index {
+		display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 263px;
+        pointer-events: none;
+        z-index: 2;
+        transform: translate(0%, 34%);
+      }
+
+	.mascotte-index-mobile {
+          display: none;
+        }
 
 
 	.search-btn-2 {
@@ -900,6 +915,17 @@
 		font-size: 0.9rem;
 	}
 
+	.mascotte-index {
+          display: none;
+        }
+	.mascotte-index-mobile {
+          position: absolute;
+          display: block;
+          margin: 2rem auto 0 auto;
+          transform: translateY(144px) translateX(-122px);
+          height: 200px;
+        }
+
 
 	}
 	
@@ -1151,6 +1177,8 @@
 		<button class="search-btn-2 disabled" title="Collez le lien de l'annonce dans la barre à gauche" id="search-btn-2" onclick="openSearchPopup()" disabled><i class="fas fa-paper-plane" style="margin-left:5px; margin-right: 10px"></i> Envoyer </button>
 	  </div>
     </div>
+	<img src="static/mascotte-pointe-doigt-petite.png" alt="Mascotte Adressator" class="mascotte-index">
+	<img src="static/mascotte-pointe-doigt-petite-mobile.png" alt="Mascotte Adressator" class="mascotte-index-mobile">
   </div>
 </section>
 
