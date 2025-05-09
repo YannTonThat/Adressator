@@ -3,26 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Actualités & Conseils Immobilier - Adressator</title>
-
-  <meta name="description" content="Découvrez nos conseils pratiques pour réussir votre achat immobilier : éviter les erreurs, choisir le bon emplacement, repérer les défauts d’un bien... Et si vous trouvez une annonce intéressante, Adressator vous aide à en localiser l’adresse exacte.">
-  <meta name="keywords" content="conseils achat immobilier, erreurs à éviter achat maison, emplacement immobilier, inspection maison, blog immobilier, Adressator conseils, projet immobilier, achat maison checklist">
-  <meta name="robots" content="index, follow">
-
-  <meta property="og:title" content="Actualités & Conseils Immobilier - Adressator">
-  <meta property="og:description" content="Besoin d’aide pour votre achat immobilier ? Nos articles vous guident à chaque étape : conseils, pièges à éviter, bonnes pratiques.">
-  <meta property="og:image" content="https://www.adressator.com/static/article1.png">
-  <meta property="og:url" content="https://www.adressator.com/actu-conseils">
-  <meta property="og:type" content="website">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Actualités & Conseils Immobilier - Adressator">
-  <meta name="twitter:description" content="Des articles utiles et clairs pour vous aider à réussir votre achat immobilier.">
-  <meta name="twitter:image" content="https://www.adressator.com/static/article1.png">
-	
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Adressator Actualités et conseils</title>
   <style>
   
     /* Popup Styles */
@@ -128,6 +112,70 @@
 	}
 
 
+	.cta-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin: 3rem auto;
+        width: 100%;
+        max-width: 1000px;
+      }
+
+
+      .cta-section {
+        margin-top: 120px;
+        margin-bottom: 120px;
+        margin: 3rem auto;
+        text-align: center;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem 1rem;
+        padding-bottom: 5rem;
+        width: 100%;
+        max-width: 800px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+
+      .mascotte-cta {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 263px;
+        pointer-events: none;
+        z-index: 2;
+        transform: translate(21%, 18%);
+      }
+
+      .cta-text {
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background-color: #573095;
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        transition: background-color 0.3s;
+      }
+
+      .cta-button:hover {
+        background-color: #2e1358;
+      }
+
+
 @media (max-width: 768px) {
 
 	.hero {
@@ -203,6 +251,26 @@
 	a.cta-btn:hover {
 		background-color: #2e1358;
 	}
+
+	.cta-section {
+          width: 83%;
+          padding-bottom: 322px;
+        }
+
+        .mascotte-cta {
+          position: static;
+          display: block;
+          margin: 2rem auto 0 auto;
+          transform: translateY(-389px);
+          height: 289px;
+          /* facultatif : taille un peu réduite en mobile */
+        }
+
+        .cta-wrapper {
+          flex-direction: column;
+          align-items: center;
+          margin-top: 1rem;
+        }
 }
 
 .scroll-to-top {
@@ -307,6 +375,18 @@
 		<img src="article3.png" alt="Illustration article 3" class="mt-4 w-full h-60 object-cover rounded-lg">
 	  </article>	  
 	</main>
+
+	<div class="cta-wrapper">
+      <div class="cta-section">
+
+        <p class="cta-text">
+          Certains acheteurs préfèrent visiter eux-mêmes et économiser les frais d’intermédiaire.<br>
+          Si c’est votre cas, <strong>Adressator</strong> peut vous aider à retrouver l’adresse exacte du bien.
+        </p>
+        <a href="/" class="cta-button">👉 &nbsp; Obtenir l’adresse d'une annonce &nbsp; →</a>
+      </div>
+      <img src="static/mascotte-petite.png" alt="Mascotte Adressator" class="mascotte-cta">
+    </div>
 
 	<button id="scroll-to-top-btn" class="scroll-to-top">
 		<i class="fas fa-chevron-up"></i>
