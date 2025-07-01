@@ -1,1553 +1,1946 @@
-
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adressator - Trouvez l'adresse d'une annonce immobilière facilement</title>
-	<meta name="description" content="Vous cherchez l'adresse d'une annonce immobilière ? Avec Adressator, obtenez l'adresse exacte rapidement et en toute simplicité. Essayez maintenant !">
-	<meta name="keywords" content="adresse annonce immobilière, trouver une adresse, localisation bien immobilier, recherche adresse bien immobilier, adresse maison à vendre, vente entre particuliers, Adressator">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Adressator - Trouvez l'adresse d'une annonce immobilière sans agence</title>
+	<meta name="description"
+		content="Vous cherchez l'adresse d'une annonce immobilière ? Avec Adressator, obtenez l'adresse exacte rapidement et en toute simplicité. Essayez maintenant !">
+	<meta name="keywords"
+		content="adresse annonce immobilière, trouver une adresse, localisation bien immobilier, recherche adresse bien immobilier, adresse maison à vendre, vente entre particuliers, Adressator">
 	<meta name="robots" content="index, follow">
-	
+
 	<meta property="og:title" content="Adressator - Trouvez l'adresse d'une annonce immobilière">
-	<meta property="og:description" content="Besoin de l'adresse exacte d'une annonce immobilière ? Adressator vous la trouve en un clic !">
-	<meta property="og:image" content="https://www.adressator.com/static/image-presentation-adressator.png">
+	<meta property="og:description"
+		content="Besoin de l'adresse exacte d'une annonce immobilière ? Adressator vous la trouve en un clic !">
+	<meta property="og:image" content="https://www.adressator.comstatic/image-presentation-adressator.png">
 	<meta property="og:url" content="https://www.adressator.com/">
 	<meta property="og:type" content="website">
-	
+
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content="Adressator - Trouvez l'adresse d'une annonce immobilière">
-	<meta name="twitter:description" content="Besoin de l'adresse exacte d'une annonce immobilière ? Adressator vous la trouve en un clic !">
-	<meta name="twitter:image" content="https://www.adressator.com/static/image-presentation-carrée-adressator.png">
-
-  
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <style>
-    /* Global Styles */ 
-    body {
-      font-family: "Ralway", sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #333;
-      background-color: white;
-    }
-    
-	/* Hero Section */
-	.hero {
-		z-index: 100;
-		position: relative;
-		width: 100%; /* Pleine largeur de l'écran */
-		height: 50vh; /* Hauteur proportionnelle à la hauteur de l'écran */
-		min-height: 300px;
-		overflow: hidden;
-		/*background-image: url('/static/Maison vib.png'); /* Image de fond */
-		background-size: cover;
-		background-position: center top;
-		background-position: center 63%;
-		background-repeat: no-repeat;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		box-shadow: 0px 4px 5px 0px #00000036;
-	}
-
-	/* Overlay for darker background, making text more readable */
-	.hero-overlay {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		/*background-color: rgba(0, 0, 0, 0.5); /* Assombrissement */
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		opacity: 0; /* Opacité initiale */
-		transition: opacity 2.5s ease; /* Durée et effet de transition */
-	}
-
-	.hero-overlay.fade-in {
-		opacity: 1; /* Opacité finale après transition */
-	}
-
-	.hero-text {
-		color: white;
-		text-align: center;
-    	height: 50vh;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		
-	}
-
-	.hero-text h1 {
-		font-size: 2.8rem;
-		opacity: 0;
-		transition: opacity 0.6s ease-out;
-		/*text-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);*/
-		margin: 4vh 4vh 4vh 4vh;
-		color:#333333;
-		
-	}
-
-	/* Zoom-in effect for the main title */
-	.hero-text h1.animate {
-		opacity: 1;
-		transform: scale(1.4);
-		animation: zoomIn 0.5s forwards ease-out;
-	}
-
-	@keyframes zoomIn {
-		from { transform: scale(1.4); opacity: 0; }
-		to { transform: scale(1); opacity: 1; }
-	}
+	<meta name="twitter:description"
+		content="Besoin de l'adresse exacte d'une annonce immobilière ? Adressator vous la trouve en un clic !">
+	<meta name="twitter:image" content="https://www.adressator.comstatic/image-presentation-carrée-adressator.png">
 
 
-	/* Initial state for animations */
-	.hero-text h2 {
-		font-size: 1.6rem;
-		opacity: 0;
-		transform: translateY(20px); /* Position initiale vers le bas */
-		transition: opacity 0.9s ease, transform 0.9s ease;
-		/* text-shadow: 4px 2px 7px rgba(0, 0, 0, 0.8);*/
-		margin: 4vh 4vh 4vh 4vh;
-		color: #6b7280;
-	}
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+	<style>
+		/* Global Styles */
+		body {
+			font-family: "Lexend", sans-serif;
+			margin: 0;
+			padding: 0;
+			color: #333;
+			background-color: white;
+		}
+
+		/* Hero Section */
+		.hero {
+			z-index: 100;
+			position: relative;
+			width: 100%;
+			/* Pleine largeur de l'écran */
+			height: 50vh;
+			/* Hauteur proportionnelle à la hauteur de l'écran */
+			min-height: 300px;
+			overflow: hidden;
+			background-image: url('static/Maison vib-2.png');
+			/* Image de fond */
+			background-size: cover;
+			background-position: center top;
+			background-position: center 37%;
+			/*63%*/
+			background-repeat: no-repeat;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0px 4px 5px 0px #00000036;
+		}
+
+		/* Overlay for darker background, making text more readable */
+		.hero-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			/* Assombrissement */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			opacity: 0;
+			/* Opacité initiale */
+			transition: opacity 2.5s ease;
+			/* Durée et effet de transition */
+		}
+
+		.hero-overlay.fade-in {
+			opacity: 1;
+			/* Opacité finale après transition */
+		}
+
+		.hero-text {
+			color: white;
+			text-align: center;
+			height: 50vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+		}
+
+		.hero-text h1 {
+			font-size: 2.8rem;
+			opacity: 0;
+			transition: opacity 0.6s ease-out;
+			text-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);
+			margin: 4vh 4vh 4vh 4vh;
+			color: white;
+
+		}
+
+		/* Zoom-in effect for the main title */
+		.hero-text h1.animate {
+			opacity: 1;
+			transform: scale(1.4);
+			animation: zoomIn 0.5s forwards ease-out;
+		}
+
+		@keyframes zoomIn {
+			from {
+				transform: scale(1.4);
+				opacity: 0;
+			}
+
+			to {
+				transform: scale(1);
+				opacity: 1;
+			}
+		}
 
 
-	.url-input {
+		/* Initial state for animations */
+		.hero-text h2 {
+			font-size: 1.6rem;
+			opacity: 0;
+			transform: translateY(20px);
+			/* Position initiale vers le bas */
+			transition: opacity 0.9s ease, transform 0.9s ease;
+			text-shadow: 4px 2px 7px rgba(0, 0, 0, 0.8);
+			margin: 4vh 4vh 4vh 4vh;
+			color: white;
+		}
+
+
+		.url-input {
 			padding: 20px;
-			height: 19px;
+			height: 16px;
 			width: 50%;
 			border-radius: 7px 0px 0px 7px;
-			border: 2px solid #99ca3c;
-    		outline: none; /* Supprime le contour lors du focus */
+			border: 2px solid #98ca3c00;
+			outline: none;
+			/* Supprime le contour lors du focus */
 			opacity: 0;
-			transform: translateY(100px); /* Position initiale vers le bas */
+			transform: translateY(100px);
+			/* Position initiale vers le bas */
 			transition: opacity 0.8s ease, transform 0.8s ease;
 			margin: 4vh 0vh 4vh 0vh;
 		}
 
-	.url-input.animate {
-		opacity: 1;
-		transform: translateY(0); /* Arrivée à la position finale */
-	}
-
-	/* Initial state for animations */
-	.hero-text .search-btn-2 {
-		opacity: 0;
-		transform: translateY(100px); /* Position initiale vers le bas */
-		transition: opacity 0.8s ease, transform 0.8s ease;
-		margin:0;
-	}
-
-	.hero-text .search-btn-2.disabled {
-		cursor: not-allowed;
-	}
-
-
-
-	/* Final state for animations */
-	.hero-text h2.animate, .hero-text .search-btn-2.animate {
-		opacity: 1;
-		transform: translateY(0); /* Arrivée à la position finale */
-	}
-
-	.input-and-btn-container {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		width: 99%;
-	}
-
-	.mascotte-index {
-		display: block;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 263px;
-        pointer-events: none;
-        z-index: 2;
-        transform: translate(0%, 34%);
-      }
-
-	.mascotte-index-mobile {
-          display: none;
-        }
-
-
-	.search-btn-2 {
-				/* Bouton "Lancer une recherche" */
-				font-family: 'lexend', sans-serif;
-				width: min-content;
-				padding-right: 13px;
-				height: 40px;
-				background-color: #573095;
-				color: #fff;
-				border: none;
-				border-radius: 0px 7px 7px 0px;
-				font-size: 1.1rem;
-				font-weight: 450;
-				cursor: pointer;
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-			}
-		
-	.search-btn-2:hover {
-				background-color: #2e1358;
-			}
-
-	.cgv-checkbox-container {
-		display: flex;
-		align-items: flex-end;
-		border-radius: 4px;
-		border: 2px solid rgba(255, 0, 0, 0);
-		color :#3a3838;
-	}
-
-	/* Bordure rouge en cas d'erreur */
-	.checkbox-error {
-		border: 2px solid red;
-		padding: 2px;
-		border-radius: 3px;
-	}
-
-	.video-presentation {
-	        text-align: center;
-	        margin: 40px 0;
-	    }
-	
-	.video-container {
-	        position: relative;
-	        max-width: 800px;
-	        margin: auto;
-	        aspect-ratio: 16 / 9;
-	    }
-	
-	.video-container iframe {
-	        width: 100%;
-	        height: 100%;
-	        border-radius: 10px; /* Ajoute des bords arrondis pour un look plus moderne */
-	    }
-
-	.intro {
-		display: flex;
-		justify-content: center;
-		text-align: center;
-		width: 100%;
-		line-height: 1.5;
-
-	}
-
-	.intro-container {
-		width: 100%;
-		padding: 20px;
-		padding-top: 60px;
-
-	}
-
-	.intro-subtext {
-		color: #6e6e6e;
-	}
-
-	.intro-text {
-		font-size: 1rem;
-		color: #6e6e6e;
-			
-	}
-
-	@media (min-width: 768px){
-		.intro-bienvenue {
-			font-size: 1.5rem;
-			color: #333;
-		}
-		
-		.intro-text {
-			font-size: 1.2rem;
-		}
-
-		.intro-block {
-			flex-direction: row;
-		}
-
-
-		.intro-left {
-			width: 20%;
-		}
-
-		.intro-center {
-			width: 20%;
-		}
-
-		.intro-right {
-			width: 20%;
-		}
-
-		.intro-bottom {
-			width: 20%;
-		}
-	}
-
-	@media (max-width: 768px){
-
-		.intro-bienvenue {
-			font-size: 1.5rem;
-			margin-bottom: 15px;
-			color: #333;
-		}
-
-		
-
-		.intro-block {
-			flex-direction: column;
-		}
-
-		.intro-left {
-			width: 90%;
-		}
-
-		.intro-center {
-			width: 90%;
-		}
-
-		.intro-right {
-			width: 90%;
-		}
-
-		.intro-bottom {
-			width: 90%;
-		}
-
-		
-	}
-
-	.intro-block {
-		display: flex;
-		align-content: center;
-    	justify-content: space-evenly;
-    	align-items: flex-start;
-		width: 100%;
-		margin-top: 25px;
-		margin-bottom: 25px;
-	}
-
-	.intro-left {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-    	justify-content: center;
-		align-content: center;
-	}
-
-	.intro-center {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-    	justify-content: center;
-		align-content: center;
-	}
-
-	.intro-right {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-    	justify-content: center;
-		align-content: center;
-	}
-
-	.intro-bottom {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-    	justify-content: center;
-		align-content: center;
-	}
-
-	.intro-img {
-		width: 50%;
-		align-items: center;
-    	justify-content: center;
-	}
-
-	.intro-img img {
-		max-width: 100%;
-		max-height: 100%;
-		object-fit: contain;
-	}
-
-	.intro-title-left {
-		font-size: 1.5rem;
-		margin: 10px;
-	}
-
-	.intro-title-center {
-		font-size: 1.5rem;
-		margin: 10px;
-	}
-	
-	.intro-title-right {
-		font-size: 1.5rem;
-		margin: 10px;
-	}
-
-	.intro-title-bottom {
-		font-size: 1.5rem;
-		margin: 10px;
-	}
-
-	/* CSS styles for the wobble effect */
-	@keyframes wobble-vertical {
-		0%, 100% {
+		.url-input.animate {
+			opacity: 1;
 			transform: translateY(0);
-		}
-		20% {
-			transform: translateY(8px);
-		}
-		40% {
-			transform: translateY(-8px);
-		}
-		60% {
-			transform: translateY(3px);
-		}
-		80% {
-			transform: translateY(-3px);
-		}
-	}
-
-	.elementor-animation-wobble-vertical {
-		animation: wobble-vertical 1s ease-in-out;
-	}
-    
-	.desktop-features {
-		display: none;
-		
-		background-color: #fff;
-		justify-content: center;
-		align-items: space-around;
-		flex-direction: column;
-		width: 100%;
-	}
-
-	.mobile-features {
-		display: none;
-	}
-		
-	
-
-	.feature-section {
-		display: flex;
-		align-items: center;
-		width: 100%; /* Pour centrer la rubrique et lui donner une largeur */
-		opacity: 0;
-		transition: opacity 0.9s ease-out, transform 0.9s ease-out;
-	}
-
-	.feature-section.left {
-		justify-content: space-around;
-	}
-	
-	.feature-section.right {
-		justify-content: space-around;
-	}
-
-	.feature-section.slide-in-left {
-		opacity: 1;
-	}
-
-	.feature-section.slide-in-right {
-		opacity: 1;
-	}
-
-
-@media (max-width: 768px) {
-	
-	.features {
-		height: min-content;
-	}
-
-}	
-
-@media (min-width: 768px) and (max-width: 1432px) {
-	
-	.features {
-		height: 2000px;
-	}
-
-}
-
-@media (min-width: 1432px) {
-	
-	.features {
-		height: 3000px;
-	}
-
-}
-
-@media (min-width: 768px){
-
-	.features {
-
-		background-color: #fff;
-		display: flex;
-		justify-content: space-evenly;
-		align-items: center;
-		flex-direction: column;
-		width:100%;
-		max-height: 100%;
-		z-index: 100;
-		overflow: hidden;
-		background-image: url('/static/background vert.png');
-		background-size: cover;
-		background-position: center top;
-		background-repeat: no-repeat;
-
-		}
-	
-	.feature-section.left {
-		transform: translateX(-150px); /* Positionnement initial */
-		
-
-	}
-	
-	.feature-section.right {
-		transform: translateX(150px); /* Positionnement initial */
-		
-	}
-
-	.feature-section.slide-in-left {
-		transform: translateX(0px); /* Glisse depuis la gauche */
-	}
-
-	.feature-section.slide-in-right {
-		transform: translateX(0px); /* Glisse depuis la droite */
-	}
-
-
-
-	.feature-number {
-		font-size: 150px;
-		color: #ffffff;
-		margin-right: 0px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 30%;
-	}
-
-	.feature-title-left {
-		font-size: 30px;
-		color: #ffffff;
-		max-height: 100%;
-		object-fit: contain;
-		transform: translate(69%, -50%);
-	}
-
-	.feature-title-right {
-		font-size: 30px;
-		color: #ffffff;
-		max-height: 100%;
-		object-fit: contain;
-		transform: translate(-35%, -50%);
-	}
-
-	.feature-text-container-right {
-		width:29%;
-		color: white;
-		padding-right: 2%;
-		margin-left:-1%;
-		text-align: left;
-		
-	}
-
-	.feature-text-container-left {
-		width:29%;
-		color: white;
-		padding-left: 2%;
-		margin-right:-1%;
-		text-align: right;
-		
-	}
-
-	.feature-text-title {
-		text-align: center;
-		font-size: 1.5rem;
-		line-height: 1.5;
-		
-	}
-
-	.feature-text-text {
-		
-		font-size: 1rem;
-		line-height: 1.5;
-	}
-
-
-	.feature-image {
-		width: 25%;
-		/*overflow: hidden;  Cache les parties de l'image qui débordent */
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		
-	}
-
-	.feature-image img {
-		max-width: 100%;
-		max-height: 100%;
-		object-fit: contain; /* Maintient l'aspect proportionnel de l'image */
-	}
-
-
-  }
-
-
-
-	/* Footer */
-    footer {
-      background-color: #333;
-      color: #fff;
-      padding: 10px;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: #ddd;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    .social-links {
-      margin-top: 10px;
-    }
-
-    .social-links a {
-      display: inline-block;
-      margin: 0 8px;
-      font-size: 1.5rem;
-      color: #ddd;
-      transition: color 0.3s ease-in-out;
-    }
-
-    .social-links a:hover {
-      color: #1da1f2;
-    }
- 
-  /* Popup Styles */
-    .popup-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      justify-content: center;
-      align-items: center;
-	  z-index: 1000; /* Assure que le popup est au-dessus de tout */
-    }
-
-
-
-	.scroll-to-top {
-		position: fixed;
-		bottom: 20px;
-		right: 20px;
-		width: 50px;
-		height: 50px;
-		background-color: rgb(153,202,60);
-		color: white;
-		border: none;
-		border-radius: 50%;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-		cursor: pointer;
-		z-index: 1000;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		opacity: 0;
-		visibility: hidden;
-		transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-	}
-
-	.scroll-to-top i {
-		font-size: 20px;
-	}
-
-	.scroll-to-top.show {
-		opacity: 1;
-		visibility: visible;
-	}
-
-	.scroll-to-top:hover {
-		background-color: #a8e24e;
-	}
-
-
-
-	@media (max-width: 768px) {
-	  .features {
-		color: white;
-		flex-direction: column;
-		align-items: center;
-		padding: 2% 2%;
-		width: 100%;
-		max-height: 100%;
-		z-index: 100;
-		overflow: hidden;
-		background-image: url('/static/background vert mobile.png');
-		background-size: cover;
-		background-position: center top;
-		background-repeat: no-repeat;
+			/* Arrivée à la position finale */
 		}
 
-
-	  .feature-section {
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-		width: 100%;
-	  }
-
-	  .feature-section.left {
-		justify-content: space-around;
-		
-	  }
-	
-	  .feature-section.right {
-		justify-content: space-around;
-		
-	  }
-
-	  
-
-	  .feature-text-container-left, .feature-text-container-right {
-		margin: 20px 0;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		align-content: center;
-		align-items: center;
-	  }
-
-
-	  .feature-text-text {
-		font-size: 0.9rem;
-		line-height: 1.3;
-		text-align: justify;
-		width: 90%;
-		max-width: 100%;
-		color: white;
-	
-	  }
-
-	  .feature-text-title{
-		font-size: 1.3rem;
-		line-height: 1.3;
-		color: white;
-	  }
-
-
-
-	  .feature-number {
-		font-size: 6.6rem;
-		color: #ffffff;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		max-width: 100%;
-		
-	  }
-
-	  .feature-title-left, .feature-title-right {
-		font-size: 1.6rem;
-		color: #ffffff;
-		max-width: 100%;
-		max-height: 100%;
-		object-fit: contain;
-		transform: translate(50px, -20px);
-		
-	  }
-
-	  .feature-image {
-		width: 75%;
-		height: 80%;
-		/*overflow: hidden;  Cache les parties de l'image qui débordent */
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin : 0px;
-	  }
-
-	  .feature-image img {
-		max-width: 100%;
-		max-height: 100%;
-		border-radius: 35px;
-		object-fit: contain; /* Maintient l'aspect proportionnel de l'image */
-	  }
-
-	  .feature-text {
-		font-size: 1rem;
-		line-height: 1.5;
-		text-align: center;
-		max-width: 260px;
-		background-color: rgb(109 163 6);
-		color: white;
-		padding: 20px 20px;
-		border-radius: 8px;
-		margin: 10px;
-	  }
-
-    }
-
-	@media (max-width: 768px) {
-	
-	  .hero {
-		z-index: 100;
-		position: relative;
-		width: 100%; /* Pleine largeur de l'écran */
-		height: 27vh;
-		min-height: 300px;
-		overflow: hidden;
-		/*background-image: url('/static/Maison vib.png'); /* Image de fond */
-		background-size: cover;
-		background-position: center top;
-		background-position: center 63%;
-		background-repeat: no-repeat;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		box-shadow: 0px 4px 5px 0px #00000036;
-		}
-
-	/* Overlay for darker background, making text more readable */
-	.hero-overlay {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		/*background-color: rgba(0, 0, 0, 0.35); /* Assombrissement */
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		opacity: 0; /* Opacité initiale */
-		transition: opacity 2.5s ease; /* Durée et effet de transition */
-	}
-
-	.hero-overlay.fade-in {
-		opacity: 1; /* Opacité finale après transition */
-	}
-
-	.hero-text {
-		color: white;
-		text-align: center;
-		height: 20vh;
-		margin-top:-60px;
-	}
-
-	.hero-text h1 {
-		font-size: 1.6rem;
-		opacity: 0;
-		transition: opacity 0.6s ease-out;
-		/*text-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);*/
-		margin: 1vh;
-	}
-
-	/* Zoom-in effect for the main title */
-	.hero-text h1.animate {
-		opacity: 1;
-		
-		animation: zoomIn 0.5s forwards ease-out;
-	}
-
-	@keyframes zoomIn {
-		from { transform: scale(1.4); opacity: 0; }
-		to { transform: scale(1); opacity: 1; }
-	}
-
-
-	/* Initial state for animations */
-	.hero-text h2 {
-		font-size: 0.9rem;
-		opacity: 0;
-		transform: translateY(20px); /* Position initiale vers le bas */
-		transition: opacity 0.9s ease, transform 0.9s ease;
-		/*text-shadow: 4px 2px 7px rgba(0, 0, 0, 0.8);*/
-		margin: 1vh;
-	}
-
-	/* Initial state for animations */
-	.hero-text .search-btn-2 .input-and-btn-container{
-		opacity: 0;
-		transform: translateY(100px); /* Position initiale vers le bas */
-		transition: opacity 0.8s ease, transform 0.8s ease;
-		margin:0;
-	}
-
-	/* Final state for animations */
-	.hero-text h2.animate, .hero-text .search-btn-2.animate input-and-btn-container.animate{
-		opacity: 1;
-		transform: translateY(0); /* Arrivée à la position finale */
-	}
-
-	.url-input {
-			padding: 20px;
-			height: 15px;
-			width: 70%;
+		.url-input-2 {
+			padding: 8px;
+			height: 16px;
+			width: 50%;
 			border-radius: 7px 0px 0px 7px;
-			border: 2px solid #99ca3c; /* Corrigé pour un contour visible si nécessaire */
-    		outline: none; /* Supprime le contour lors du focus */
+			border: 2px solid #98ca3c;
+			outline: none;
+			opacity: 1;
+			margin: 4vh 0vh 4vh 0vh;
+		}
+
+		/* Initial state for animations */
+		.hero-text .search-btn-2 {
 			opacity: 0;
-			transform: translateY(100px); /* Position initiale vers le bas */
+			transform: translateY(100px);
+			/* Position initiale vers le bas */
 			transition: opacity 0.8s ease, transform 0.8s ease;
-			margin: 1vh 0vh 1vh 0vh;
+			margin: 0;
 		}
 
-	.search-btn-2 {
-		height: 37px;
-		font-size: 0.9rem;
-	}
-
-	.mascotte-index {
-          display: none;
-        }
-	.mascotte-index-mobile {
-          position: absolute;
-          display: block;
-          margin: 2rem auto 0 auto;
-          transform: translateY(144px) translateX(-122px);
-          height: 200px;
-        }
-
-
-	}
-	
-	
-
-	@media (min-width: 768px) {
-	  .desktop-features {
-		display: flex;
-		width:100%;
-		
-	  }
-	  .mobile-features {
-		display: none;
-	  }
-	}
-
-	@media (max-width: 768px) {
-	  .desktop-features {
-		display: none;
-	  }
-	  .mobile-features {
-		display: flex;
-		width:100%;
-		align-items: center;
-	  }
-	}
-
-/* Section FAQ */
-
-.FAQ{
-	display: flex;
-	flex-direction: column;
-	text-align: left;
-	align-items: center;
-}
-
-.FAQ-container {
-	display: flex;
-	flex-direction: column;
-	text-align: left;
-	align-items: center;
-	margin-top:40px;
-	margin-bottom: 100px;
-	padding-top: 20px;
-	padding-bottom: 30px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-	width: 55%;
-}
-
-.FAQ-section {
-		margin: 20px;
-		width: 90%;
-	}
-
-	.FAQ-header {
-		cursor: pointer;
-		font-size: 1.3rem;
-		margin-top: 15px;
-		margin-bottom: 15px;
-	}
-
-	.FAQ-content {
-		font-size: 1rem;
-		text-align: justify;
-		margin-top: 5px;
-		line-height: 1.4;
-		overflow: hidden;
-		opacity: 0;
-    	max-height: 0;
-		transition: opacity 0.5s ease, max-height 0.5s ease-in-out;
-	}
-
-	.FAQ-content.show {
-    	opacity: 1; /* Apparition progressive */
-    	max-height: 500px; /* Ajuster selon la taille du contenu */
-	}
-	
-	/* Classe pour l'icône flèche */
-	.FAQ-header .arrow-icon-FAQ {
-		font-size: 1rem;
-		display: inline-block;
-		transition: transform 0.6s ease, color 0.4s ease;
-		color: #333; /* Couleur par défaut de la flèche */
-		margin-left: 8px; /* Espace entre le texte et la flèche */
-		vertical-align: middle;
+		.search-btn-2.disabled {
+			cursor: not-allowed;
 		}
 
-	/* Rotation de l'icône flèche quand elle est active */
-	.FAQ-header.active .arrow-icon-FAQ {
-		transform: rotate(180deg);
-	}
 
-	.FAQ a{
-		text-decoration: none;
-	}
 
-	.FAQ a:hover{
-		text-decoration: none;
-	}
+		/* Final state for animations */
+		.hero-text h2.animate,
+		.hero-text .search-btn-2.animate {
+			opacity: 1;
+			transform: translateY(0);
+			/* Arrivée à la position finale */
+		}
 
-	@media (max-width: 768px) {
-		.FAQ-section {
+		.input-and-btn-container {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			width: 99%;
+		}
+
+		.mascotte-index {
+			display: block;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			height: 263px;
+			pointer-events: none;
+			z-index: 2;
+			transform: translate(0%, 34%);
+		}
+
+		.mascotte-index-mobile {
+			display: none;
+		}
+
+
+		.search-btn-2 {
+			/* Bouton "Lancer une recherche" */
+			font-family: 'lexend', sans-serif;
+			width: 200px;
+			padding-right: 13px;
+			height: 40px;
+			background-color: #573095;
+			color: #fff;
+			border: none;
+			border-radius: 0px 7px 7px 0px;
+			font-size: 1rem;
+			font-weight: 500;
+			cursor: pointer;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.search-btn-2:hover {
+			background-color: #2e1358;
+		}
+
+		.cgv-checkbox-container {
+			display: flex;
+			align-items: flex-end;
+			border-radius: 4px;
+			border: 2px solid rgba(255, 0, 0, 0);
+			color: #3a3838;
+		}
+
+		/* Bordure rouge en cas d'erreur */
+		.checkbox-error {
+			border: 2px solid red;
+			padding: 2px;
+			border-radius: 3px;
+		}
+
+		.divider {
+			width: 100%;
+			height: 3rem;
+			background-color: rgba(0, 0, 0, .1);
+			border: solid rgba(0, 0, 0, .15);
+			border-width: 1px 0;
+			box-shadow: inset 0 0.5em 1.5em rgb(0 0 0 / 10%), inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
+		}
+
+		.video-presentation {
+			text-align: center;
+			margin: 40px 0;
+		}
+
+		.video-container {
+			position: relative;
+			max-width: 800px;
+			margin: auto;
+			aspect-ratio: 16 / 9;
+		}
+
+		.video-container iframe {
+			width: 100%;
+			height: 100%;
+			border-radius: 10px;
+			/* Ajoute des bords arrondis pour un look plus moderne */
+		}
+
+		.intro {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			text-align: left;
+			width: 100%;
+			line-height: 1.6;
+		}
+
+		.intro-container {
+			width: 100%;
+		}
+
+		.section-light {
+			padding: 2rem 1rem;
+			margin: auto;
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+		}
+
+		.section-light-column {
+			padding: 2rem 1rem;
+			margin: auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-around;
+		}
+
+		.section-colored {
+			padding-top: 4rem;
+			padding-bottom: 4rem;
+			padding-left: 4rem;
+			padding-right: 4rem;
+			margin: auto;
+			background-color: #72ab19;
+			color: white;
+			display: flex;
+			justify-content: space-between;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		.section-colored-container {
+			width: 45%;
+			max-width: 600;
+			display: flex;
+			flex-direction: column;
+
+		}
+
+
+		.section-colored h2 {
+			font-size: 1.7rem;
+		}
+
+		.section-colored h3 {
+			font-size: 1rem;
+			line-height: 1.8;
+			font-weight: 500;
+			padding-top: 1rem;
+			padding-bottom: 2rem;
+		}
+
+		.simulateur-btn {
+			margin-left: 0px;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			padding: 8px 30px;
+			background-color: #ffff;
+			color: #72ab19;
+			border: 1px solid #99999900;
+			border-radius: 25px;
+			font-size: 1rem;
+			font-weight: 600;
+			cursor: pointer;
+			text-decoration: none;
+			width: 348px;
+		}
+
+		.simulateur-btn:hover {
+			background-color: #573095;
+			color: white;
+		}
+
+		.screen-image-desktop {
+			padding: 0rem 1rem;
+			text-decoration: none;
+
+		}
+
+		.screen-image-mobile {
+			padding: 0rem 1rem;
+			text-decoration: none;
+			display: none;
+		}
+
+		.intro-image {
+			width: 300px;
+			padding: 10px;
+			border-radius: 15px;
+		}
+
+		@media (max-width: 768px) {
+
+			.section-colored {
+				flex-direction: column;
+				padding-left: 2rem;
+				padding-right: 2rem;
+				padding-bottom: 0rem;
+			}
+
+			.section-colored-container {
+				width: 100%;
+				align-items: center;
+				padding-bottom: 2rem;
+			}
+
+			.section-colored h3 {
+				padding-bottom: 1rem;
+			}
+
+			.simulateur-btn {
+				width: 184px;
+			}
+
+			.screen-image-desktop {
+				display: none;
+			}
+
+			.screen-image-mobile {
+				display: flex;
+			}
+
+		}
+
+
+		.intro-subtext {
+			color: #6e6e6e;
 			margin: 10px;
 		}
 
+		.intro-text {
+			font-family: 'lexend', sans-serif;
+			font-size: 0.9rem;
+			color: #333;
+			line-height: 1.8;
+			padding-left: 2rem;
+			padding-right: 2rem;
+
+		}
+
+		.intro-text h2 {
+			font-size: 1.7rem;
+			color: #333;
+			font-weight: 600;
+		}
+
+		.intro-text h3 {
+			font-size: 1.2rem;
+			color: #6E6E6E;
+			font-weight: 500;
+			text-align: center;
+		}
+
+		.intro-text h4 {
+			font-size: 1rem;
+			color: #6E6E6E;
+			font-weight: 500;
+			text-align: left;
+			line-height: 1.8rem;
+		}
+
+		@media (min-width: 768px) {
+			.section-light {
+				flex-direction: row;
+			}
+
+			.intro-h2 {
+				font-size: 1.7rem;
+				color: #333;
+				font-weight: 600;
+			}
+
+			.intro-text {
+				font-size: 0.9rem;
+			}
+
+			.intro-block {
+				flex-direction: row;
+			}
+
+
+			.intro-left {
+				width: 20%;
+			}
+
+			.intro-center-left {
+				width: 20%;
+			}
+
+			.intro-center-right {
+				width: 20%;
+			}
+
+			.intro-right {
+				width: 22%;
+			}
+		}
+
+
+
+		.intro-block {
+			display: flex;
+			align-content: center;
+			justify-content: space-evenly;
+			align-items: flex-start;
+			width: 100%;
+			margin-top: 25px;
+			margin-bottom: 25px;
+		}
+
+		.intro-left {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			align-content: center;
+		}
+
+		.intro-center-left {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			align-content: center;
+		}
+
+		.intro-center-right {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			align-content: center;
+		}
+
+		.intro-right {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			align-content: center;
+		}
+
+		@media (max-width: 768px) {
+			.section-light {
+				flex-direction: column-reverse;
+			}
+
+			.intro-h2 {
+				font-size: 1.7rem;
+				margin-bottom: 15px;
+				color: #333;
+				font-weight: 600;
+				line-height: 1.5;
+			}
+
+			.intro h2 {
+				line-height: 1.5;
+			}
+
+
+			.intro-block {
+				flex-direction: column;
+				text-align: center;
+				align-items: center;
+				align-content: center;
+			}
+
+			.intro-left {
+				width: 90%;
+			}
+
+			.intro-center {
+				width: 90%;
+			}
+
+			.intro-right {
+				width: 90%;
+			}
+
+			.intro-bottom {
+				width: 90%;
+			}
+
+
+		}
+
+		.intro-img {
+			width: 50%;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.intro-img img {
+			max-width: 100%;
+			max-height: 100%;
+			object-fit: contain;
+		}
+
+		.intro-title {
+			font-size: 1.5rem;
+			margin: 10px;
+			line-height: 1.7rem;
+			font-weight: 600;
+
+		}
+
+
+
+		/* CSS styles for the wobble effect */
+		@keyframes wobble-vertical {
+
+			0%,
+			100% {
+				transform: translateY(0);
+			}
+
+			20% {
+				transform: translateY(8px);
+			}
+
+			40% {
+				transform: translateY(-8px);
+			}
+
+			60% {
+				transform: translateY(3px);
+			}
+
+			80% {
+				transform: translateY(-3px);
+			}
+		}
+
+		.elementor-animation-wobble-vertical {
+			animation: wobble-vertical 1s ease-in-out;
+		}
+
+		.desktop-features {
+			display: none;
+
+			background-color: #fff;
+			justify-content: center;
+			align-items: space-around;
+			flex-direction: column;
+			width: 100%;
+		}
+
+		.mobile-features {
+			display: none;
+		}
+
+
+
+		.feature-section {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			/* Pour centrer la rubrique et lui donner une largeur */
+			opacity: 0;
+			transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+		}
+
+		.feature-section.left {
+			justify-content: space-around;
+		}
+
+		.feature-section.right {
+			justify-content: space-around;
+		}
+
+		.feature-section.slide-in-left {
+			opacity: 1;
+		}
+
+		.feature-section.slide-in-right {
+			opacity: 1;
+		}
+
+		.feature-conclusion {
+			color: white;
+			font-size: 2rem;
+			padding: 2rem;
+		}
+
+
+		@media (max-width: 768px) {
+
+			.features {
+				height: min-content;
+			}
+
+		}
+
+		@media (min-width: 768px) and (max-width: 1432px) {
+
+			.features {
+				height: 2000px;
+			}
+
+		}
+
+		@media (min-width: 1432px) {
+
+			.features {
+				height: 3000px;
+			}
+
+		}
+
+		@media (min-width: 768px) {
+
+			.features {
+
+				background-color: #fff;
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+				flex-direction: column;
+				width: 100%;
+				max-height: 100%;
+				z-index: 100;
+				overflow: hidden;
+				background-image: url('static/background vert.png');
+				background-size: cover;
+				background-position: center top;
+				background-repeat: no-repeat;
+
+			}
+
+			.feature-section.left {
+				transform: translateX(-150px);
+				/* Positionnement initial */
+
+
+			}
+
+			.feature-section.right {
+				transform: translateX(150px);
+				/* Positionnement initial */
+
+			}
+
+			.feature-section.slide-in-left {
+				transform: translateX(0px);
+				/* Glisse depuis la gauche */
+			}
+
+			.feature-section.slide-in-right {
+				transform: translateX(0px);
+				/* Glisse depuis la droite */
+			}
+
+
+
+			.feature-number {
+				font-size: 150px;
+				color: #ffffff;
+				margin-right: 0px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				width: 30%;
+			}
+
+			.feature-title-left {
+				font-size: 30px;
+				color: #ffffff;
+				max-height: 100%;
+				object-fit: contain;
+				transform: translate(69%, -50%);
+			}
+
+			.feature-title-right {
+				font-size: 30px;
+				color: #ffffff;
+				max-height: 100%;
+				object-fit: contain;
+				transform: translate(-35%, -50%);
+			}
+
+			.feature-text-container-right {
+				width: 29%;
+				color: white;
+				padding-right: 2%;
+				margin-left: -1%;
+				text-align: left;
+
+			}
+
+			.feature-text-container-left {
+				width: 29%;
+				color: white;
+				padding-left: 2%;
+				margin-right: -1%;
+				text-align: right;
+
+			}
+
+			.feature-text-title {
+				text-align: center;
+				font-size: 1.5rem;
+				line-height: 1.5;
+
+			}
+
+			.feature-text-text {
+
+				font-size: 1rem;
+				line-height: 1.5;
+				text-align: center;
+			}
+
+
+			.feature-image {
+				width: 25%;
+				/*overflow: hidden;  Cache les parties de l'image qui débordent */
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+			}
+
+			.feature-image img {
+				max-width: 100%;
+				max-height: 100%;
+				object-fit: contain;
+				/* Maintient l'aspect proportionnel de l'image */
+			}
+
+
+		}
+
+
+
+		/* Footer */
+		footer {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+			font-size: 0.9rem;
+		}
+
+		footer a {
+			color: #ddd;
+			text-decoration: none;
+			margin: 0 10px;
+		}
+
+		footer a:hover {
+			text-decoration: underline;
+		}
+
+		.social-links {
+			margin-top: 10px;
+		}
+
+		.social-links a {
+			display: inline-block;
+			margin: 0 8px;
+			font-size: 1.5rem;
+			color: #ddd;
+			transition: color 0.3s ease-in-out;
+		}
+
+		.social-links a:hover {
+			color: #1da1f2;
+		}
+
+		/* Popup Styles */
+		.popup-overlay {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			justify-content: center;
+			align-items: center;
+			z-index: 1000;
+			/* Assure que le popup est au-dessus de tout */
+		}
+
+
+
+		.scroll-to-top {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			width: 50px;
+			height: 50px;
+			background-color: rgb(153, 202, 60);
+			color: white;
+			border: none;
+			border-radius: 50%;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+			cursor: pointer;
+			z-index: 1000;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+		}
+
+		.scroll-to-top i {
+			font-size: 20px;
+		}
+
+		.scroll-to-top.show {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.scroll-to-top:hover {
+			background-color: #a8e24e;
+		}
+
+
+
+		@media (max-width: 768px) {
+			.features {
+				color: white;
+				flex-direction: column;
+				align-items: center;
+				padding: 2% 2%;
+				width: 100%;
+				max-height: 100%;
+				z-index: 100;
+				overflow: hidden;
+				background-image: url('static/background vert mobile.png');
+				background-size: cover;
+				background-position: center top;
+				background-repeat: no-repeat;
+			}
+
+
+			.feature-section {
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+				width: 100%;
+			}
+
+			.feature-section.left {
+				justify-content: space-around;
+
+			}
+
+			.feature-section.right {
+				justify-content: space-around;
+
+			}
+
+
+
+			.feature-text-container-left,
+			.feature-text-container-right {
+				margin: 20px 0;
+				display: flex;
+				justify-content: center;
+				flex-direction: column;
+				align-content: center;
+				align-items: center;
+			}
+
+
+			.feature-text-text {
+				font-size: 0.9rem;
+				line-height: 1.3;
+				text-align: justify;
+				width: 90%;
+				max-width: 100%;
+				color: white;
+
+			}
+
+			.feature-text-title {
+				font-size: 1.3rem;
+				line-height: 1.3;
+				color: white;
+			}
+
+
+
+			.feature-number {
+				font-size: 6.6rem;
+				color: #ffffff;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				max-width: 100%;
+
+			}
+
+			.feature-title-left,
+			.feature-title-right {
+				font-size: 1.6rem;
+				color: #ffffff;
+				max-width: 100%;
+				max-height: 100%;
+				object-fit: contain;
+				text-align: center;
+				padding-top: 2rem;
+				padding-bottom: 2rem;
+
+			}
+
+			.feature-image {
+				width: 75%;
+				height: 80%;
+				/*overflow: hidden;  Cache les parties de l'image qui débordent */
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 0px;
+			}
+
+			.feature-image img {
+				max-width: 100%;
+				max-height: 100%;
+				border-radius: 35px;
+				object-fit: contain;
+				/* Maintient l'aspect proportionnel de l'image */
+			}
+
+			.feature-text {
+				font-size: 1rem;
+				line-height: 1.5;
+				text-align: center;
+				max-width: 260px;
+				background-color: rgb(109 163 6);
+				color: white;
+				padding: 20px 20px;
+				border-radius: 8px;
+				margin: 10px;
+			}
+
+		}
+
+		@media (max-width: 768px) {
+
+			.hero {
+				z-index: 100;
+				position: relative;
+				width: 100%;
+				/* Pleine largeur de l'écran */
+				height: 27vh;
+				min-height: 300px;
+				overflow: hidden;
+				background-image: url('static/Maison vib-2.png');
+				/* Image de fond */
+				background-size: cover;
+				background-position: center top;
+				background-position: center 63%;
+				background-repeat: no-repeat;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				box-shadow: 0px 4px 5px 0px #00000036;
+			}
+
+			/* Overlay for darker background, making text more readable */
+			.hero-overlay {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.35);
+				/* Assombrissement */
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				opacity: 0;
+				/* Opacité initiale */
+				transition: opacity 2.5s ease;
+				/* Durée et effet de transition */
+			}
+
+			.hero-overlay.fade-in {
+				opacity: 1;
+				/* Opacité finale après transition */
+			}
+
+			.hero-text {
+				color: white;
+				text-align: center;
+				height: 20vh;
+				margin-top: -60px;
+			}
+
+			.hero-text h1 {
+				font-size: 1.6rem;
+				opacity: 0;
+				transition: opacity 0.6s ease-out;
+				text-shadow: 3px 3px 14px rgba(0, 0, 0, 0.5);
+				margin: 1vh;
+			}
+
+			/* Zoom-in effect for the main title */
+			.hero-text h1.animate {
+				opacity: 1;
+
+				animation: zoomIn 0.5s forwards ease-out;
+			}
+
+			@keyframes zoomIn {
+				from {
+					transform: scale(1.4);
+					opacity: 0;
+				}
+
+				to {
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+
+
+			/* Initial state for animations */
+			.hero-text h2 {
+				font-size: 0.9rem;
+				opacity: 0;
+				transform: translateY(20px);
+				/* Position initiale vers le bas */
+				transition: opacity 0.9s ease, transform 0.9s ease;
+				text-shadow: 4px 2px 7px rgba(0, 0, 0, 0.8);
+				margin: 3vh;
+			}
+
+			/* Initial state for animations */
+			.hero-text .search-btn-2 .input-and-btn-container {
+				opacity: 1;
+				transform: translateY(100px);
+				/* Position initiale vers le bas */
+				transition: opacity 0.8s ease, transform 0.8s ease;
+				margin: 0;
+			}
+
+			/* Final state for animations */
+			.hero-text h2.animate,
+			.hero-text .search-btn-2.animate input-and-btn-container.animate {
+				opacity: 1;
+				transform: translateY(0);
+				/* Arrivée à la position finale */
+			}
+
+			.url-input {
+				padding: 20px;
+				height: 15px;
+				width: 70%;
+				border-radius: 7px 0px 0px 7px;
+				border: 2px solid #98ca3c00;
+				/* Corrigé pour un contour visible si nécessaire */
+				outline: none;
+				/* Supprime le contour lors du focus */
+				opacity: 0;
+				transform: translateY(100px);
+				/* Position initiale vers le bas */
+				transition: opacity 0.8s ease, transform 0.8s ease;
+				margin: 1vh 0vh 1vh 0vh;
+			}
+
+			.search-btn-2 {
+				height: 37px;
+				width: 212px;
+				font-size: 0.9rem;
+			}
+
+			.mascotte-index {
+				display: none;
+			}
+
+			.mascotte-index-mobile {
+				position: absolute;
+				display: block;
+				margin: 2rem auto 0 auto;
+				transform: translateY(144px) translateX(-122px);
+				height: 200px;
+			}
+
+
+		}
+
+
+
+		@media (min-width: 768px) {
+			.desktop-features {
+				display: flex;
+				width: 100%;
+
+			}
+
+			.mobile-features {
+				display: none;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.desktop-features {
+				display: none;
+			}
+
+			.mobile-features {
+				display: flex;
+				width: 100%;
+				align-items: center;
+			}
+		}
+
+		/* Section FAQ */
+
+		.FAQ {
+			display: flex;
+			flex-direction: column;
+			text-align: left;
+			align-items: center;
+		}
+
 		.FAQ-container {
+			display: flex;
+			flex-direction: column;
+			text-align: left;
+			align-items: center;
+			margin-top: 40px;
+			margin-bottom: 100px;
+			padding-top: 20px;
+			padding-bottom: 30px;
+			/*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);*/
+			width: 55%;
+		}
+
+		.FAQ h1 {
+			font-size: 1.5rem;
+		}
+
+		.FAQ-section {
+			margin: 20px;
 			width: 90%;
 		}
 
-		.FAQ h1{
-			font-size: 1.1rem;
-		}
-
 		.FAQ-header {
-			font-size: 1.1rem;
+			cursor: pointer;
+			font-size: 1.3rem;
+			margin-top: 15px;
+			margin-bottom: 15px;
 		}
 
 		.FAQ-content {
-			color: #9e9e9e;
-			font-weight: 100;
-			font-size: 0.9rem;
+			font-size: 1rem;
+			text-align: justify;
+			margin-top: 5px;
+			line-height: 1.4;
+			overflow: hidden;
+			opacity: 0;
+			max-height: 0;
+			transition: opacity 0.5s ease, max-height 0.5s ease-in-out;
+		}
+
+		.FAQ-content.show {
+			opacity: 1;
+			/* Apparition progressive */
+			max-height: 500px;
+			/* Ajuster selon la taille du contenu */
+		}
+
+		/* Classe pour l'icône flèche */
+		.FAQ-header .arrow-icon-FAQ {
+			font-size: 1rem;
+			display: inline-block;
+			transition: transform 0.6s ease, color 0.4s ease;
+			color: #333;
+			/* Couleur par défaut de la flèche */
+			margin-left: 8px;
+			/* Espace entre le texte et la flèche */
+			vertical-align: middle;
+		}
+
+		/* Rotation de l'icône flèche quand elle est active */
+		.FAQ-header.active .arrow-icon-FAQ {
+			transform: rotate(180deg);
+		}
+
+		.FAQ a {
+			text-decoration: none;
+		}
+
+		.FAQ a:hover {
+			text-decoration: none;
+		}
+
+		@media (max-width: 768px) {
+			.FAQ-section {
+				margin: 10px;
+			}
+
+			.FAQ-container {
+				width: 90%;
+			}
+
+
+			.FAQ-header {
+				font-size: 1.1rem;
+			}
+
+			.FAQ-content {
+				color: #9e9e9e;
+				font-weight: 100;
+				font-size: 0.9rem;
+
+			}
+		}
+
+		.voir-plus-btn {
+			margin-left: 0px;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			padding: 8px 30px;
+			background-color: rgb(153, 202, 60);
+			color: #fff;
+			border: 1px solid #99999900;
+			border-radius: 25px;
+			font-size: 1rem;
+			font-weight: 400;
+			cursor: pointer;
+		}
+
+		.voir-plus-btn:hover {
+			background-color: #a8e24e;
+		}
+
+
+		/* Section contenant le carrousel */
+
+		.carousel-section {
+			margin-top: 30px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: white;
+			/* Optionnel : Couleur d'arrière-plan */
 
 		}
-	}
 
-	.voir-plus-btn {
-		margin-left: 0px;
-		margin-top: 15px;
-		margin-bottom: 15px;
-		padding: 8px 30px;
-		background-color: rgb(153,202,60);
-		color: #fff;
-		border: 1px solid #99999900;
-		border-radius: 25px;
-		font-size: 1rem;
-		font-weight: 400;
-		cursor: pointer;
-	}
+		/* Centrage du carrousel */
+		.carousel {
+			position: relative;
+			overflow: hidden;
+			width: 65%;
+			max-width: 100%;
+			/* S'assure qu'il ne dépasse pas l'écran */
+			aspect-ratio: 2244 / 1535;
+			margin: 0 auto;
+			/* Centre horizontalement */
+			display: flex;
+			/* Ajouté pour centrer les images internes */
+			justify-content: center;
+			/* S'assure que le contenu est bien centré */
+			margin-bottom: 30px;
+		}
 
-	.voir-plus-btn:hover {
-		background-color: #a8e24e;
-	}
+		.carousel-images {
+			display: flex;
+			transition: transform 0.5s ease-in-out;
+			width: 400%;
+			/* S'adapte à plusieurs images */
+			cursor: grab;
+			/* Curseur "main ouverte" par défaut */
+		}
 
+		.carousel-images.grabbing {
+			cursor: grabbing;
+			/* Curseur "main fermée" lors du clic et glissement */
+		}
 
-/* Section contenant le carrousel */
+		.carousel-images,
+		.carousel-images img {
+			user-select: none;
+			/* Empêche la sélection de texte/élément */
+			pointer-events: auto;
+			/* Assure que le curseur reste actif */
+			-webkit-user-drag: none;
+			/* Désactive le drag natif sur WebKit */
+		}
 
-.carousel-section {
-	margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white; /* Optionnel : Couleur d'arrière-plan */
-	
-}
+		.carousel-images img {
+			width: 100%;
+			object-fit: cover;
+		}
 
-/* Centrage du carrousel */
-.carousel {
-    position: relative;
-    overflow: hidden;
-    width: 65%;
-    max-width: 100%; /* S'assure qu'il ne dépasse pas l'écran */
-    aspect-ratio: 2244 / 1535;
-    margin: 0 auto; /* Centre horizontalement */
-    display: flex; /* Ajouté pour centrer les images internes */
-    justify-content: center; /* S'assure que le contenu est bien centré */
-	margin-bottom: 30px;
-}
+		.carousel-dots {
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			transform: translateX(-50%);
+			display: flex;
+			gap: 10px;
+			padding: 5px 5px;
+			border-radius: 15px;
+			background-color: #f9f9f99e;
+		}
 
-.carousel-images {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 400%; /* S'adapte à plusieurs images */
-	cursor: grab; /* Curseur "main ouverte" par défaut */
-}
+		.dot {
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			border-color: #ffffff;
+			border: 2px solid rgb(109 163 6);
+			cursor: pointer;
+			transition: background 0.3s;
+		}
 
-.carousel-images.grabbing {
-    cursor: grabbing; /* Curseur "main fermée" lors du clic et glissement */
-}
+		.dot.active {
+			background: rgb(109 163 6);
+		}
 
-.carousel-images,
-.carousel-images img {
-    user-select: none; /* Empêche la sélection de texte/élément */
-    pointer-events: auto; /* Assure que le curseur reste actif */
-	-webkit-user-drag: none; /* Désactive le drag natif sur WebKit */
-}
+		.dot:hover {
+			background: rgb(109 163 6);
+		}
 
-.carousel-images img {
-    width: 100%;
-    object-fit: cover;
-}
-
-.carousel-dots {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-	padding: 5px 5px;
-	border-radius: 15px;
-	background-color: #f9f9f99e;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-	border-color: #ffffff;
-    border: 2px solid rgb(109 163 6);
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.dot.active {
-    background: rgb(109 163 6);
-}
-
-.dot:hover {
-	background: rgb(109 163 6);
-}
-
-@media (max-width: 768px) {
-    .carousel {
-        width: 90%; /* Plus petit écran */
-    }
-}
-
-
-  </style>
+		@media (max-width: 768px) {
+			.carousel {
+				width: 90%;
+				/* Plus petit écran */
+			}
+		}
+	</style>
 </head>
+
 <body>
-	
-  <!-- Inclure le header de façon dynamique -->
-  {% include "header.html" %}
-  
-	
 
-	  
-<!-- Hero Section -->
-<section class="hero">
-  <div class="hero-overlay">
-    <div class="hero-text">
-      <h1>Trouvez l'adresse d'une annonce immobilière.</h1>
-      <h2>Envoyez-nous l’annonce, on vous trouve l’adresse.</H2>
+	<!-- Inclure le header de façon dynamique -->
+	{% include "header.html" %}
 
-	  <div class = "input-and-btn-container">
-		<input type="text" class="url-input" id="url-input" style="padding:10px; font-family: lexend; font-weight: bold; font-size: 14px; color:#000000"
-				placeholder="" />
-		<button class="search-btn-2 disabled" title="Collez le lien de l'annonce dans la barre à gauche" id="search-btn-2" onclick="openSearchPopup()" disabled><i class="fas fa-paper-plane" style="margin-left:5px; margin-right: 10px"></i> Envoyer </button>
-	  </div>
-    </div>
-	<img src="static/mascotte-pointe-doigt-petite.png" alt="Mascotte Adressator" class="mascotte-index">
-	<img src="static/mascotte-pointe-doigt-petite-mobile.png" alt="Mascotte Adressator" class="mascotte-index-mobile">
-  </div>
-</section>
 
-<!-- Intro Section -->
-<section class="intro">
-	<div class="intro-container">
-	    <div class="intro-text">
-		  <div class="intro-bienvenue">Bienvenue sur Adressator !</div>
-		  Vous avez flashé sur une annonce immobilière ? Vous aimeriez savoir où se trouve le bien ?<br>
-		  Alors Adressator est fait pour vous ! C'est LA solution pour localiser facilement n'importe quelle maison à vendre.
-	    </div>
-		
 
-		
-		<div class="intro-block">
-			<div class="intro-left">
-				<div class ="intro-img">
-					<img src="/static/Easy violet.png" alt="Easy Facile">
-				</div>
-				<div class="intro-title-left">
-					Simple
-				</div>
-				<div class="intro-subtext">
-					Service 100% en ligne et sans obligation d'inscription. 
+
+	<!-- Hero Section -->
+	<section class="hero">
+		<div class="hero-overlay">
+			<div class="hero-text">
+				<h1>L’adresse exacte des annonces… sans agence</h1>
+				<h2>Évitez les frais, contactez le vendeur directement.</h2>
+
+				<div class="input-and-btn-container">
+					<input type="text" class="url-input" id="url-input"
+						style="padding:10px; font-family: lexend; font-weight: bold; font-size: 14px; color:#000000"
+						placeholder="" />
+					<button class="search-btn-2 disabled" title="Collez le lien de l'annonce dans la barre à gauche"
+						id="search-btn-2" onclick="openSearchPopup()" disabled><i class="fas fa-paper-plane"
+							style="margin-left:5px; margin-right: 10px"></i> Obtenir l'adresse </button>
 				</div>
 			</div>
-
-			<div class="intro-center">
-				<div class ="intro-img">
-					<img src="/static/Fast violet.png" alt="Fast Rapide">
-				</div>
-				<div class="intro-title-center">
-					Rapide
-				</div>
-				<div class="intro-subtext">
-					Nous trouvons l’adresse généralement dans la journée, souvent en quelques heures.
-				</div>
-			</div>
-
-			<div class="intro-right">
-				<div class ="intro-img">
-					<img src="/static/Convenient violet.png" alt="Convenient Pratique">
-				</div>
-				<div class="intro-title-right">
-					Pratique
-				</div>
-				<div class="intro-subtext">
-					Recevez l’adresse directement par email, découvrez la localisation sans vous déplacer.
-				</div>
-			</div>
+			<!--<img src="static/mascotte-pointe-doigt-petite.png" alt="Mascotte Adressator" class="mascotte-index">
+			<img src="static/mascotte-pointe-doigt-petite-mobile.png" alt="Mascotte Adressator"	class="mascotte-index-mobile">-->
 		</div>
-		<div class="intro-block">
-			<div class="intro-bottom">
-				<div class ="intro-img">
-					<img src="/static/Economic violet.png" alt="Economic Economique">
+	</section>
+
+	<!-- Intro Section -->
+	<section class="intro">
+		<div class="intro-container">
+			<section class="section-light">
+				<div class="intro-text">
+					<h2 style="text-align:center">Bienvenue sur Adressator !</h2>
+					<h3>Vous avez flashé sur une annonce immobilière ? Vous aimeriez savoir où se trouve le bien ?<br>
+						Alors Adressator est fait pour vous ! C'est LA solution pour localiser facilement n'importe
+						quelle maison à vendre.</h3>
 				</div>
-				<div class="intro-title-bottom">
-					Economique
-				</div>
-				<div class="intro-subtext">
-					<span style="color: #573095">Tarif unique :  </span><span style="font-size: 1.4rem; color: #573095">49€</span><span style="color: #573095"> TTC </span><br>par adresse trouvée.
-				</div>
-			</div>
-		</div>
-		<div class="intro-text" style="color:#333">
-			<br>Ne restez pas dans le flou, localisez le bien !
+			</section>
 		</div>
 
+		<div class="divider"></div>
+		<div class="intro-container">
+			<section class="section-light">
+				<div class="intro-text">
+					<h2>Les agences ont une stratégie : <span style="color:#757575"> ne jamais vous montrer l’adresse
+							exacte</span></h2>
+					<h4>Vous avez trouvé le bien parfait, mais l’adresse est floue. <br>Vous devez passer par une
+						agence…
+						Et
+						parfois découvrir que le bien ne vous convient pas du tout.<br></p>
+				</div>
+				<img src="static/localisation-maison.png" alt="Localisation maison" class="intro-image"></img>
+			</section>
+		</div>
+		<div class="divider"></div>
 
-		<section class="video-presentation">
-			<div class="video-container">
-				<iframe 
-					width="560" 
-					height="315" 
-					src="https://www.youtube.com/embed/kmJyQt8byVM?rel=0&cc_load_policy=0" 
-					title="Adressator : Obtenez la localisation des annonces immobilières" 
-					frameborder="0" 
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-					allowfullscreen>
-				</iframe>
+		<div class="intro-container">
+			<section class="section-light">
+				<img src="static/service.png" alt="Mascotte Adressator" class="intro-image"></img>
+				<div class="intro-text">
+					<div class="intro-h2">Gagnez un temps fou <span style="color:#757575">et évitez les frais d’agence
+							avec Adressator<br></span></div>
+					<h4>Pour accéder à l’adresse exacte du bien qui vous intéresse, il vous suffit de <strong>valider
+							votre paiement sécurisé</strong>.<br>
+						Notre équipe s’occupe ensuite de vérifier et retrouver manuellement l’adresse, que vous recevez
+						<strong>par email sous 1h à 72h</strong>.</h3>
+
+
+						<div class="input-and-btn-container">
+							<input type="text" class="url-input-2" id="url-input-2"
+								style="padding:10px; font-family: lexend; font-weight: bold; font-size: 14px; color:#000000"
+								placeholder="Collez une annonce" />
+							<button class="search-btn-2 disabled" style="width:145px"
+								title="Collez le lien de l'annonce dans la barre à gauche" id="search-btn-3"
+								onclick="openSearchPopup()" disabled> Obtenir l'adresse </button>
+						</div>
+			</section>
+		</div>
+		<div class="divider"></div>
+
+		<div class="intro-container">
+			<div class="intro-h2" style="color:#573095; text-align: center">
+				<br>Ne restez pas dans le flou, localisez le bien !
 			</div>
-	    </section>
+			<section class="section-light-column">
+				<div class="intro-block">
+					<div class="intro-left">
+						<div class="intro-img">
+							<img src="static/Convenient violet.png" alt="Easy Facile">
+						</div>
+						<div class="intro-title">
+							Obtenez l’adresse exacte
+						</div>
+						<div class="intro-subtext">
+							Service 100% en ligne et sans obligation d'inscription.
+						</div>
+					</div>
 
+					<div class="intro-center-left">
+						<div class="intro-img">
+							<img src="static/Fast violet.png" alt="Fast Rapide">
+						</div>
+						<div class="intro-title">
+							Gagnez du temps et de l’argent
+						</div>
+						<div class="intro-subtext">
+							Vous obtenez l'adresse en quelques heures.
+						</div>
+					</div>
+
+					<div class="intro-center-right">
+						<div class="intro-img">
+							<img src="static/Money violet.png" alt="Savings Economies">
+						</div>
+						<div class="intro-title">
+							Évitez les frais d’agence inutiles
+						</div>
+						<div class="intro-subtext">
+							Economisez jusqu'à 20 000€ de frais d'agence.
+						</div>
+					</div>
+
+
+					<div class="intro-right">
+						<div class="intro-img">
+							<img src="static/Owner violet.png" alt="Owner Propriétaire">
+						</div>
+						<div class="intro-title">
+							Contactez directement le propriétaire
+						</div>
+						<div class="intro-subtext">
+							Et concrétisez la vente ! <span style="color:white"> Rendez-vous sur place</span>
+						</div>
+					</div>
+				</div>
+
+
+			</section>
+		</div>
+	</section>
 	</div>
-</section>
+	<div class="divider"></div>
+	</section>
 
-<!-- Features Section -->
-<div class="desktop-features">
-  <section class="features">
-	<div class="features-top-margin" style="padding-top:100px"></div>
+	<!-- Features Section -->
+	<div class="desktop-features">
+		<section class="features">
+			<div class="features-top-margin" style="padding-top:100px"></div>
 
-	<div class="feature-section left">
-		<!-- Colonne de gauche : Numéro et Titre -->
-		<div class="feature-number">
-			<span>01.</span>
-			<div class="feature-title-left">L'Annonce</div>
-		</div>
-		
-		<!-- Colonne du Milieu : Image -->
-		<div class="feature-image">
-			<img src="/static/l-annonce.png" alt="L'Annonce immobilière maison à vendre">
-		</div>
+			<div class="feature-section left">
+				<!-- Colonne de gauche : Numéro et Titre -->
+				<div class="feature-number">
+					<span>01.</span>
+					<div class="feature-title-left"></div>
+				</div>
 
-		<!-- Colonne de Droite : Texte -->
-		<div class="feature-text-container-right">
-			<div class="feature-text-title">
-			Envoyez-nous le lien de l’annonce. 
-			</div>
-			<div class="feature-text-text"><br>
-				✔ Copiez le lien de l’annonce immobilière dans la barre de recherche.<br>
-				✔ Le bien doit être une maison (pas un appartement, ni un local).<br>
-				✔ Le bien peut être situé n'importe où en France métropolitaine.<br>
-				✔ Procédez au paiement via notre plateforme sécurisée.
+				<!-- Colonne du Milieu : Image -->
+				<div class="feature-image">
+					<img src="static/l-annonce.png" alt="L'Annonce immobilière maison à vendre">
+				</div>
+
+				<!-- Colonne de Droite : Texte -->
+				<div class="feature-text-container-right">
+					<div class="feature-text-title">
+						Vous collez le lien de l'annonce.
+					</div>
+				</div>
 
 			</div>
-		</div>
 
+
+
+			<!-- Recherche d'adresse -->
+			<div class="feature-section right">
+
+				<!-- Colonne de Gauche : Texte -->
+				<div class="feature-text-container-left">
+					<div class="feature-text-title">
+						Nous localisons le bien.
+					</div>
+				</div>
+
+				<!-- Colonne du Milieu : Image -->
+				<div class="feature-image">
+					<img src="static/notre-service.png" alt="Notre Service de recherche d'adresse géolocalisation">
+				</div>
+
+				<!-- Colonne de gauche : Numéro et Titre -->
+				<div class="feature-number">
+					<span>02.</span>
+					<div class="feature-title-right"></div>
+				</div>
+
+
+			</div>
+
+
+			<!-- Recherche d'adresse -->
+			<div class="feature-section left">
+
+				<!-- Colonne de gauche : Numéro et Titre -->
+				<div class="feature-number">
+					<span>03.</span>
+					<div class="feature-title-left"></div>
+				</div>
+
+				<!-- Colonne du Milieu : Image -->
+				<div class="feature-image">
+					<img src="static/l-adresse.png" alt="L’adresse du bien immobilier maison à vendre">
+				</div>
+
+				<!-- Colonne de Droite : Texte -->
+				<div class="feature-text-container-right">
+					<div class="feature-text-title">
+						Vous recevez l’adresse exacte.
+					</div>
+					<div class="feature-text-text">
+						🔒 Service rapide, sécurisé, sans compte
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="feature-conclusion"> L'emplacement dévoilé, à vous de jouer !</div>
+			<div class="features-bottom-margin" style="padding-bottom:100px"></div>
+		</section>
 	</div>
-	
-		
-  
-	<!-- Recherche d'adresse -->
-	<div class="feature-section right">
 
-		<!-- Colonne de Gauche : Texte -->
-		<div class="feature-text-container-left">
-			<div class="feature-text-title">
-			Nous recherchons l’adresse exacte pour vous.
+	<div class="mobile-features">
+		<section class="features">
+			<div class="features-top-margin" style="padding-top:165px"></div>
+
+			<div class="feature-section left">
+				<!-- Colonne de gauche : Numéro et Titre -->
+				<div class="feature-number">
+					<span>01.</span>
+					<div class="feature-title-left">Vous collez le lien de l'annonce.</div>
+				</div>
+
+				<!-- Colonne du Milieu : Image -->
+				<div class="feature-image">
+					<img src="static/l-annonce.png" alt="L'Annonce immobilière bien immobilier maison à vendre">
+				</div>
+
+				<!-- Colonne de Droite : Texte -->
+				<div class="feature-text-container-right">
+					<div class="feature-text-title">
+
+					</div>
+				</div>
+
 			</div>
-			<div class="feature-text-text">
-				<br>Nous analysons les informations de l’annonce pour retrouver la localisation précise. Un processus rapide et fiable, conçu pour vous offrir une réponse en un temps record.
+
+
+
+			<!-- Recherche d'adresse -->
+			<div class="feature-section right">
+
+
+				<!-- Colonne de gauche : Numéro et Titre -->
+				<div class="feature-number">
+					<span>02.</span>
+					<div class="feature-title-right">Nous localisons le bien.</div>
+				</div>
+
+				<!-- Colonne du Milieu : Image -->
+				<div class="feature-image">
+					<img src="static/notre-service.png" alt="Notre Service de recherche d'adresse géolocalisation">
+				</div>
+
+				<!-- Colonne de Gauche : Texte -->
+				<div class="feature-text-container-left">
+					<div class="feature-text-title">
+
+					</div>
+				</div>
+
 
 			</div>
-		</div>
-		
-		<!-- Colonne du Milieu : Image -->
-		<div class="feature-image">
-			<img src="/static/notre-service.png" alt="Notre Service de recherche d'adresse géolocalisation">
-		</div>
 
-		<!-- Colonne de gauche : Numéro et Titre -->
-		<div class="feature-number">
-			<span>02.</span>
-			<div class="feature-title-right">Notre Service</div>
-		</div>
-		
 
-	</div>  
-		
-		
- 	<!-- Recherche d'adresse -->
-	<div class="feature-section left">
+			<!-- Recherche d'adresse -->
+			<div class="feature-section left">
 
-		<!-- Colonne de gauche : Numéro et Titre -->
-		<div class="feature-number">
-			<span>03.</span>
-			<div class="feature-title-left">L'Addresse</div>
-		</div>
+				<!-- Colonne de gauche : Numéro et Titre -->
+				<div class="feature-number">
+					<span>03.</span>
+					<div class="feature-title-left">Vous recevez l’adresse exacte.</div>
+				</div>
 
-		<!-- Colonne du Milieu : Image -->
-		<div class="feature-image">
-			<img src="/static/l-adresse.png" alt="L’adresse du bien immobilier maison à vendre">
-		</div>
-		
-		<!-- Colonne de Droite : Texte -->
-		<div class="feature-text-container-right">
-			<div class="feature-text-title">
-			L'emplacement dévoilé, à vous de jouer !
+				<!-- Colonne du Milieu : Image -->
+				<div class="feature-image">
+					<img src="static/l-adresse.png" alt="L’adresse du bien immobilier recherché">
+				</div>
+
+				<!-- Colonne de Droite : Texte -->
+				<div class="feature-text-container-right">
+					<div class="feature-text-title">
+
+					</div>
+				</div>
 			</div>
-			<div class="feature-text-text">
-			<br>Avec l’adresse du bien :<br>
-			✔ Découvrez l'emplacement sur Google Maps.<br>
-			✔ Situez les commodités locales : écoles, commerces, transports.<br>
-			✔ Evaluez la distance jusqu'à votre lieu de travail.<br>
-			✔ Observez l’environnement pour anticiper les nuisances éventuelles.<br><br>
-			
-			</div>
-		</div>
+			<div class="feature-conclusion" style="text-align: center;"> L'emplacement dévoilé, à vous de jouer !</div>
+			<div class="features-bottom-margin" style="padding-bottom:165px"></div>
+		</section>
 	</div>
-	<div class="features-bottom-margin" style="padding-bottom:100px"></div>
-  </section>
-</div>
 
-<div class="mobile-features">
-	<section class="features">
-		<div class="features-top-margin" style="padding-top:165px"></div>
-	
-		<div class="feature-section left">
-			<!-- Colonne de gauche : Numéro et Titre -->
-			<div class="feature-number">
-				<span>01.</span>
-				<div class="feature-title-left">L'Annonce</div>
-			</div>
-			
-			<!-- Colonne du Milieu : Image -->
-			<div class="feature-image">
-				<img src="/static/l-annonce.png" alt="L'Annonce immobilière bien immobilier maison à vendre">
-			</div>
-	
-			<!-- Colonne de Droite : Texte -->
-			<div class="feature-text-container-right">
-				<div class="feature-text-title">
-				Envoyez-nous le lien de l’annonce qui vous fait rêver.
-				</div>
-				<div class="feature-text-text">
-				<br>Vous avez repéré une maison qui vous intéresse ? Notre mission est de vous simplifier la vie.<br><br>
-	
-				✔ Copiez le lien de l’annonce immobilière que vous avez trouvée sur le web.<br>
-				✔ Envoyez-le-nous et procédez au paiement via notre plateforme sécurisée.
-				</div>
-			</div>
-	
-		</div>
-		
-			
-	  
-		<!-- Recherche d'adresse -->
-		<div class="feature-section right">
-	
-			
-			<!-- Colonne de gauche : Numéro et Titre -->
-			<div class="feature-number">
-				<span>02.</span>
-				<div class="feature-title-right">Notre Service</div>
-			</div>
+	<div class="divider"></div>
 
-			<!-- Colonne du Milieu : Image -->
-			<div class="feature-image">
-				<img src="/static/notre-service.png" alt="Notre Service de recherche d'adresse géolocalisation">
-			</div>
-	
-			<!-- Colonne de Gauche : Texte -->
-			<div class="feature-text-container-left">
-				<div class="feature-text-title">
-				Nous recherchons l’adresse exacte pour vous.
-				</div>
-				<div class="feature-text-text">
-				<br>Avec Adressator, fini les recherches interminables pour localiser une maison.
-				<br>Nous analysons les informations de l’annonce pour retrouver l’adresse précise. Un processus rapide et fiable, conçu pour vous offrir une réponse en un temps record.
-				<br><br>Résultat ? Une information claire et fiable, directement dans votre boîte mail.
-				</div>
-			</div>
-			
-	
-		</div>  
-			
-			
-		 <!-- Recherche d'adresse -->
-		<div class="feature-section left">
-	
-			<!-- Colonne de gauche : Numéro et Titre -->
-			<div class="feature-number">
-				<span>03.</span>
-				<div class="feature-title-left">L'Addresse</div>
-			</div>
-	
-			<!-- Colonne du Milieu : Image -->
-			<div class="feature-image">
-				<img src="/static/l-adresse.png" alt="L’adresse du bien immobilier recherché">
-			</div>
-			
-			<!-- Colonne de Droite : Texte -->
-			<div class="feature-text-container-right">
-				<div class="feature-text-title">
-				L'emplacement dévoilé, à vous de jouer !
-				</div>
-				<div class="feature-text-text">
-				<br>Avec l’adresse du bien, tout devient plus simple :<br>
-				✔ Explorez l'emplacement sur Google Maps.<br>
-				✔ Découvrez les commodités locales : écoles, commerces, transports.<br>
-				✔ Vérifiez la distance jusqu'à votre lieu de travail.<br>
-				✔ Observez l’environnement pour anticiper les nuisances éventuelles.<br><br>
-				
-				Votre décision commence ici : avec une information précise, vous êtes mieux préparé.
-				</div>
-			</div>	
-		</div>
-		<div class="features-bottom-margin" style="padding-bottom:165px"></div>
-	  </section>
-</div>
 
-<section class="FAQ">
-	
-	<div class="FAQ-container">
-		<h1>Foire Aux Questions</h1>
-		<div class="FAQ-section">
-			<div class="FAQ-header" >
-				Pourquoi connaître l’adresse d’un bien avant la visite ?		
-				<span class="arrow-icon-FAQ">▼</span>
-			</div>
-			<div class="FAQ-content" style="display: block;">
-			Avec l’adresse en poche, vous gardez le contrôle ! 🔥 <br>
-			📍 Vérifiez l’environnement : nuisances, vis-à-vis, accessibilité… tout ce qui ne se voit pas forcément sur les photos.<br>
-			⏳ Gagnez du temps : plus besoin de prendre un rendez-vous si l’emplacement ne vous convient pas.
-			</div>
+	<section class="video-presentation">
+		<div class="video-container">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/kmJyQt8byVM?rel=0&cc_load_policy=0"
+				title="Adressator : Obtenez la localisation des annonces immobilières" frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+				allowfullscreen>
+			</iframe>
 		</div>
-
-		<div class="FAQ-section">
-			<div class="FAQ-header" >
-				Comment ça fonctionne ?		
-				<span class="arrow-icon-FAQ">▼</span>
-			</div>
-			<div class="FAQ-content" style="display: block;">
-				1️⃣ Copiez-collez le lien de l’annonce sur Adressator.<br>
-				2️⃣ Confirmez votre demande et procédez au paiement sécurisé.<br>
-				3️⃣ Recevez l’adresse par e-mail dans un délai de quelques heures à 3 jours.<br>
-				Simple, rapide et efficace ! 🚀
-			</div>
-		</div>
-		
-		
-		<div class="FAQ-section">
-			<div class="FAQ-header" >
-		Comment trouvons-nous les adresses ?
-				<span class="arrow-icon-FAQ">▼</span>
-			</div>
-			<div class="FAQ-content" style="display: block;">
-		Nous utilisons des images satellites et des outils d’analyse avancés que nous avons développés pour localiser le bien à partir des photos de l’annonce. 📡<br>
-		Grâce à cette méthode, nous pouvons identifier l’emplacement exact du bien avec précision et rapidité. 🚀
-			</div>
-		</div>
-		
-		<div class="FAQ-section">
-			<div class="FAQ-header" >
-		Peut-on passer directement par le propriétaire pour réaliser la transaction ?
-				<span class="arrow-icon-FAQ">▼</span>
-			</div>
-			<div class="FAQ-content" style="display: block;">
-		✅ Oui, dans la plupart des cas, vous pouvez contacter directement le propriétaire une fois l’adresse obtenue. Cela peut vous permettre d’éviter les frais d’agence.<br>
-		⚠️ Attention cependant aux contrats d’exclusivité ! Certains biens sont sous mandat exclusif avec une agence, ce qui signifie que la vente ne peut être conclue que par l’intermédiaire de cette agence.<br>
-			</div>
-		</div>
-		
-		<div class="FAQ-section">
-			<div class="FAQ-header" >
-		Est-ce légal ?
-				<span class="arrow-icon-FAQ">▼</span>
-			</div>
-			<div class="FAQ-content" style="display: block;">
-		✅ Oui, totalement ! Nous utilisons uniquement des données publiques, accessibles à tous. Aucune information confidentielle n’est exploitée.
-			</div>
-		</div>
-	
-		<a class="voir-plus-btn" href="/FAQ">Voir plus</a>
-
-		</div>
+	</section>
 	</div>
-</section>
+
+	<div class="divider"></div>
+
+	<section class="FAQ">
+
+		<div class="FAQ-container">
+			<h1 style="font-size:1.8rem"><i class="fa-solid fa-comments"></i>&nbsp;Foire Aux Questions</h1>
+			<div class="FAQ-section">
+				<div class="FAQ-header">
+					<i class="fa-solid fa-map-pin"></i>&nbsp;&nbsp;Pourquoi connaître l’adresse d’un bien avant la
+					visite ?
+					<span class="arrow-icon-FAQ">▼</span>
+				</div>
+				<div class="FAQ-content" style="display: block;">
+					Avec l’adresse en poche, vous gardez le contrôle ! <br>
+					Vérifiez l’environnement : nuisances, vis-à-vis, accessibilité… tout ce qui ne se voit pas
+					forcément sur les photos.<br>
+					⏳ Gagnez du temps : plus besoin de prendre un rendez-vous si l’emplacement ne vous convient pas.
+				</div>
+			</div>
+
+			<div class="FAQ-section">
+				<div class="FAQ-header">
+					<i class="fa-solid fa-gears"></i>&nbsp;&nbsp;Comment ça fonctionne ?
+					<span class="arrow-icon-FAQ">▼</span>
+				</div>
+				<div class="FAQ-content" style="display: block;">
+					1️⃣ Copiez-collez le lien de l’annonce sur Adressator.<br>
+					2️⃣ Confirmez votre demande et procédez au paiement sécurisé.<br>
+					3️⃣ Recevez l’adresse par e-mail dans un délai de quelques heures à 3 jours.<br>
+					Simple, rapide et efficace ! 🚀
+				</div>
+			</div>
+
+
+			<div class="FAQ-section">
+				<div class="FAQ-header">
+					<i class="fa-solid fa-satellite-dish"></i>&nbsp;&nbsp;Comment trouvons-nous les adresses ?
+					<span class="arrow-icon-FAQ">▼</span>
+				</div>
+				<div class="FAQ-content" style="display: block;">
+					Nous utilisons des images satellites et des outils d’analyse avancés que nous avons développés pour
+					localiser le bien à partir des photos de l’annonce. 📡<br>
+					Grâce à cette méthode, nous pouvons identifier l’emplacement exact du bien avec précision et
+					rapidité. 🚀
+				</div>
+			</div>
+
+			<div class="FAQ-section">
+				<div class="FAQ-header">
+					<i class="fa-solid fa-handshake"></i>&nbsp;&nbsp;Peut-on passer directement par le propriétaire pour
+					réaliser la transaction ?
+					<span class="arrow-icon-FAQ">▼</span>
+				</div>
+				<div class="FAQ-content" style="display: block;">
+					✅ Oui, dans la plupart des cas, vous pouvez contacter directement le propriétaire une fois l’adresse
+					obtenue. Cela peut vous permettre d’éviter les frais d’agence.<br>
+					⚠️ Attention cependant aux contrats d’exclusivité ! Certains biens sont sous mandat exclusif avec
+					une agence, ce qui signifie que la vente ne peut être conclue que par l’intermédiaire de cette
+					agence.<br>
+				</div>
+			</div>
+
+			<div class="FAQ-section">
+				<div class="FAQ-header">
+					<i class="fa-solid fa-scale-balanced"></i>&nbsp;&nbsp;Est-ce légal ?
+					<span class="arrow-icon-FAQ">▼</span>
+				</div>
+				<div class="FAQ-content" style="display: block;">
+					✅ Oui, totalement ! Nous utilisons uniquement des données publiques, accessibles à tous. Aucune
+					information confidentielle n’est exploitée.
+				</div>
+			</div>
+
+			<a class="voir-plus-btn" href="https://www.adressator.com/FAQ">Voir plus</a>
+
+		</div>
+		</div>
+	</section>
 
 
 
-
+	<div class="divider"></div>
 
 
 	<button id="scroll-to-top-btn" class="scroll-to-top">
 		<i class="fas fa-chevron-up"></i>
 	</button>
 
-	
+	<section class="section-colored">
+		<div class="section-colored-container">
+			<h2>Essayez notre simulateur de prêt </h2>
+			<h3>
+				Avant même de visiter, sachez si vous pouvez financer.<br>
+				Grâce à notre simulateur, obtenez une estimation instantannée de vos mensualités pour votre achat
+				immobilier.
+			</h3>
+			<a href="https://www.adressator.com/simu-mensu-pret" class="simulateur-btn">
+				Accéder à notre outil de simulation gratuit &nbsp;<i class="fa-solid fa-arrow-right"></i>
+			</a>
+		</div>
+		<a class="screen-image-desktop" href="https://www.adressator.com/simu-mensu-pret">
+			<img src="static/screen-simu-desktop.png" alt="Screenshot de l'outil de simulation adressator"
+				style="width:480px; border-radius: 20px;box-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+		</a>
+		<a class="screen-image-mobile" href="https://www.adressator.com/simu-mensu-pret">
+			<img src="static/screen-simu-mobile-2.png" alt="Screenshot de l'outil de simulation adressator"
+				style="width:245px;">
+		</a>
+	</section>
+
+
+	<div class="divider"></div>
+
+	<section class="section-light-column" style="text-align:center; padding: 3rem 1rem;">
+		<h2 style="font-size:2rem; color:#573095; margin-bottom: 1rem;">Conseils & astuces pour acheter au bon endroit,
+			au bon prix</h2>
+		<p style="font-size:1.1rem; color:#6E6E6E; line-height: 1.5;">
+			Explorez nos articles pour éviter les erreurs classiques, repérer les bonnes opportunités, et acheter
+			malin.<br>
+			Que vous soyez primo-accédant ou investisseur, nos contenus sont faits pour vous.
+		</p>
+
+		<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin: 3rem auto;">
+
+			<!-- Article 1 -->
+			<a href="https://www.adressator.com/article1" style="text-decoration: none; color: inherit;">
+				<div
+					style="background: white; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); width: 280px; height:460px">
+					<img src="static/article1.png" alt="Défauts d'une maison"
+						style="width: 100%; border-radius: 12px 12px 0 0;" />
+					<div style="padding: 1rem;">
+						<h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;"><i
+								class="fa-solid fa-chart-line"></i>&nbsp;&nbsp;Les erreurs à éviter lors d’un
+							investissement immobilier</h3>
+						<p style="font-size: 0.95rem; color: #6E6E6E;">Évitez les pièges courants en découvrant les
+							erreurs classiques des investisseurs débutants.</p>
+					</div>
+				</div>
+			</a>
+
+			<!-- Article 2 -->
+			<a href="https://www.adressator.com/article2" style="text-decoration: none; color: inherit;">
+				<div
+					style="background: white; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); width: 280px; height:460px">
+					<img src="static/article2.png" alt="Évaluer un bon emplacement"
+						style="width: 100%; border-radius: 12px 12px 0 0;" />
+					<div style="padding: 1rem;">
+						<h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;"><i
+								class="fa-solid fa-map-location-dot"></i>&nbsp;&nbsp;Comment savoir si l’emplacement est
+							bon ?</h3>
+						<p style="font-size: 0.95rem; color: #6E6E6E;">Un bien parfait peut décevoir s’il est mal situé.
+							Voici comment le savoir.</p>
+					</div>
+				</div>
+			</a>
+
+			<!-- Article 3 -->
+			<a href="https://www.adressator.com/article3" style="text-decoration: none; color: inherit;">
+				<div
+					style="background: white; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); width: 280px; height:460px">
+					<img src="static/article3.png" alt="Erreurs à éviter"
+						style="width: 100%; border-radius: 12px 12px 0 0;" />
+					<div style="padding: 1rem;">
+						<h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;"><i
+								class="fa-solid fa-eye"></i>&nbsp;&nbsp;Défauts d’une maison : comment les repérer ?
+						</h3>
+						<p style="font-size: 0.95rem; color: #666;">Toiture, voisinage, nuisance : les pièges à éviter
+							dès la première impression</p>
+					</div>
+				</div>
+			</a>
+
+		</div>
+
+		<a href="https://www.adressator.com/actu" class="voir-plus-btn"
+			style="font-size: 1.2rem; text-decoration: none;">
+			Voir tous les articles
+		</a>
+	</section>
+
+
+	<div class="divider"></div>
 
 	<div class="carousel-section">
 		<div class="carousel">
 			<div class="carousel-images">
-				<img src="/static/story-image-1.png" alt="Image 1">
-				<img src="/static/story-image-3.png" alt="Image 3">
-				<img src="/static/story-image-4.png" alt="Image 4">
-				<img src="/static/story-image-6.png" alt="Image 6">
+				<img src="static/story-image-1.png" alt="Image 1">
+				<img src="static/story-image-3.png" alt="Image 3">
+				<img src="static/story-image-4.png" alt="Image 4">
+				<img src="static/story-image-6.png" alt="Image 6">
 			</div>
 			<div class="carousel-dots">
 				<span class="dot active"></span>
@@ -1559,632 +1952,700 @@
 	</div>
 
 
+	<div class="divider"></div>
+
+	<section class="section-colored">
+		<div class="section-colored-container" style="width:100%; text-align: center; align-items: center;">
+			<h2>🏁 &nbsp; Prêt à essayer ? </h2>
+			<h4>Obtenez l’adresse maintenant. </h4>
+			<div class="input-and-btn-container">
+				<input type="text" class="url-input-2" style="width:50%; height:20px; border-color: #ffffff00;"
+					id="url-input-3"
+					style="padding:10px; font-family: lexend; font-weight: bold; font-size: 14px; color:#000000"
+					placeholder="Collez le lien d'une annonce" />
+				<button class="search-btn-2 disabled" style="width:162px"
+					title="Collez le lien de l'annonce dans la barre à gauche" id="search-btn-4"
+					onclick="openSearchPopup()" disabled> Obtenir l'adresse MAINTENANT </button>
+			</div>
+			<h4 style="font-weight:400">🔒 Paiement sécurisé – Annonce trouvée ou remboursée.</h4>
+		</div>
+	</section>
 
 
 
 
-  <footer>
-    <p>&copy; 2024 Adressator. Tous droits réservés.</p>
-    <p>
-      <a href="Mentions-légales">Mentions légales</a> |
-      <a href="CGU">Conditions générales d'utilisation</a> |
-      <a href="PDC">Politique de confidentialité</a> |
-      <a href="Contact">Contact</a>
-    </p>
 
-    <div class="social-links">
-	<a href="https://www.facebook.com/profile.php?id=61573067127688&locale=fr_FR" target="_blank"><i class="fab fa-facebook-f"></i></a>
-	<a href="https://www.instagram.com/adressator/" target="_blank"><i class="fab fa-instagram"></i></a>
-	<a href="https://www.tiktok.com/@adressator1" target="_blank"><i class="fab fa-tiktok"></i></a>
-	<a href="https://www.linkedin.com/company/adressator-trouvez-l%E2%80%99adresse-exacte-des-annonces-immobili%C3%A8res/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-	<a href="https://x.com/Adressator" target="_blank"><i class="fab fa-twitter"></i></a>
-    </div>
-  </footer>
-  
+	<footer>
+		<p>&copy; 2024 Adressator. Tous droits réservés.</p>
+		<p>
+			<a href="Mentions-légales">Mentions légales</a> |
+			<a href="CGU">Conditions générales d'utilisation</a> |
+			<a href="PDC">Politique de confidentialité</a> |
+			<a href="Contact">Contact</a>
+		</p>
+
+		<div class="social-links">
+			<a href="https://www.facebook.com/profile.php?id=61573067127688&locale=fr_FR" target="_blank"><i
+					class="fab fa-facebook-f"></i></a>
+			<a href="https://www.instagram.com/adressator/" target="_blank"><i class="fab fa-instagram"></i></a>
+			<a href="https://www.tiktok.com/@adressator1" target="_blank"><i class="fab fa-tiktok"></i></a>
+			<a href="https://www.linkedin.com/company/adressator-trouvez-l%E2%80%99adresse-exacte-des-annonces-immobili%C3%A8res/posts/?feedView=all"
+				target="_blank"><i class="fab fa-linkedin-in"></i></a>
+			<a href="https://x.com/Adressator" target="_blank"><i class="fab fa-twitter"></i></a>
+		</div>
+	</footer>
 
 
-  <script>
-	document.addEventListener("DOMContentLoaded", function() {
-		const searchBtn = document.getElementById('search-btn2');
-		if (searchBtn) searchBtn.addEventListener('click', openSearchPopup);
-	});
-	
-	
-	
-	document.addEventListener("DOMContentLoaded", function () {
-		const features = document.querySelectorAll(".feature-section");
 
-		function checkPosition() {
-			const windowHeight = window.innerHeight;
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const searchBtn = document.getElementById('search-btn-2');
+			if (searchBtn) searchBtn.addEventListener('click', openSearchPopup);
+		});
 
-			features.forEach((feature, index) => {
-				const positionFromTop = feature.getBoundingClientRect().top;
 
-				if (positionFromTop - windowHeight <= -100) {
-					// Appliquer slide-in-right pour les rubriques impaires, slide-in-left pour les rubriques paires
-					if (index % 2 === 0) {
-						setTimeout(() => feature.classList.add("slide-in-right"), 200);
-					} else {
-						setTimeout(() => feature.classList.add("slide-in-left"), 200);
+
+		document.addEventListener("DOMContentLoaded", function () {
+			const features = document.querySelectorAll(".feature-section");
+
+			function checkPosition() {
+				const windowHeight = window.innerHeight;
+
+				features.forEach((feature, index) => {
+					const positionFromTop = feature.getBoundingClientRect().top;
+
+					if (positionFromTop - windowHeight <= -100) {
+						// Appliquer slide-in-right pour les rubriques impaires, slide-in-left pour les rubriques paires
+						if (index % 2 === 0) {
+							setTimeout(() => feature.classList.add("slide-in-right"), 200);
+						} else {
+							setTimeout(() => feature.classList.add("slide-in-left"), 200);
+						}
 					}
+				});
+			}
+
+			window.addEventListener("scroll", checkPosition);
+			checkPosition(); // Exécuter à nouveau pour l'initialisation
+		});
+
+		document.addEventListener("DOMContentLoaded", function () {
+			const heroText = document.querySelector(".hero-text h1");
+			const heroSubText = document.querySelector(".hero-text h2");
+			const heroButton = document.querySelector(".hero-text .search-btn-2");
+			const urlInputBar = document.querySelector(".url-input");
+
+			function animateHeroSection() {
+				const heroSection = document.querySelector(".hero");
+				const position = heroSection.getBoundingClientRect().top;
+				const windowHeight = window.innerHeight;
+
+
+				if (position < windowHeight) {
+					heroText.classList.add("animate");
+					setTimeout(() => heroSubText.classList.add("animate"), 900);
+					setTimeout(() => heroButton.classList.add("animate"), 1600);
+					setTimeout(() => urlInputBar.classList.add("animate"), 1600);
+					window.removeEventListener("scroll", animateHeroSection); // Exécute une seule fois
+				}
+			}
+
+			window.addEventListener("scroll", animateHeroSection);
+			animateHeroSection(); // Lance l'animation si la section est visible dès le chargement
+		});
+
+		document.addEventListener("DOMContentLoaded", function () {
+			const heroOverlay = document.querySelector(".hero-overlay");
+			heroOverlay.classList.add("fade-in"); // Active le fondu de l'overlay
+		});
+
+		document.addEventListener("DOMContentLoaded", function () {
+			const scrollToTopBtn = document.getElementById("scroll-to-top-btn");
+
+			// Affiche ou cache le bouton en fonction du scroll
+			window.addEventListener("scroll", () => {
+				if (window.scrollY > 300) { // Affiche le bouton après 300px de scroll
+					scrollToTopBtn.classList.add("show");
+				} else {
+					scrollToTopBtn.classList.remove("show");
 				}
 			});
-		}
 
-		window.addEventListener("scroll", checkPosition);
-		checkPosition(); // Exécuter à nouveau pour l'initialisation
-	});
-
-	document.addEventListener("DOMContentLoaded", function () {
-		const heroText = document.querySelector(".hero-text h1");
-		const heroSubText = document.querySelector(".hero-text h2");
-		const heroButton = document.querySelector(".hero-text .search-btn-2");
-		const urlInputBar = document.querySelector(".url-input");
-
-		function animateHeroSection() {
-			const heroSection = document.querySelector(".hero");
-			const position = heroSection.getBoundingClientRect().top;
-			const windowHeight = window.innerHeight;
-			
-
-			if (position < windowHeight) {
-				heroText.classList.add("animate");
-				setTimeout(() => heroSubText.classList.add("animate"), 900);
-				setTimeout(() => heroButton.classList.add("animate"), 1600);
-				setTimeout(() => urlInputBar.classList.add("animate"), 1600);
-				window.removeEventListener("scroll", animateHeroSection); // Exécute une seule fois
-			}
-		}
-
-		window.addEventListener("scroll", animateHeroSection);
-		animateHeroSection(); // Lance l'animation si la section est visible dès le chargement
-	});
-
-	document.addEventListener("DOMContentLoaded", function () {
-		const heroOverlay = document.querySelector(".hero-overlay");
-		heroOverlay.classList.add("fade-in"); // Active le fondu de l'overlay
-	});
-
-	document.addEventListener("DOMContentLoaded", function () {
-		const scrollToTopBtn = document.getElementById("scroll-to-top-btn");
-
-		// Affiche ou cache le bouton en fonction du scroll
-		window.addEventListener("scroll", () => {
-			if (window.scrollY > 300) { // Affiche le bouton après 300px de scroll
-				scrollToTopBtn.classList.add("show");
-			} else {
-				scrollToTopBtn.classList.remove("show");
-			}
-		});
-
-		// Scroll en haut de la page lors du clic
-		scrollToTopBtn.addEventListener("click", () => {
-			window.scrollTo({
-				top: 0,
-				behavior: "smooth",
+			// Scroll en haut de la page lors du clic
+			scrollToTopBtn.addEventListener("click", () => {
+				window.scrollTo({
+					top: 0,
+					behavior: "smooth",
+				});
 			});
 		});
-	});
-
-	
 
 
 
 
-	const carouselImages = document.querySelector('.carousel-images');
-	const carouselContainer = document.querySelector('.carousel');
-	const dots = document.querySelectorAll('.dot');
-	let currentIndex = 0;
-	let autoScroll;
-	let isDragging = false;
-	let startX = 0;
-	let currentTranslate = 0;
-	let prevTranslate = 0;
-	let animationID;
 
-	// Update carousel position
-	function updateCarousel() {
-		carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
-		dots.forEach((dot, index) => {
-			dot.classList.toggle('active', index === currentIndex);
-		});
-	}
 
-	// Go to next image
-	function nextImage() {
-		currentIndex = (currentIndex + 1) % dots.length;
-		updateCarousel();
-	}
+		const carouselImages = document.querySelector('.carousel-images');
+		const carouselContainer = document.querySelector('.carousel');
+		const dots = document.querySelectorAll('.dot');
+		let currentIndex = 0;
+		let autoScroll;
+		let isDragging = false;
+		let startX = 0;
+		let currentTranslate = 0;
+		let prevTranslate = 0;
+		let animationID;
 
-	// Go to previous image
-	function prevImage() {
-		currentIndex = (currentIndex - 1 + dots.length) % dots.length;
-		updateCarousel();
-	}
+		// Update carousel position
+		function updateCarousel() {
+			carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+			dots.forEach((dot, index) => {
+				dot.classList.toggle('active', index === currentIndex);
+			});
+		}
 
-	// Start auto-scroll
-	function startAutoScroll() {
-		stopAutoScroll(); // Stopper tout intervalle précédent
-		autoScroll = setInterval(() => {
+		// Go to next image
+		function nextImage() {
 			currentIndex = (currentIndex + 1) % dots.length;
 			updateCarousel();
-		}, 5000);
-	}
+		}
 
-	// Stop auto-scroll
-	function stopAutoScroll() {
-		clearInterval(autoScroll);
-	}
-
-	// Handle dot click
-	dots.forEach((dot, index) => {
-		dot.addEventListener('click', () => {
-			currentIndex = index;
+		// Go to previous image
+		function prevImage() {
+			currentIndex = (currentIndex - 1 + dots.length) % dots.length;
 			updateCarousel();
+		}
+
+		// Start auto-scroll
+		function startAutoScroll() {
+			stopAutoScroll(); // Stopper tout intervalle précédent
+			autoScroll = setInterval(() => {
+				currentIndex = (currentIndex + 1) % dots.length;
+				updateCarousel();
+			}, 5000);
+		}
+
+		// Stop auto-scroll
+		function stopAutoScroll() {
+			clearInterval(autoScroll);
+		}
+
+		// Handle dot click
+		dots.forEach((dot, index) => {
+			dot.addEventListener('click', () => {
+				currentIndex = index;
+				updateCarousel();
+			});
 		});
-	});
 
-	// Drag and swipe
-	
-
-	carouselImages.addEventListener('mousedown', (e) => {
-		isDragging = true;
-		carouselImages.classList.add('grabbing'); // Ajout de la classe "grabbing"
-		startX = e.clientX;
-		stopAutoScroll();
-		
-	});
-
-	carouselImages.addEventListener('mousemove', (e) => {
-		if (!isDragging) {
-			carouselImages.classList.remove('grabbing');
-			return;
-		}	
-		const diff = e.clientX - startX;
-		if (diff > 100) {
-			prevImage();
-			isDragging = false;
-			carouselImages.classList.remove('grabbing'); // Retrait de la classe "grabbing"
-		} else if (diff < -100) {
-			nextImage();
-			isDragging = false;
-			carouselImages.classList.remove('grabbing'); // Retrait de la classe "grabbing"
-		}
-	});
-
-	carouselImages.addEventListener('mouseup', () => {
-		isDragging = false;
-		carouselImages.classList.remove('grabbing'); // Retrait de la classe "grabbing"
-		startAutoScroll();
-		
-	});
-
-	// Début du drag ou du swipe
-	carouselImages.addEventListener('touchstart', (e) => {
-		isDragging = true;
-		carouselImages.classList.add('grabbing');
-		startX = e.touches[0].clientX; // Point de départ du swipe
-		stopAutoScroll(); // Arrêter le défilement automatique
-	});
-
-	// Mouvement du swipe
-	carouselImages.addEventListener('touchmove', (e) => {
-		if (!isDragging) return;
-		const diff = e.touches[0].clientX - startX; // Calcul de la distance du swipe
-		if (diff > 100) {
-			prevImage(); // Aller à l'image précédente
-			isDragging = false; // Empêche d'appeler plusieurs fois
-			carouselImages.classList.remove('grabbing');
-		} else if (diff < -100) {
-			nextImage(); // Aller à l'image suivante
-			isDragging = false;
-			carouselImages.classList.remove('grabbing');
-		}
-	});
-
-	// Fin du swipe
-	carouselImages.addEventListener('touchend', () => {
-		isDragging = false;
-		carouselImages.classList.remove('grabbing');
-		startAutoScroll(); // Redémarrer le défilement automatique
-	});
-
-	// Stop auto-scroll on hover
-	document.querySelector('.carousel').addEventListener('mouseenter', stopAutoScroll);
-	document.querySelector('.carousel').addEventListener('mouseleave', startAutoScroll);
-
-	// Initialize
-	updateCarousel();
-	startAutoScroll();
+		// Drag and swipe
 
 
-document.addEventListener('DOMContentLoaded', function () {
-	const urlInput = document.getElementById('url-input');
-	const sendButton = document.getElementById('search-btn-2');
-	const searchPopup = document.getElementById("searchPopup");
-	const urlDisplay = document.getElementById("url-display");
-  	const validationResult = document.getElementById("validation-result");
+		carouselImages.addEventListener('mousedown', (e) => {
+			isDragging = true;
+			carouselImages.classList.add('grabbing'); // Ajout de la classe "grabbing"
+			startX = e.clientX;
+			stopAutoScroll();
 
-	// Activer/désactiver le bouton selon l'entrée de texte
-	urlInput.addEventListener('input', function () {
-		console.log("Input");
-		if (urlInput.value.trim().length > 0) {
-			sendButton.disabled = false;
-			sendButton.classList.remove('disabled');
-		} else {
-			sendButton.disabled = true;
-			sendButton.classList.add('disabled');
-		}
-	});
+		});
 
-
-	 // Ouvrir le popup et afficher la variable
-	 sendButton.addEventListener("click", () => {
-		const url = urlInput.value.trim();
-		urlDisplay.textContent = `${url}`;
-		
-		validateURL(url);
-		openSearchPopup();
-	});
-
-	// Vérification de l'URL via fetch
-	function validateURL(url) {
-		fetch("/api/check-url", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({ url: url }),
-		})
-		.then(response => response.json().then(data => ({ status: response.status, body: data })))
-		.then(data => {
-			if (data.status === 200) {
-			validationResult.textContent = "✔";
-			validationResult.style.color = "green";
-			} else {
-			validationResult.innerHTML = "Le lien ne semble pas valide. <br> Veuillez vérifier, ou continuez si vous êtes sûr.";
-			validationResult.style.color = "#f26b0c";
+		carouselImages.addEventListener('mousemove', (e) => {
+			if (!isDragging) {
+				carouselImages.classList.remove('grabbing');
+				return;
 			}
-		})
-		.catch((error) => {
-			console.error("Erreur lors de la validation :", error);
-			validationResult.textContent = "Une erreur s'est produite.";
-			validationResult.style.color = "#f26b0c";
+			const diff = e.clientX - startX;
+			if (diff > 100) {
+				prevImage();
+				isDragging = false;
+				carouselImages.classList.remove('grabbing'); // Retrait de la classe "grabbing"
+			} else if (diff < -100) {
+				nextImage();
+				isDragging = false;
+				carouselImages.classList.remove('grabbing'); // Retrait de la classe "grabbing"
+			}
 		});
-	}
 
-	
-  /*--------------------------- Barre de recherche-------------------------------*/
+		carouselImages.addEventListener('mouseup', () => {
+			isDragging = false;
+			carouselImages.classList.remove('grabbing'); // Retrait de la classe "grabbing"
+			startAutoScroll();
 
-	function refreshSearchPopup() {
-		console.log("refreshSearchPopup()");
-		const searchPopup = document.getElementById('search-popup');
+		});
 
-		if (searchPopup.style.display === 'flex') {
-			console.log("searchPopup.style.display === 'flex'");
-			// Si le popup est déjà ouvert, réinitialiser ses éléments
-			document.getElementById('url-input-old').value = '';  // Réinitialiser le champ URL
-			document.getElementById('url-missing').style.display = 'none';
-			document.getElementById('invalid-url').style.display = 'none';
-			document.getElementById('valid-icon').style.display = 'none';
-			document.getElementById('url-input-old').classList.remove('valid', 'invalid');
+		// Début du drag ou du swipe
+		carouselImages.addEventListener('touchstart', (e) => {
+			isDragging = true;
+			carouselImages.classList.add('grabbing');
+			startX = e.touches[0].clientX; // Point de départ du swipe
+			stopAutoScroll(); // Arrêter le défilement automatique
+		});
 
-			// Assurez-vous que tous les événements sont ré-attachés si nécessaire
-			console.log("refreshSearchPopup() lance attachPopupEvents");
-			attachPopupEvents();
-		}
-	}
+		// Mouvement du swipe
+		carouselImages.addEventListener('touchmove', (e) => {
+			if (!isDragging) return;
+			const diff = e.touches[0].clientX - startX; // Calcul de la distance du swipe
+			if (diff > 100) {
+				prevImage(); // Aller à l'image précédente
+				isDragging = false; // Empêche d'appeler plusieurs fois
+				carouselImages.classList.remove('grabbing');
+			} else if (diff < -100) {
+				nextImage(); // Aller à l'image suivante
+				isDragging = false;
+				carouselImages.classList.remove('grabbing');
+			}
+		});
 
-	// Ouvrir le popup de Recherche
-	window.openSearchPopup = function () {
-		console.log("window.openSearchPopup");
-		document.getElementById('search-popup').style.display = 'flex';
-	};
+		// Fin du swipe
+		carouselImages.addEventListener('touchend', () => {
+			isDragging = false;
+			carouselImages.classList.remove('grabbing');
+			startAutoScroll(); // Redémarrer le défilement automatique
+		});
 
-	// Fonction pour fermer le popup de Recherche
-	window.closeSearchPopup = function () {
-		console.log("window.closeSearchPopup");
-		document.getElementById('search-popup').style.display = 'none';
-		document.getElementById('url-input-old').value = '';
-		document.getElementById('invalid-url').style.display = 'none';
-		document.getElementById('url-missing').style.display = 'none';
-		document.getElementById('valid-icon').style.display = 'none';
-		document.getElementById('url-input-old').classList.remove('valid', 'invalid'); // Réinitialise les bordures
-	};
+		// Stop auto-scroll on hover
+		document.querySelector('.carousel').addEventListener('mouseenter', stopAutoScroll);
+		document.querySelector('.carousel').addEventListener('mouseleave', startAutoScroll);
 
-
-	
-	const sendUrlButton = document.getElementById('send-url-btn');
-	const cgvCheckbox = document.getElementById('cgv-checkbox'); // Case à cocher CGV
-	const cgvContainer = document.getElementById('cgv-container'); // Conteneur de la case CGV
-	cgvContainer.classList.remove('checkbox-error'); // Réinitialise la bordure rouge
-
-	
-	// Écouteur sur la case CGV pour enlever la bordure rouge lorsqu'elle est cochée
-	cgvCheckbox.addEventListener('change', function () {
-		if (cgvCheckbox.checked) {
-			cgvContainer.classList.remove('checkbox-error'); // Enlève la bordure rouge une fois cochée
-		}
-	});
-
-	sendUrlButton.addEventListener('click', async function () {
-
-		const url = urlInput.value;
-		console.log("URL :", url);
-
-		// Vérifier que la case CGV est cochée
-		if (!cgvCheckbox.checked) {
-			cgvContainer.classList.add('checkbox-error'); // Ajoute la bordure rouge
-			return; // Arrête la fonction si la case CGV n'est pas cochée
-		}
-
-		if (url) {
-
-			// Tentative de vérification de l'URL
-			fetch('/api/check-url', {  // Ajoutez une route '/api/check-url' dans app.py pour cette vérification
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({ url: url })
-			})
-				.then(response => response.json().then(data => ({ status: response.status, body: data })))
-				.then(data => {
-					if (data.status === 200) {
-						// URL est valide
-						console.log("URL valide");
-					} else {
-						// URL est invalide
-						console.log("URL invalide");
-					}
-				})
-				.catch(error => {
-					console.error("Erreur lors de la vérification de l'URL:", error);
-				});
-		} else {
-			// Pas d'URL saisie
-			console.log("Pas d'URL");
-		}
-		
-		try {
-            // Vérifie si l'utilisateur est connecté
-            const loginResponse = await fetch('/api/check-login');
-            const loginData = await loginResponse.json();
-			const isLoggedIn = loginData.is_logged_in; // Stocke l'état de connexion
-			// Générer un suffixe unique basé sur la date et l'heure
-			const now = new Date();
-			// Créer un suffixe à partir de l'année, du jour de l'année et des millisecondes
-			const emailSuffix = `${now.getFullYear().toString().slice(-2)}${Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000).toString().padStart(3, '0')}${now.getMilliseconds().toString().padStart(3, '0')}`;
-			// Le suffixe sera limité à 6 caractères (par exemple "241234")
-			const uniqueSuffix = emailSuffix.slice(-6);
-
-			const newEmail = `default_email@mail.com-${uniqueSuffix}`;
-
-            if (!loginData.is_logged_in) {
-                // Crée un nouvel utilisateur par défaut si non connecté
-                const userResponse = await fetch('/api/add-user', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        nom: "default_name",
-                        email: newEmail,
-                        password: "default_password",
-                        is_admin: false
-                    })
-                });
-				
-                const userData = await userResponse.json();
-				console.log(userData);
-                if (!userData.success) {
-                    alert("Erreur lors de la création de l'utilisateur : " + userData.message);
-                    return;
-                }
-				
-            }
-
-			// Si connecté ou utilisateur créé avec succès, exécute les fonctions
-            sendUrl(url);
-            redirectToStripePayment(url, isLoggedIn);
-
-        } catch (error) {
-            console.error("Erreur lors de l'envoi de l'URL ou de la création de l'utilisateur :", error);
-            alert("Une erreur est survenue. Veuillez réessayer.");
-        }
+		// Initialize
+		updateCarousel();
+		startAutoScroll();
 
 
+		document.addEventListener('DOMContentLoaded', function () {
+			const urlInput = document.getElementById('url-input');
+			const sendButton = document.getElementById('search-btn-2');
+			const searchPopup = document.getElementById("searchPopup");
+			const urlDisplay = document.getElementById("url-display");
+			const validationResult = document.getElementById("validation-result");
 
-		//Vérifier si l'utilisateur est connecté
-		//fetch('/api/check-login', { method: 'GET' })
-		//	.then(response => response.json())
-		//	.then(data => {
-				
-					// Utilisateur connecté, appel de la fonction pour rediriger vers Stripe
-					//redirectToStripePayment();
-					// Lancer l'envoi de l'URL
-					
-		//			sendUrl(url);
-					//authButtons.style.display = 'none';
-				
-					// Utilisateur non connecté, afficher les boutons d'authentification
-					//authButtons.style.display = 'block';
-		//	})
-		//	.catch(error => {
-		//		console.error('Erreur de vérification de la connexion:', error);
-		//	});
-	});
-
-	
-	
-	
-	// Fonction pour envoyer l'URL
-	function sendUrl(url) {
-		// Tentative d'envoi de la requête POST
-		fetch('/api/send-url', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ url: url })
-		})
-			.then(response => response.json().then(data => ({ status: response.status, body: data })))
-			.then(data => {
-				console.log("URL envoyée :", url);
-				//alert('URL envoyé avec succès !');
-				//urlMissing.style.display = 'none';
-				//invalidUrl.style.display = 'none';
-				urlInput.value = '';  // Réinitialiser le champ de saisie
-				//validIcon.style.display = 'block';
-				//urlInput.classList.remove('valid');
-				window.closeSearchPopup();
-
-			})
-			.catch(error => {
-				console.error("Erreur:");
-				alert(data.message);
-			});
-	}
-	
-	 
-		/*--------------------- Fin Barre de recherche------------------------*/
-  
-  		/*--------------------- Paiement Stripe------------------------*/
-
-	function redirectToStripePayment(url, isLoggedIn) {
-
-		const loadingOverlay = document.getElementById('loading-overlay');
-		loadingOverlay.style.display = 'flex';  // Affiche le loader
-
-		// Démarrer la session de paiement Stripe
-		fetch('/create-checkout-session', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ 
-				url: url,
-				is_logged_in: isLoggedIn
-			 }) // Envoie l'URL et l'état de connexion à Flask
-    	})
-			.then(response => response.json())
-			.then(sessionData => {
-				if (sessionData.url) {
-					window.location.href = sessionData.url; // Redirection vers Stripe
+			// Activer/désactiver le bouton selon l'entrée de texte
+			urlInput.addEventListener('input', function () {
+				console.log("Input");
+				if (urlInput.value.trim().length > 0) {
+					sendButton.disabled = false;
+					sendButton.classList.remove('disabled');
 				} else {
-					console.error("Erreur : URL de session de paiement non trouvée.");
-					alert("Une erreur s'est produite lors de la redirection vers la page de paiement.");
-					loadingOverlay.style.display = 'none'; // Cache le loader en cas d'erreur
+					sendButton.disabled = true;
+					sendButton.classList.add('disabled');
 				}
-			})
-			.catch(error => {
-				console.error('Erreur lors de la création de la session de paiement:', error);
-				alert("Une erreur s'est produite lors de la création de la session de paiement.");
-				loadingOverlay.style.display = 'none';  // Cache le loader en cas d'erreur
 			});
 
-	}
+
+			// Ouvrir le popup et afficher la variable
+			sendButton.addEventListener("click", () => {
+				const url = urlInput.value.trim();
+				urlDisplay.textContent = `${url}`;
+
+				validateURL(url);
+				openSearchPopup();
+			});
+
+			const urlInput2 = document.getElementById('url-input-2');
+			const sendButton2 = document.getElementById('search-btn-3');
+
+
+			urlInput2.addEventListener('input', function () {
+				if (urlInput2.value.trim().length > 0) {
+					sendButton2.disabled = false;
+					sendButton2.classList.remove('disabled');
+				} else {
+					sendButton2.disabled = true;
+					sendButton2.classList.add('disabled');
+				}
+			});
+
+			sendButton2.addEventListener('click', function () {
+				const url = urlInput2.value.trim();
+				if (!url) return;
+
+				urlDisplay.textContent = `${url}`;
+				validateURL(url); // utilise la fonction déjà définie dans le script
+				openSearchPopup(); // utilise la même popup
+			});
+
+			const urlInput3 = document.getElementById('url-input-3');
+			const sendButton3 = document.getElementById('search-btn-4');
+
+
+			urlInput3.addEventListener('input', function () {
+				if (urlInput3.value.trim().length > 0) {
+					sendButton3.disabled = false;
+					sendButton3.classList.remove('disabled');
+				} else {
+					sendButton3.disabled = true;
+					sendButton3.classList.add('disabled');
+				}
+			});
+
+			sendButton3.addEventListener('click', function () {
+				const url = urlInput3.value.trim();
+				if (!url) return;
+
+				urlDisplay.textContent = `${url}`;
+				validateURL(url); // utilise la fonction déjà définie dans le script
+				openSearchPopup(); // utilise la même popup
+			});
+
+			// Vérification de l'URL via fetch
+			function validateURL(url) {
+				fetch("/api/check-url", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ url: url }),
+				})
+					.then(response => response.json().then(data => ({ status: response.status, body: data })))
+					.then(data => {
+						if (data.status === 200) {
+							validationResult.textContent = "✔";
+							validationResult.style.color = "green";
+						} else {
+							validationResult.innerHTML = "Le lien ne semble pas valide. <br> Veuillez vérifier, ou continuez si vous êtes sûr.";
+							validationResult.style.color = "#f26b0c";
+						}
+					})
+					.catch((error) => {
+						console.error("Erreur lors de la validation :", error);
+						validationResult.textContent = "Une erreur s'est produite.";
+						validationResult.style.color = "#f26b0c";
+					});
+			}
+
+
+			/*--------------------------- Barre de recherche-------------------------------*/
+
+			function refreshSearchPopup() {
+				console.log("refreshSearchPopup()");
+				const searchPopup = document.getElementById('search-popup');
+
+				if (searchPopup.style.display === 'flex') {
+					console.log("searchPopup.style.display === 'flex'");
+					// Si le popup est déjà ouvert, réinitialiser ses éléments
+					document.getElementById('url-input-old').value = '';  // Réinitialiser le champ URL
+					document.getElementById('url-missing').style.display = 'none';
+					document.getElementById('invalid-url').style.display = 'none';
+					document.getElementById('valid-icon').style.display = 'none';
+					document.getElementById('url-input-old').classList.remove('valid', 'invalid');
+
+					// Assurez-vous que tous les événements sont ré-attachés si nécessaire
+					console.log("refreshSearchPopup() lance attachPopupEvents");
+					attachPopupEvents();
+				}
+			}
+
+			// Ouvrir le popup de Recherche
+			window.openSearchPopup = function () {
+				console.log("window.openSearchPopup");
+				document.getElementById('search-popup').style.display = 'flex';
+			};
+
+			// Fonction pour fermer le popup de Recherche
+			window.closeSearchPopup = function () {
+				console.log("window.closeSearchPopup");
+				document.getElementById('search-popup').style.display = 'none';
+				document.getElementById('url-input-old').value = '';
+				document.getElementById('invalid-url').style.display = 'none';
+				document.getElementById('url-missing').style.display = 'none';
+				document.getElementById('valid-icon').style.display = 'none';
+				document.getElementById('url-input-old').classList.remove('valid', 'invalid'); // Réinitialise les bordures
+			};
+
+
+
+			const sendUrlButton = document.getElementById('send-url-btn');
+			const cgvCheckbox = document.getElementById('cgv-checkbox'); // Case à cocher CGV
+			const cgvContainer = document.getElementById('cgv-container'); // Conteneur de la case CGV
+			cgvContainer.classList.remove('checkbox-error'); // Réinitialise la bordure rouge
+
+
+			// Écouteur sur la case CGV pour enlever la bordure rouge lorsqu'elle est cochée
+			cgvCheckbox.addEventListener('change', function () {
+				if (cgvCheckbox.checked) {
+					cgvContainer.classList.remove('checkbox-error'); // Enlève la bordure rouge une fois cochée
+				}
+			});
+
+			sendUrlButton.addEventListener('click', async function () {
+
+				const url = urlInput.value;
+				console.log("URL :", url);
+
+				// Vérifier que la case CGV est cochée
+				if (!cgvCheckbox.checked) {
+					cgvContainer.classList.add('checkbox-error'); // Ajoute la bordure rouge
+					return; // Arrête la fonction si la case CGV n'est pas cochée
+				}
+
+				if (url) {
+
+					// Tentative de vérification de l'URL
+					fetch('/api/check-url', {  // Ajoutez une route '/api/check-url' dans app.py pour cette vérification
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({ url: url })
+					})
+						.then(response => response.json().then(data => ({ status: response.status, body: data })))
+						.then(data => {
+							if (data.status === 200) {
+								// URL est valide
+								console.log("URL valide");
+							} else {
+								// URL est invalide
+								console.log("URL invalide");
+							}
+						})
+						.catch(error => {
+							console.error("Erreur lors de la vérification de l'URL:", error);
+						});
+				} else {
+					// Pas d'URL saisie
+					console.log("Pas d'URL");
+				}
+
+				try {
+					// Vérifie si l'utilisateur est connecté
+					const loginResponse = await fetch('/api/check-login');
+					const loginData = await loginResponse.json();
+					const isLoggedIn = loginData.is_logged_in; // Stocke l'état de connexion
+					// Générer un suffixe unique basé sur la date et l'heure
+					const now = new Date();
+					// Créer un suffixe à partir de l'année, du jour de l'année et des millisecondes
+					const emailSuffix = `${now.getFullYear().toString().slice(-2)}${Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000).toString().padStart(3, '0')}${now.getMilliseconds().toString().padStart(3, '0')}`;
+					// Le suffixe sera limité à 6 caractères (par exemple "241234")
+					const uniqueSuffix = emailSuffix.slice(-6);
+
+					const newEmail = `default_email@mail.com-${uniqueSuffix}`;
+
+					if (!loginData.is_logged_in) {
+						// Crée un nouvel utilisateur par défaut si non connecté
+						const userResponse = await fetch('/api/add-user', {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json'
+							},
+							body: JSON.stringify({
+								nom: "default_name",
+								email: newEmail,
+								password: "default_password",
+								is_admin: false
+							})
+						});
+
+						const userData = await userResponse.json();
+						console.log(userData);
+						if (!userData.success) {
+							alert("Erreur lors de la création de l'utilisateur : " + userData.message);
+							return;
+						}
+
+					}
+
+					// Si connecté ou utilisateur créé avec succès, exécute les fonctions
+					sendUrl(url);
+					redirectToStripePayment(url, isLoggedIn);
+
+				} catch (error) {
+					console.error("Erreur lors de l'envoi de l'URL ou de la création de l'utilisateur :", error);
+					alert("Une erreur est survenue. Veuillez réessayer.");
+				}
+
+
+
+				//Vérifier si l'utilisateur est connecté
+				//fetch('/api/check-login', { method: 'GET' })
+				//	.then(response => response.json())
+				//	.then(data => {
+
+				// Utilisateur connecté, appel de la fonction pour rediriger vers Stripe
+				//redirectToStripePayment();
+				// Lancer l'envoi de l'URL
+
+				//			sendUrl(url);
+				//authButtons.style.display = 'none';
+
+				// Utilisateur non connecté, afficher les boutons d'authentification
+				//authButtons.style.display = 'block';
+				//	})
+				//	.catch(error => {
+				//		console.error('Erreur de vérification de la connexion:', error);
+				//	});
+			});
+
+
+
+
+			// Fonction pour envoyer l'URL
+			function sendUrl(url) {
+				// Tentative d'envoi de la requête POST
+				fetch('/api/send-url', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ url: url })
+				})
+					.then(response => response.json().then(data => ({ status: response.status, body: data })))
+					.then(data => {
+						console.log("URL envoyée :", url);
+						//alert('URL envoyé avec succès !');
+						//urlMissing.style.display = 'none';
+						//invalidUrl.style.display = 'none';
+						urlInput.value = '';  // Réinitialiser le champ de saisie
+						//validIcon.style.display = 'block';
+						//urlInput.classList.remove('valid');
+						window.closeSearchPopup();
+
+					})
+					.catch(error => {
+						console.error("Erreur:");
+						alert(data.message);
+					});
+			}
+
+
+			/*--------------------- Fin Barre de recherche------------------------*/
+
+			/*--------------------- Paiement Stripe------------------------*/
+
+			function redirectToStripePayment(url, isLoggedIn) {
+
+				const loadingOverlay = document.getElementById('loading-overlay');
+				loadingOverlay.style.display = 'flex';  // Affiche le loader
+
+				// Démarrer la session de paiement Stripe
+				fetch('/create-checkout-session', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						url: url,
+						is_logged_in: isLoggedIn
+					}) // Envoie l'URL et l'état de connexion à Flask
+				})
+					.then(response => response.json())
+					.then(sessionData => {
+						if (sessionData.url) {
+							window.location.href = sessionData.url; // Redirection vers Stripe
+						} else {
+							console.error("Erreur : URL de session de paiement non trouvée.");
+							alert("Une erreur s'est produite lors de la redirection vers la page de paiement.");
+							loadingOverlay.style.display = 'none'; // Cache le loader en cas d'erreur
+						}
+					})
+					.catch(error => {
+						console.error('Erreur lors de la création de la session de paiement:', error);
+						alert("Une erreur s'est produite lors de la création de la session de paiement.");
+						loadingOverlay.style.display = 'none';  // Cache le loader en cas d'erreur
+					});
+
+			}
 			/*--------------------- Fin Paiement Stripe------------------------*/
-	
-});
+
+		});
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Select all images with the class 'intro-img'
-    const intro_images = document.querySelectorAll('.intro-img img');
+		document.addEventListener('DOMContentLoaded', function () {
+			// Select all images with the class 'intro-img'
+			const intro_images = document.querySelectorAll('.intro-img img');
 
-    // Add a mouseover and mouseout event listener to each image
-    intro_images.forEach(image => {
-        image.addEventListener('mouseover', function () {
-            // Add the wobble effect class on hover
-            this.classList.add('elementor-animation-wobble-vertical');
-        });
+			// Add a mouseover and mouseout event listener to each image
+			intro_images.forEach(image => {
+				image.addEventListener('mouseover', function () {
+					// Add the wobble effect class on hover
+					this.classList.add('elementor-animation-wobble-vertical');
+				});
 
-        image.addEventListener('mouseout', function () {
-            // Remove the wobble effect class when the mouse leaves
-            this.classList.remove('elementor-animation-wobble-vertical');
-        });
-    });
+				image.addEventListener('mouseout', function () {
+					// Remove the wobble effect class when the mouse leaves
+					this.classList.remove('elementor-animation-wobble-vertical');
+				});
+			});
 
-	// Select all images with the class 'feature-img'
-    const feature_images = document.querySelectorAll('.feature-image img');
+			// Select all images with the class 'feature-img'
+			const feature_images = document.querySelectorAll('.feature-image img');
 
-    // Add a mouseover and mouseout event listener to each image
-    feature_images.forEach(image => {
-        image.addEventListener('mouseover', function () {
-            // Add the wobble effect class on hover
-            this.classList.add('elementor-animation-wobble-vertical');
-        });
+			// Add a mouseover and mouseout event listener to each image
+			feature_images.forEach(image => {
+				image.addEventListener('mouseover', function () {
+					// Add the wobble effect class on hover
+					this.classList.add('elementor-animation-wobble-vertical');
+				});
 
-        image.addEventListener('mouseout', function () {
-            // Remove the wobble effect class when the mouse leaves
-            this.classList.remove('elementor-animation-wobble-vertical');
-        });
-    });
-
-
-});
-
-  </script>
+				image.addEventListener('mouseout', function () {
+					// Remove the wobble effect class when the mouse leaves
+					this.classList.remove('elementor-animation-wobble-vertical');
+				});
+			});
 
 
-<script>
-    const placeholders = [
-        "Entrez l'URL de l'annonce immobilière ici",
-        "www.leboncoin.fr/maison/1234",
-        "www.seloger.com/annonces/maison1234"
-    ];
+		});
 
-    const input = document.getElementById('url-input');
+	</script>
 
-    let currentPlaceholderIndex = 0;
-    let index = 0;
-    let direction = 1; // 1 for typing, -1 for deleting
 
-    function animatePlaceholder() {
-        const currentText = placeholders[currentPlaceholderIndex];
-        input.setAttribute('placeholder', currentText.slice(0, index));
+	<script>
+		const placeholders = [
+			"Entrez l'URL de l'annonce immobilière ici",
+			"www.leboncoin.fr/maison/1234",
+			"www.seloger.com/annonces/maison1234"
+		];
 
-        if (direction === 1 && index === currentText.length) {
-            direction = -1; // Start deleting
-            setTimeout(animatePlaceholder, 1000); // Pause before deleting
-            return;
-        } else if (direction === -1 && index === 0) {
-            direction = 1; // Start typing
-            currentPlaceholderIndex = (currentPlaceholderIndex + 1) % placeholders.length; // Move to next placeholder
-            setTimeout(animatePlaceholder, 1000); // Pause before typing next text
-            return;
-        }
+		const input = document.getElementById('url-input');
 
-        index += direction;
-        setTimeout(animatePlaceholder, direction === 1 ? 100 : 10);
-    }
+		let currentPlaceholderIndex = 0;
+		let index = 0;
+		let direction = 1; // 1 for typing, -1 for deleting
 
-    animatePlaceholder();
-</script>
+		function animatePlaceholder() {
+			const currentText = placeholders[currentPlaceholderIndex];
+			input.setAttribute('placeholder', currentText.slice(0, index));
 
-<script>
-	document.addEventListener('DOMContentLoaded', function () {
-    const headers = document.querySelectorAll('.FAQ-header');
+			if (direction === 1 && index === currentText.length) {
+				direction = -1; // Start deleting
+				setTimeout(animatePlaceholder, 1000); // Pause before deleting
+				return;
+			} else if (direction === -1 && index === 0) {
+				direction = 1; // Start typing
+				currentPlaceholderIndex = (currentPlaceholderIndex + 1) % placeholders.length; // Move to next placeholder
+				setTimeout(animatePlaceholder, 1000); // Pause before typing next text
+				return;
+			}
 
-    headers.forEach(header => {
-        header.addEventListener('click', function () {
-            const content = this.nextElementSibling;
-            const arrowIcon = this.querySelector('.arrow-icon-FAQ');
+			index += direction;
+			setTimeout(animatePlaceholder, direction === 1 ? 100 : 10);
+		}
 
-            // Toggle la visibilité du contenu
-            //content.style.display = (content.style.display === 'none' || content.style.display === '') ? 'block' : 'none';
+		animatePlaceholder();
+	</script>
 
-            // Toggle l'affichage de la section cliquée
-            content.classList.toggle('show');
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const headers = document.querySelectorAll('.FAQ-header');
 
-            // Applique la classe active à l'icône pour l'animation
-            header.classList.toggle('active');
-        });
-    });
-});
-	 
-</script>
+			headers.forEach(header => {
+				header.addEventListener('click', function () {
+					const content = this.nextElementSibling;
+					const arrowIcon = this.querySelector('.arrow-icon-FAQ');
 
- </body>
+					// Toggle la visibilité du contenu
+					//content.style.display = (content.style.display === 'none' || content.style.display === '') ? 'block' : 'none';
+
+					// Toggle l'affichage de la section cliquée
+					content.classList.toggle('show');
+
+					// Applique la classe active à l'icône pour l'animation
+					header.classList.toggle('active');
+				});
+			});
+		});
+
+	</script>
+
+</body>
+
 </html>
