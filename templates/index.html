@@ -1937,10 +1937,10 @@
 	<div class="carousel-section">
 		<div class="carousel">
 			<div class="carousel-images">
-				<img src="static/story-image-1.webp" alt="Image 1" >
-				<img src="static/story-image-3.webp" alt="Image 3" >
-				<img src="static/story-image-4.webp" alt="Image 4" >
-				<img src="static/story-image-6.webp" alt="Image 6" >
+				<img src="static/story-image-1.webp" alt="Image 1" loading="lazy">
+				<img src="static/story-image-3.webp" alt="Image 3" loading="lazy" >
+				<img src="static/story-image-4.webp" alt="Image 4" loading="lazy">
+				<img src="static/story-image-6.webp" alt="Image 6" loading="lazy">
 			</div>
 			<div class="carousel-dots">
 				<span class="dot active"></span>
@@ -2209,7 +2209,22 @@
 
 		// Initialize
 		updateCarousel();
-		startAutoScroll();
+		// Observer qui déclenche le scroll automatique uniquement quand le carrousel est visible
+		const observer = new IntersectionObserver((entries) => {
+		  entries.forEach(entry => {
+		    if (entry.isIntersecting) {
+		      startAutoScroll();
+		    } else {
+		      stopAutoScroll();
+		    }
+		  });
+		}, {
+		  threshold: 0.3 // Démarre quand 30% du carrousel est visible
+		});
+		
+		// Appliquer l’observateur sur le conteneur du carrousel
+		observer.observe(carouselContainer);
+
 
 
 		document.addEventListener('DOMContentLoaded', function () {
