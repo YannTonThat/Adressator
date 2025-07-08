@@ -111,7 +111,7 @@ def envoyer_notification_recherche(user, recherche):
 ##                    <p><strong>Récapitulatif :</strong></p>
 ##                    <ul>
 ##                        <li><strong>Lien soumis :</strong> {url}</li>
-##                        <li><strong>Coût du service :</strong> 49 € TTC</li>
+##                        <li><strong>Coût du service :</strong> 9,90 € TTC</li>
 ##                        <li><strong>Statut :</strong> En cours de traitement</li>
 ##                    </ul>
 ##                    <p>Notre équipe s’engage à traiter votre demande dans les meilleurs délais.</p>
@@ -160,7 +160,7 @@ def envoyer_email_paiement(customer_email, url):
                     <p><strong>Récapitulatif :</strong></p>
                     <ul>
                         <li><strong>Lien soumis :</strong> {url}</li>
-                        <li><strong>Coût du service :</strong> 49 € TTC</li>
+                        <li><strong>Coût du service :</strong> 9,90 € TTC</li>
                         <li><strong>Statut :</strong> En cours de traitement</li>
                     </ul>
                     <p>Notre équipe s’engage à traiter votre demande dans les meilleurs délais.</p>
