@@ -665,9 +665,9 @@ def create_checkout_session():
                 'price_data': {
                     'currency': 'eur',
                     'product_data': {
-                        'name': 'Vous recevrez généralement dans la journée l’adresse correspondant au lien, et au plus tard sous un délai de 3 jours. Si toutefois nous ne parvenions pas à trouver l\'adresse, nous vous rembourserions intégralement par virement bancaire.',
+                        'name': 'Vous recevrez l'adresse du bien sous 1 à 72h. Si nous ne trouvons pas, vous serez intégralement remboursé.',
                     },
-                    'unit_amount': 4900,  # Prix en centimes (ex. 3000 = 30,00 EUR)
+                    'unit_amount': 990,  # Prix en centimes (ex. 3000 = 30,00 EUR)
                 },
                 'quantity': 1,
             }],
