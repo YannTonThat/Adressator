@@ -1722,7 +1722,7 @@
 						<li><i class="fa-solid fa-lock"></i>&nbsp; Paiement unique, sans abonnement</li>
 						<li><i class="fa-solid fa-clipboard-check"></i>&nbsp; Adresse trouvée ou remboursée</li>
 					</ul>
-					<a href="#commande" class="pricing-btn">Accéder au service</a>
+					<a id="access-to-service" class="pricing-btn">Accéder au service</a>
 					<p class="limited-offer">⏳ Offre à durée limitée</p>
 				</div>
 			</div>
@@ -2230,6 +2230,16 @@
 
 			// Scroll en haut de la page lors du clic
 			scrollToTopBtn.addEventListener("click", () => {
+				window.scrollTo({
+					top: 0,
+					behavior: "smooth",
+				});
+			});
+		});
+		
+		document.addEventListener("DOMContentLoaded", function () {
+			const accessToService = document.getElementById("access-to-service");
+			accessToService.addEventListener("click", () => {
 				window.scrollTo({
 					top: 0,
 					behavior: "smooth",
