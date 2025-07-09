@@ -665,7 +665,7 @@ def create_checkout_session():
                 'price_data': {
                     'currency': 'eur',
                     'product_data': {
-                        'name': 'Vous recevrez l'adresse du bien sous 1 à 72h. Si nous ne trouvons pas, vous serez intégralement remboursé.',
+                        'name': 'Vous recevrez l\'adresse du bien sous 1 à 72h. Si nous ne trouvons pas, vous serez intégralement remboursé.',
                     },
                     'unit_amount': 990,  # Prix en centimes (ex. 3000 = 30,00 EUR)
                 },
