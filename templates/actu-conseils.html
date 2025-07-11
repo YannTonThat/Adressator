@@ -368,7 +368,70 @@
       .social-links a:hover {
         color: #1da1f2;
       }
+    .breadcrumb-nav {
+      width: 100%;
+      max-width: 1200px;
+    }
 
+   .breadcrumb {
+      display: flex;
+      align-items: flex-end;
+      list-style: none;
+      padding: 0rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    @media (min-width:768px){
+      .breadcrumb {
+      	padding: 0rem 3rem;
+      }
+    }
+
+    .breadcrumb-item {
+      display: flex;
+      align-items: center;
+      color: #555;
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+      content: "›";
+      margin: 0 0.6rem;
+      color: #818180;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 22px;
+    }
+
+    .breadcrumb-item a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .breadcrumb-item a:hover {
+      text-decoration: none;
+      color: #a3a1a1;
+    }
+
+    .breadcrumb-item.active {
+      color: #000000;
+      font-weight: bold;
+    }
+
+    .breadcrumb-home-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      color: white;
+      font-size: 16px;
+      text-decoration: none;
+    }
+
+    .breadcrumb-home-icon:hover {
+      color: #3b3b3b;
+    }
 
     
   </style>
