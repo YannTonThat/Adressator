@@ -2,632 +2,709 @@
 <html lang="fr">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulation de prêt immobilier - Estimez vos mensualités | Adressator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulation de prêt immobilier - Estimez vos mensualités | Adressator</title>
 
-<meta name="description" content="Estimez vos mensualités de crédit immobilier en quelques secondes avec notre simulateur. Comparez les durées, taux et options pour optimiser votre achat.">
-<meta name="keywords" content="simulation prêt immobilier, calcul mensualité prêt, simulateur crédit immobilier, taux immobilier, coût du crédit, frais notaire, assurance emprunteur, investissement immobilier, acheter maison, calcul prêt immobilier">
-<meta name="robots" content="index, follow">
+  <meta name="description"
+    content="Estimez vos mensualités de crédit immobilier en quelques secondes avec notre simulateur. Comparez les durées, taux et options pour optimiser votre achat.">
+  <meta name="keywords"
+    content="simulation prêt immobilier, calcul mensualité prêt, simulateur crédit immobilier, taux immobilier, coût du crédit, frais notaire, assurance emprunteur, investissement immobilier, acheter maison, calcul prêt immobilier">
+  <meta name="robots" content="index, follow">
 
-<meta property="og:title" content="Simulation de prêt immobilier - Estimez vos mensualités | Adressator">
-<meta property="og:description" content="Utilisez notre outil pour simuler vos mensualités de prêt immobilier et mieux préparer votre achat. Simple, rapide, précis.">
-<meta property="og:image" content="https://www.adressator.com/static/image-presentation-adressator.png">
-<meta property="og:url" content="https://www.adressator.com/simulation">
-<meta property="og:type" content="website">
+  <meta property="og:title" content="Simulation de prêt immobilier - Estimez vos mensualités | Adressator">
+  <meta property="og:description"
+    content="Utilisez notre outil pour simuler vos mensualités de prêt immobilier et mieux préparer votre achat. Simple, rapide, précis.">
+  <meta property="og:image" content="https://www.adressator.com/static/image-presentation-adressator.png">
+  <meta property="og:url" content="https://www.adressator.com/simulation">
+  <meta property="og:type" content="website">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Simulation de prêt immobilier - Adressator">
-<meta name="twitter:description" content="Calculez vos mensualités de crédit et anticipez le coût total de votre emprunt immobilier.">
-<meta name="twitter:image" content="https://www.adressator.com/static/image-presentation-carrée-adressator.png">
-	
-<link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Simulation de prêt immobilier - Adressator">
+  <meta name="twitter:description"
+    content="Calculez vos mensualités de crédit et anticipez le coût total de votre emprunt immobilier.">
+  <meta name="twitter:image" content="https://www.adressator.com/static/image-presentation-carrée-adressator.png">
 
-    <style>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Lexend', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-height: 100vh;
+      background-color: white;
+      overflow-x: hidden;
+      flex-direction: column;
+    }
+
+    .wrapper {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .angled-section {
+      position: relative;
+      z-index: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .background-angled {
+      position: absolute;
+      top: 226px;
+      left: 0;
+      width: 100vw;
+      height: 42%;
+      background-color: #99ca3c;
+      transform: skewY(-4deg);
+      transform-origin: top left;
+      z-index: -1;
+    }
+
+    .background-angled-r {
+      position: absolute;
+      bottom: 178px;
+      left: 0;
+      width: 100vw;
+      height: 42%;
+      background-color: #99ca3c;
+      transform: skewY(4deg);
+      transform-origin: top left;
+      z-index: -1;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1800px;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .page h1 {
+      margin-top: 0px;
+    }
+
+    .page h2 {
+      font-size: 1.2rem;
+      color: #6b7280;
+      font-weight: 400;
+      margin: 0px;
+      margin-bottom: 12px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row-reverse;
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+
+    .resultats,
+    .inputs {
+      flex: 1;
+      padding: 1rem;
+    }
+
+    .resultats {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      margin: 1rem;
+      height: 430px;
+    }
+
+    .resultats .header-mensualite {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .resultats .header-mensualite .label {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .resultats .header-mensualite .value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .resultats .item {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .resultats .border {
+      border-bottom: 2px solid #77777754;
+      padding-top: 0.25rem;
+    }
+
+    .resultats .label {
+      font-weight: 500;
+      color: #555;
+    }
+
+    .resultats .label.light {
+      font-weight: 400;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    .resultats .value {
+      font-weight: bold;
+      color: #333333;
+    }
+
+    .resultats .value.light {
+      font-weight: 400;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    .inputs {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      margin: 1rem;
+    }
+
+    .inputs h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: #333;
+      border-bottom: 2px solid #99ca3c;
+      padding-bottom: 0.5rem;
+    }
+
+    .input-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: baseline;
+    }
+
+    .input-block {
+      margin-bottom: 2rem;
+      margin-top: 1rem;
+    }
+
+    .input-block .label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-weight: bold;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+
+    .input-block .value {
+      text-align: right;
+      font-size: 1.5rem;
+      color: #333333;
+      border-color: #0000;
+      font-family: 'Lexend';
+      font-weight: 600;
+      width: 7rem;
+      background-color: #f6f6f9;
+      border-radius: 0.5rem;
+    }
+
+    .input-block .value:focus-visible {
+      outline-color: #0000002b;
+    }
+
+    .input-block .value.small {
+      text-align: right;
+      font-size: 1rem;
+      color: #555555;
+      border-color: #0000;
+      font-family: 'Lexend';
+      font-weight: 600;
+      width: 6rem;
+    }
+
+    .input-block .value .small:focus-visible {
+      outline-color: #0000002b;
+    }
+
+
+    .toggle-detail {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .toggle-detail svg {
+      background-color: rgb(153, 202, 60);
+      border-radius: 50%;
+      padding: 4px;
+      width: 16px;
+      height: 16px;
+      fill: white;
+      font-weight: bold;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .toggle-detail.open svg {
+      transform: rotate(180deg);
+    }
+
+    .toggle-detail svg:hover {
+      background: rgb(95, 147, 15);
+    }
+
+    .detail-slider {
+      display: none;
+      margin-top: 1rem;
+      width: 75%;
+      margin-left: 12.5%;
+      padding-bottom: 10px;
+    }
+
+    .detail-slider.show {
+      display: block;
+    }
+
+    .detail-slider span {
+      font-size: 0.8rem;
+    }
+
+    input[type=range] {
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(to right, rgb(153, 202, 60) 0%, rgb(153, 202, 60) var(--val), #ddd var(--val), #ddd 100%);
+      border-radius: 3px;
+      outline: none;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    input[type=range]:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: rgb(153, 202, 60);
+      transition: background 0.3s;
+    }
+
+    input[type=range]:disabled::-webkit-slider-thumb {
+      background: #aaa;
+    }
+
+    input[type=range]::-webkit-slider-thumb:hover {
+      background: rgb(95, 147, 15);
+    }
+
+    input[type=range]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: rgb(153, 202, 60);
+      transition: background 0.3s;
+    }
+
+    input[type=range]:disabled::-moz-range-thumb {
+      background: #aaa;
+    }
+
+    .note {
+      font-size: 0.7rem;
+      color: #888;
+      margin-top: 0.3rem;
+      text-align: right;
+    }
+
+    .graph-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .graph-area {
+      width: 60%;
+      max-width: 1200px;
+      margin-bottom: 3rem;
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .graph-area h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: #333;
+      border-bottom: 2px solid #99ca3c;
+      padding-bottom: 0.5rem;
+    }
+
+
+    #full-page-line {
+      position: absolute;
+      top: 300px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      background-image: repeating-linear-gradient(to bottom, rgb(175 229 90),
+          rgb(175 229 90) 15px, transparent 15px, transparent 23px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .cta-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      margin: 3rem auto;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+
+    .cta-section {
+      margin-top: 120px;
+      margin-bottom: 120px;
+      margin: 3rem auto;
+      text-align: center;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem 1rem;
+      padding-bottom: 5rem;
+      width: 100%;
+      max-width: 800px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+
+    .mascotte-cta {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 263px;
+      pointer-events: none;
+      z-index: 2;
+      transform: translate(21%, 18%);
+    }
+
+    .cta-text {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: #573095;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #2e1358;
+    }
+
+
+    @media (max-width: 768px) {
       body {
-        font-family: 'Lexend', sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        min-height: 100vh;
-        background-color: white;
-        overflow-x: hidden;
         flex-direction: column;
       }
 
-      .wrapper {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-      }
-
-      .angled-section {
-        position: relative;
-        z-index: 0;
-        overflow: hidden;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-      }
-
-      .background-angled {
-        position: absolute;
-        top: 226px;
-        left: 0;
-        width: 100vw;
-        height: 42%;
-        background-color: #99ca3c;
-        transform: skewY(-4deg);
-        transform-origin: top left;
-        z-index: -1;
-      }
-
-      .background-angled-r {
-        position: absolute;
-        bottom: 178px;
-        left: 0;
-        width: 100vw;
-        height: 42%;
-        background-color: #99ca3c;
-        transform: skewY(4deg);
-        transform-origin: top left;
-        z-index: -1;
-      }
-
-      .page {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        max-width: 1800px;
-        margin-bottom: 40px;
-        text-align: center;
-      }
-     .page h1 {
-	
-	margin-top: 22px;
-	margin-bottom:6px;
-     }
-	  
-     .page h2 { 
-	font-size: 1.2rem;
-        color: #6b7280;
-        font-weight: 400;
-	margin:0px;
-	margin-bottom: 12px;
-      }
 
       .container {
-        display: flex;
-        flex-direction: row-reverse;
-        width: 100%;
-        max-width: 1200px;
-        margin: auto;
-        padding: 2rem;
-        box-sizing: border-box;
+        flex-direction: column-reverse;
+        align-items: center;
+        padding-bottom: 0rem;
       }
 
       .resultats,
       .inputs {
-        flex: 1;
+        width: 100%;
         padding: 1rem;
-      }
-
-      .resultats {
-        background-color: #ffffff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        margin: 1rem;
-        height: 430px;
-      }
-
-      .resultats .header-mensualite {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-
-      .resultats .header-mensualite .label {
-        font-size: 1.2rem;
-        color: #333;
-        margin-bottom: 0.5rem;
-      }
-
-      .resultats .header-mensualite .value {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #000;
-      }
-
-      .resultats .item {
-        display: flex;
-        justify-content: space-between;
-        padding: 1rem 0;
-      }
-
-      .resultats .border {
-        border-bottom: 2px solid #77777754;
-        padding-top: 0.25rem;
-      }
-
-      .resultats .label {
-        font-weight: 500;
-        color: #555;
-      }
-
-      .resultats .label.light {
-        font-weight: 400;
-        color: #777;
-        font-size: 0.9rem;
-      }
-
-      .resultats .value {
-        font-weight: bold;
-        color: #333333;
-      }
-
-      .resultats .value.light {
-        font-weight: 400;
-        color: #777;
-        font-size: 0.9rem;
-      }
-
-      .inputs {
-        background-color: #ffffff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        margin: 1rem;
-      }
-
-      .inputs h2 {
-        font-size: 1.5rem;
+        margin: 0;
         margin-bottom: 1.5rem;
-        color: #333;
-        border-bottom: 2px solid #99ca3c;
-        padding-bottom: 0.5rem;
-      }
-
-      .input-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: baseline;
-      }
-
-      .input-block {
-        margin-bottom: 2rem;
-        margin-top: 1rem;
-      }
-
-      .input-block .label {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        font-weight: bold;
-        color: #555;
-        margin-bottom: 0.5rem;
-      }
-
-      .input-block .value {
-        text-align: right;
-        font-size: 1.5rem;
-        color: #333333;
-        border-color: #0000;
-        font-family: 'Lexend';
-        font-weight: 600;
-        width: 7rem;
-        background-color: #f6f6f9;
-        border-radius: 0.5rem;
-      }
-
-      .input-block .value:focus-visible {
-        outline-color: #0000002b;
-      }
-
-      .input-block .value.small {
-        text-align: right;
-        font-size: 1rem;
-        color: #555555;
-        border-color: #0000;
-        font-family: 'Lexend';
-        font-weight: 600;
-        width: 6rem;
-      }
-
-      .input-block .value .small:focus-visible {
-        outline-color: #0000002b;
-      }
-
-
-      .toggle-detail {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 0.5rem;
-        font-weight: bold;
-        color: #555;
-      }
-
-      .toggle-detail svg {
-        background-color: rgb(153, 202, 60);
-        border-radius: 50%;
-        padding: 4px;
-        width: 16px;
-        height: 16px;
-        fill: white;
-        font-weight: bold;
-        transition: transform 0.3s, background-color 0.3s;
-      }
-
-      .toggle-detail.open svg {
-        transform: rotate(180deg);
-      }
-
-      .toggle-detail svg:hover {
-        background: rgb(95, 147, 15);
       }
 
       .detail-slider {
-        display: none;
-        margin-top: 1rem;
-        width: 75%;
-        margin-left: 12.5%;
-        padding-bottom: 10px;
+        width: 90%;
+        margin-left: 1rem;
       }
 
-      .detail-slider.show {
-        display: block;
+      .input-block .label {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .detail-slider span {
-        font-size: 0.8rem;
-      }
-
-      input[type=range] {
-        width: 100%;
-        height: 8px;
-        background: linear-gradient(to right, rgb(153, 202, 60) 0%, rgb(153, 202, 60) var(--val), #ddd var(--val), #ddd 100%);
-        border-radius: 3px;
-        outline: none;
-        appearance: none;
-        cursor: pointer;
-      }
-
-      input[type=range]:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-      }
-
-      input[type=range]::-webkit-slider-thumb {
-        appearance: none;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        background: rgb(153, 202, 60);
-        transition: background 0.3s;
-      }
-
-      input[type=range]:disabled::-webkit-slider-thumb {
-        background: #aaa;
-      }
-
-      input[type=range]::-webkit-slider-thumb:hover {
-        background: rgb(95, 147, 15);
-      }
-
-      input[type=range]::-moz-range-thumb {
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        background: rgb(153, 202, 60);
-        transition: background 0.3s;
-      }
-
-      input[type=range]:disabled::-moz-range-thumb {
-        background: #aaa;
-      }
-
-      .note {
-        font-size: 0.7rem;
-        color: #888;
+      .input-block .label span:last-child {
+        align-self: flex-end;
         margin-top: 0.3rem;
-        text-align: right;
       }
 
-      .graph-container {
-        display: flex;
-        justify-content: center;
-        width: 100%;
+      .inputs h2 {
+        font-size: 1.2rem;
+      }
+
+      .resultats .header-mensualite .label {
+        font-size: 1rem;
+      }
+
+      .resultats .header-mensualite .value {
+        font-size: 1.5rem;
       }
 
       .graph-area {
-        width: 60%;
-        max-width: 1200px;
-        margin-bottom: 3rem;
-        background-color: #ffffff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 2rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        width: 83%;
+        margin: 0 auto;
+        padding: 1rem;
       }
 
       .graph-area h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-        color: #333;
-        border-bottom: 2px solid #99ca3c;
-        padding-bottom: 0.5rem;
+        font-size: 1.2rem;
       }
 
+      .cta-section {
+        width: 83%;
+      }
 
-      #full-page-line {
-        position: absolute;
-        top: 300px;
-        left: 50%;
-        transform: translateX(-50%);
-	width:4px;
-        background-image: repeating-linear-gradient(to bottom, rgb(175 229 90),
-            rgb(175 229 90) 15px, transparent 15px, transparent 23px);
-        z-index: -1;
-        pointer-events: none;
+      .mascotte-cta {
+        position: static;
+        display: block;
+        margin: 2rem auto 0 auto;
+        transform: translateY(-140px);
+        height: 289px;
+        /* facultatif : taille un peu réduite en mobile */
       }
 
       .cta-wrapper {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        margin: 3rem auto;
-        width: 100%;
-        max-width: 1000px;
-      }
-
-
-      .cta-section {
-        margin-top: 120px;
-        margin-bottom: 120px;
-        margin: 3rem auto;
-        text-align: center;
-        background-color: white;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 1rem 1rem;
-        padding-bottom: 5rem;
-        width: 100%;
-        max-width: 800px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        position: relative;
-        z-index: 1;
+        margin-top: 1rem;
+        margin-bottom: -150px;
       }
 
-
-      .mascotte-cta {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        height: 263px;
-        pointer-events: none;
-        z-index: 2;
-        transform: translate(21%, 18%);
-      }
-
-      .cta-text {
-        font-size: 1.1rem;
-        color: #333;
-        margin-bottom: 1.5rem;
-      }
-
-      .cta-button {
-        display: inline-block;
-        background-color: #573095;
-        color: white;
-        text-decoration: none;
-        font-weight: 500;
-        padding: 0.75rem 1.5rem;
-        border-radius: 30px;
-        transition: background-color 0.3s;
-      }
-
-      .cta-button:hover {
-        background-color: #2e1358;
-      }
-
-
-      @media (max-width: 768px) {
-        body {
-          flex-direction: column;
-        }
-
-
-        .container {
-          flex-direction: column-reverse;
-          align-items: center;
-          padding-bottom: 0rem;
-        }
-
-        .resultats,
-        .inputs {
-          width: 100%;
-          padding: 1rem;
-          margin: 0;
-          margin-bottom: 1.5rem;
-        }
-
-        .detail-slider {
-          width: 90%;
-          margin-left: 1rem;
-        }
-
-        .input-block .label {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .input-block .label span:last-child {
-          align-self: flex-end;
-          margin-top: 0.3rem;
-        }
-
-        .inputs h2 {
-          font-size: 1.2rem;
-        }
-
-        .resultats .header-mensualite .label {
-          font-size: 1rem;
-        }
-
-        .resultats .header-mensualite .value {
-          font-size: 1.5rem;
-        }
-
-        .graph-area {
-          width: 83%;
-          margin: 0 auto;
-          padding: 1rem;
-        }
-
-        .graph-area h2 {
-          font-size: 1.2rem;
-        }
-
-        .cta-section {
-          width: 83%;
-        }
-
-        .mascotte-cta {
-          position: static;
-          display: block;
-          margin: 2rem auto 0 auto;
-          transform: translateY(-140px);
-          height: 289px;
-          /* facultatif : taille un peu réduite en mobile */
-        }
-
-        .cta-wrapper {
-          flex-direction: column;
-          align-items: center;
-          margin-top: 1rem;
-	  margin-bottom: -150px;
-        }
-
-        .background-angled {
-          opacity: 0;
-        }
-
-        .background-angled-r {
-          opacity: 0;
-        }
-
-        #full-page-line {
-          opacity: 0;
-        }
-      }
-
-	/* Popup Styles */
-	    .popup-overlay {
-	      display: none;
-	      position: fixed;
-	      top: 0;
-	      left: 0;
-	      width: 100%;
-	      height: 100%;
-	      background-color: rgba(0, 0, 0, 0.5);
-	      justify-content: center;
-	      align-items: center;
-		  z-index: 1000; /* Assure que le popup est au-dessus de tout */
-	    }
-
-      /* Footer */
-      footer {
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        text-align: center;
-        font-size: 0.9rem;
-      }
-
-      footer a {
-        color: #ddd;
-        text-decoration: none;
-        margin: 0 10px;
-      }
-
-      footer a:hover {
-        text-decoration: underline;
-      }
-
-      .social-links {
-        margin-top: 10px;
-      }
-
-      .social-links a {
-        display: inline-block;
-        margin: 0 8px;
-        font-size: 1.5rem;
-        color: #ddd;
-        transition: color 0.3s ease-in-out;
-      }
-
-      .social-links a:hover {
-        color: #1da1f2;
-      }
-
-      .scroll-to-top {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        background-color: rgb(153, 202, 60);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        cursor: pointer;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      .background-angled {
         opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
       }
 
-      .scroll-to-top i {
-        font-size: 20px;
+      .background-angled-r {
+        opacity: 0;
       }
 
-      .scroll-to-top.show {
-        opacity: 1;
-        visibility: visible;
+      #full-page-line {
+        opacity: 0;
       }
+    }
 
-      .scroll-to-top:hover {
-        background-color: #a8e24e;
-      }
-    </style>
-  </head>
+    /* Popup Styles */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      /* Assure que le popup est au-dessus de tout */
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ddd;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .social-links {
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 8px;
+      font-size: 1.5rem;
+      color: #ddd;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .social-links a:hover {
+      color: #1da1f2;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: rgb(153, 202, 60);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+
+    .scroll-to-top i {
+      font-size: 20px;
+    }
+
+    .scroll-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-to-top:hover {
+      background-color: #a8e24e;
+    }
+
+    .breadcrumb-nav {
+      width: 100%;
+      max-width: 1200px;
+      margin: 20px auto 10px;
+      padding: 0 2rem;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: flex-end;
+      list-style: none;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .breadcrumb-item {
+      display: flex;
+      align-items: center;
+      color: #555;
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+      content: "›";
+      margin: 0 0.6rem;
+      color: #818180;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 22px;
+    }
+
+    .breadcrumb-item a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .breadcrumb-item a:hover {
+      text-decoration: none;
+      color: #a3a1a1;
+    }
+
+    .breadcrumb-item.active {
+      color: #000000;
+      font-weight: bold;
+    }
+
+    .breadcrumb-home-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      color: white;
+      font-size: 16px;
+      text-decoration: none;
+    }
+
+    .breadcrumb-home-icon:hover {
+      color: #3b3b3b;
+    }
+  </style>
+</head>
 
 <body>
   <!-- Inclure le header de façon dynamique -->
   {% include "header.html" %}
-  
+
   <div id="full-page-line"></div>
+  
   <div class="wrapper">
+    <nav class="breadcrumb-nav" aria-label="Fil d'Ariane">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/" aria-label="Accueil" class="breadcrumb-home-icon">
+          <i class="fa-solid fa-house"></i>
+        </a>
+      </li>
+      <li class="breadcrumb-item active"><a href="/simu-mensu-pret">Simulation</a></li>
+    </ol>
+  </nav>
     <div class="angled-section">
       <div class="background-angled"></div>
       <div class="background-angled-r"></div>
 
       <div class="page">
         <h1> Prêt immobilier : simulation </h1>
-	<h2> Utilisez notre outil gratuit pour calculer les mensualités de votre prêt</h2>
+        <h2> Utilisez notre outil gratuit pour calculer les mensualités de votre prêt</h2>
         <div class="container">
           <div class="resultats">
             <div class="header-mensualite">
@@ -761,15 +838,15 @@
       const assuranceMensuelleEl = document.getElementById("assuranceMensuelle");
       const coutTotalEl = document.getElementById("coutTotal");
       const coutAssuranceEl = document.getElementById("coutAssurance");
-	  
-	  let isUserTypingMontant = false;
-	  
-	  valMontant.addEventListener("focus", () => {
-		  isUserTypingMontant = true;
-		});
-		valMontant.addEventListener("blur", () => {
-		  isUserTypingMontant = false;
-		});
+
+      let isUserTypingMontant = false;
+
+      valMontant.addEventListener("focus", () => {
+        isUserTypingMontant = true;
+      });
+      valMontant.addEventListener("blur", () => {
+        isUserTypingMontant = false;
+      });
 
 
       function formatMontant(valeur) {
@@ -812,13 +889,13 @@
           valNotairePourcent.textContent = pourcentReel.replace('.', ',');
           valApport.textContent = formatMontant(apportVal);
           if (!isUserTypingMontant) {
-			  valMontant.value = capital.toLocaleString("fr-FR");
-			}
+            valMontant.value = capital.toLocaleString("fr-FR");
+          }
         } else {
           capital = parseInt(montant.value);
           if (!isUserTypingMontant) {
-			  valMontant.value = capital.toLocaleString("fr-FR");
-			}
+            valMontant.value = capital.toLocaleString("fr-FR");
+          }
         }
 
         montantPretEl.textContent = formatMontant(capital);
@@ -1188,8 +1265,8 @@
 
 
   <button id="scroll-to-top-btn" class="scroll-to-top">
-		<i class="fas fa-chevron-up"></i>
-	</button>
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
   <footer>
     <p>&copy; 2024 Adressator. Tous droits réservés.</p>
