@@ -179,6 +179,7 @@
 
 		.search-btn-2.disabled {
 			cursor: not-allowed;
+			
 		}
 
 
@@ -197,6 +198,11 @@
 			align-items: center;
 			justify-content: center;
 			width: 99%;
+			gap: 0px;
+		}
+		#send-wrapper {
+		display: inline-block; /* ou flex si besoin */
+		position: relative; /* nécessaire pour le tooltip absolu */
 		}
 
 		.mascotte-index {
@@ -213,6 +219,80 @@
 		.mascotte-index-mobile {
 			display: none;
 		}
+
+		.tooltip-bulle {
+			position: absolute;
+			bottom: 80%; /* au-dessus de l'input */
+			left: 12%;
+			background: #fff;
+			border: 2px solid #98ca3c;
+			border-radius: 12px;
+			padding: 10px 14px;
+			font-size: 14px;
+			font-family: 'lexend', sans-serif;
+			font-weight: 500;
+			color: #333;
+			max-width: 240px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+			z-index: 1000;
+			transition: opacity 0.3s ease;
+			}
+
+		@media (max-width:768px) {
+			.tooltip-bulle {
+			bottom: 100%;
+			}
+			
+		}
+
+			.tooltip-bulle::after {
+			content: '';
+			position: absolute;
+			top: 100%;
+			left: 25px;
+			border-width: 8px;
+			border-style: solid;
+			border-color: #98ca3c transparent transparent transparent;
+			}
+
+		.tooltip-bulle-btn {
+			position: absolute;
+			bottom: 110%; /* au-dessus de l'input */
+			right:25px;
+			background: #fff;
+			border: 2px solid #98ca3c;
+			border-radius: 12px;
+			padding: 10px 14px;
+			font-size: 14px;
+			color: #333;
+			max-width: 240px;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+			z-index: 1000;
+			transition: opacity 0.3s ease;
+			}
+
+		@media (max-width:768px) {
+			.tooltip-bulle-btn {
+			bottom: 100%;
+			}
+			
+		}
+
+			.tooltip-bulle-btn::after {
+			content: '';
+			position: absolute;
+			top: 100%;
+			left: 25px;
+			border-width: 8px;
+			border-style: solid;
+			border-color: #98ca3c transparent transparent transparent;
+			}
+
+
+			.hidden {
+			display: none;
+			}
+
 
 
 		.search-btn-2 {
@@ -1296,7 +1376,7 @@
 
 			.search-btn-2 {
 				height: 37px;
-				width: 212px;
+				width: 160px;
 				font-size: 0.9rem;
 			}
 
@@ -1557,6 +1637,8 @@
 				/* Plus petit écran */
 			}
 		}
+
+	
 	</style>
 </head>
 
@@ -1574,13 +1656,22 @@
 			<div class="hero-text">
 				<h1>L’adresse exacte des annonces… sans agence</h1>
 				<h2>Évitez les frais, contactez le vendeur directement.</h2>
-
-				<div class="input-and-btn-container">
+				
+				<div class="input-and-btn-container" style="position: relative;">
 					<input type="text" class="url-input" id="url-input"
 						style="padding:10px; font-family: lexend; font-weight: bold; font-size: 14px; color:#000000"
 						placeholder="" />
-					<button class="search-btn-2 disabled" title="Collez le lien de l'annonce dans la barre à gauche"
-						id="search-btn-2" onclick="openSearchPopup()" disabled> Obtenir l'adresse </button>
+					<div id="tooltip-bulle" class="tooltip-bulle hidden">
+					Collez ici le lien de l’annonce
+					</div>
+					
+					<div id="send-wrapper" style="position: relative;">
+						<button class="search-btn-2 disabled"
+							id="search-btn-2" onclick="openSearchPopup()" disabled> Obtenir l'adresse </button>
+						<div id="tooltip-bulle-btn" class="tooltip-bulle-btn hidden">
+						Collez le lien de l’annonce pour débloquer le bouton
+						</div>
+					</div>
 				</div>
 			</div>
 			<!--<img src="static/mascotte-pointe-doigt-petite.png" alt="Mascotte Adressator" class="mascotte-index">
@@ -1626,17 +1717,19 @@
 					<h4>Pour accéder à l’adresse exacte du bien qui vous intéresse, il vous suffit de <strong>valider
 							votre paiement sécurisé</strong>.<br>
 						Notre équipe s’occupe ensuite de vérifier et retrouver manuellement l’adresse, que vous recevez
-						<strong>par email sous 1h à 72h</strong>.</h3>
+						<strong>par email sous 1h à 72h</strong>.</h4>
 
-
-						<div class="input-and-btn-container" style="width:108%">
+					<div style="display:flex;justify-content: center;">
+						<button id="access-to-service-1" class="pricing-btn">Obtenir l'adresse d'une annonce</button>
+					</div>
+<!-- 						<div class="input-and-btn-container" style="width:108%">
 							<input type="text" class="url-input-2" id="url-input-2"
 								style="padding:10px; width:62%; margin-left:-30px; font-family: lexend; font-weight: bold; font-size: 14px; color:#000000"
 								placeholder="Collez l'annonce ici" />
 							<button class="search-btn-2 disabled" style="width:170px"
 								title="Collez le lien de l'annonce dans la barre à gauche" id="search-btn-3"
 								onclick="openSearchPopup()" disabled> Obtenir l'adresse </button>
-						</div>
+						</div> -->
 			</section>
 		</div>
 		<div class="divider"></div>
@@ -2116,8 +2209,9 @@
 	<section class="section-colored">
 		<div class="section-colored-container" style="width:100%; text-align: center; align-items: center;">
 			<h2>🏁 &nbsp; Prêt à essayer ? </h2>
-			<h4>Obtenez l’adresse maintenant. </h4>
-			<div class="input-and-btn-container" style="width:108%">
+			<h3>Découvrez l’adresse de votre futur chez vous pour seulement 9,90€. </h3>
+			<button id="access-to-service-2" class="pricing-btn">Obtenir l'adresse d'une annonce MAINTENANT</button>
+		<!-- 	<div class="input-and-btn-container" style="width:108%">
 				<input type="text" class="url-input-2" 
 					style="width:50%; height:20px; border-color: #ffffff00; font-family: lexend; font-weight: bold; font-size: 14px; color:#000000"
 					id="url-input-3"
@@ -2125,7 +2219,7 @@
 				<button class="search-btn-2 disabled" style="width:162px"
 					title="Collez le lien de l'annonce dans la barre à gauche" id="search-btn-4"
 					onclick="openSearchPopup()" disabled> Obtenir l'adresse MAINTENANT </button>
-			</div>
+			</div> -->
 			<h4 style="font-weight:400">🔒 Paiement sécurisé – Annonce trouvée ou remboursée.</h4>
 		</div>
 	</section>
@@ -2241,11 +2335,60 @@
 		
 		document.addEventListener("DOMContentLoaded", function () {
 			const accessToService = document.getElementById("access-to-service");
+			const accessToService1 = document.getElementById("access-to-service-1");
+			const accessToService2 = document.getElementById("access-to-service-2");
+			const tooltip = document.getElementById('tooltip-bulle');
+			const tooltipBulleBtn = document.getElementById('tooltip-bulle-btn');
+
 			accessToService.addEventListener("click", () => {
 				window.scrollTo({
 					top: 0,
 					behavior: "smooth",
 				});
+				 // Affiche la tooltip
+				setTimeout(() => {
+					tooltip.classList.remove('hidden');
+					tooltipBulleBtn.classList.add('hidden');
+				}, 600);
+
+				// Cache après 5 secondes
+				setTimeout(() => {
+					tooltip.classList.add('hidden');
+				}, 5000);
+			});
+
+			accessToService1.addEventListener("click", () => {
+				window.scrollTo({
+					top: 0,
+					behavior: "smooth",
+				});
+				 // Affiche la tooltip
+				setTimeout(() => {
+					tooltip.classList.remove('hidden');
+					tooltipBulleBtn.classList.add('hidden');
+				}, 600);
+
+				// Cache après 5 secondes
+				setTimeout(() => {
+					tooltip.classList.add('hidden');
+				}, 5000);
+			});
+
+			accessToService2.addEventListener("click", () => {
+				window.scrollTo({
+					top: 0,
+					behavior: "smooth",
+				});
+				 // Affiche la tooltip
+				setTimeout(() => {
+					tooltip.classList.remove('hidden');
+					tooltipBulleBtn.classList.add('hidden');
+				}, 600);
+
+				// Cache après 5 secondes
+				setTimeout(() => {
+					tooltip.classList.add('hidden');
+				}, 5000);
 			});
 		});
 
@@ -2402,6 +2545,7 @@
 			const searchPopup = document.getElementById("searchPopup");
 			const urlDisplay = document.getElementById("url-display");
 			const validationResult = document.getElementById("validation-result");
+			const tooltip = document.getElementById('tooltip-bulle');
 
 			// Activer/désactiver le bouton selon l'entrée de texte
 			urlInput.addEventListener('input', function () {
@@ -2409,51 +2553,50 @@
 				if (urlInput.value.trim().length > 0) {
 					sendButton.disabled = false;
 					sendButton.classList.remove('disabled');
+					tooltip.classList.add('hidden');
 				} else {
 					sendButton.disabled = true;
 					sendButton.classList.add('disabled');
 				}
 			});
 
+			
+			const tooltipBulleBtn = document.getElementById("tooltip-bulle-btn");
+
+			function showTooltipIfDisabled() {
+				if (sendButton.disabled) {
+					tooltipBulleBtn.classList.remove("hidden");
+
+					setTimeout(() => {
+						tooltipBulleBtn.classList.add("hidden");
+					}, 3000);
+				}
+			}
+
+			const sendParent = sendButton.parentElement;
+
+			// Desktop : survol sur le parent du bouton
+			sendParent.addEventListener("mouseenter", showTooltipIfDisabled);
+
+			// Mobile : toucher sur le parent
+			sendParent.addEventListener("touchstart", showTooltipIfDisabled);
+
 
 			// Ouvrir le popup et afficher la variable
 			sendButton.addEventListener("click", () => {
 				const url = urlInput.value.trim();
 				urlDisplay.textContent = `${url}`;
-
+				
 				validateURL(url);
 				openSearchPopup();
 			});
 
 			const urlInput2 = document.getElementById('url-input-2');
-			const sendButton2 = document.getElementById('search-btn-3');
+			const sendButton3 = document.getElementById('search-btn-3');
 
 
 			urlInput2.addEventListener('input', function () {
 				if (urlInput2.value.trim().length > 0) {
-					sendButton2.disabled = false;
-					sendButton2.classList.remove('disabled');
-				} else {
-					sendButton2.disabled = true;
-					sendButton2.classList.add('disabled');
-				}
-			});
-
-			sendButton2.addEventListener('click', function () {
-				const url = urlInput2.value.trim();
-				if (!url) return;
-
-				urlDisplay.textContent = `${url}`;
-				validateURL(url); // utilise la fonction déjà définie dans le script
-				openSearchPopup(); // utilise la même popup
-			});
-
-			const urlInput3 = document.getElementById('url-input-3');
-			const sendButton3 = document.getElementById('search-btn-4');
-
-
-			urlInput3.addEventListener('input', function () {
-				if (urlInput3.value.trim().length > 0) {
 					sendButton3.disabled = false;
 					sendButton3.classList.remove('disabled');
 				} else {
@@ -2463,6 +2606,29 @@
 			});
 
 			sendButton3.addEventListener('click', function () {
+				const url = urlInput2.value.trim();
+				if (!url) return;
+
+				urlDisplay.textContent = `${url}`;
+				validateURL(url); // utilise la fonction déjà définie dans le script
+				openSearchPopup(); // utilise la même popup
+			});
+
+			const urlInput3 = document.getElementById('url-input-3');
+			const sendButton4 = document.getElementById('search-btn-4');
+
+
+			urlInput3.addEventListener('input', function () {
+				if (urlInput3.value.trim().length > 0) {
+					sendButton4.disabled = false;
+					sendButton3.classList.remove('disabled');
+				} else {
+					sendButton4.disabled = true;
+					sendButton4.classList.add('disabled');
+				}
+			});
+
+			sendButton4.addEventListener('click', function () {
 				const url = urlInput3.value.trim();
 				if (!url) return;
 
