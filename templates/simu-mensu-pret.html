@@ -621,17 +621,19 @@
     .breadcrumb-nav {
       width: 100%;
       max-width: 1200px;
-      margin: 20px auto 10px;
-      padding: 0 2rem;
     }
 
-    .breadcrumb {
+   .breadcrumb {
       display: flex;
       align-items: flex-end;
       list-style: none;
-      padding: 0.75rem 1rem;
+      padding: 0rem 1rem;
       border-radius: 0.5rem;
       font-size: 0.95rem;
+    }
+
+    @media (min-width:768px){
+      padding: 0rem 3rem;
     }
 
     .breadcrumb-item {
