@@ -2251,10 +2251,10 @@
 
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
+/* 		document.addEventListener("DOMContentLoaded", function () {
 			const searchBtn = document.getElementById('search-btn-2');
 			if (searchBtn) searchBtn.addEventListener('click', openSearchPopup);
-		});
+		}); */
 
 
 
@@ -2581,6 +2581,11 @@
 			// Mobile : toucher sur le parent
 			sendParent.addEventListener("touchstart", showTooltipIfDisabled);
 
+			// Ouvrir le popup de Recherche
+			window.openSearchPopup = function () {
+				console.log("window.openSearchPopup");
+				document.getElementById('search-popup').style.display = 'flex';
+			};
 
 			// Ouvrir le popup et afficher la variable
 			sendButton.addEventListener("click", () => {
@@ -2591,7 +2596,7 @@
 				openSearchPopup();
 			});
 
-			const urlInput2 = document.getElementById('url-input-2');
+/* 			const urlInput2 = document.getElementById('url-input-2');
 			const sendButton3 = document.getElementById('search-btn-3');
 
 
@@ -2635,7 +2640,7 @@
 				urlDisplay.textContent = `${url}`;
 				validateURL(url); // utilise la fonction déjà définie dans le script
 				openSearchPopup(); // utilise la même popup
-			});
+			}); */
 
 			// Vérification de l'URL via fetch
 			function validateURL(url) {
@@ -2685,11 +2690,7 @@
 				}
 			};
 
-			// Ouvrir le popup de Recherche
-			window.openSearchPopup = function () {
-				console.log("window.openSearchPopup");
-				document.getElementById('search-popup').style.display = 'flex';
-			};
+			
 
 			// Fonction pour fermer le popup de Recherche
 			window.closeSearchPopup = function () {
